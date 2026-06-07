@@ -1,0 +1,43 @@
+---
+import { ROUTE } from "@/config/routes";
+import { NAV_COLLECTIONS, NAV_ROUTES } from "@/config/routes";
+import { cls11 } from "@/lib/utils";
+---
+
+<header class="w-full fixed top-0 z-40">
+  <nav class="w-full flex justify-center pt-10 pb-2">
+    <div
+      class="w-full max-wrapper flex justify-between items-center text-xl text-white uppercase font-light gap-10"
+    >
+      <div class="w-fit flex items-center gap-12 basis-0">
+        {
+          NAV_COLLECTIONS.map((route) => (
+            <a class="" href={route.path}>
+              {route.title}
+            </a>
+          ))
+        }
+      </div>
+      <div class="w-full flex justify-center">
+        <img class="h-16 w-auto object-cover" src="/images/w-kan.png" alt="" />
+        <img
+          class="h-16 w-auto object-cover hidden"
+          src="/images/w-logo.png"
+          alt=""
+        />
+      </div>
+      <div class="w-fit flex items-center gap-12 basis-0">
+        <a class="text-website-orange" href="">
+          {ROUTE.SHOP.title}
+        </a>
+        {
+          NAV_ROUTES.map((route) => (
+            <a class="" href={route.path}>
+              {route.title}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </nav>
+</header>

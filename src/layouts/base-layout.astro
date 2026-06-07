@@ -7,6 +7,8 @@ import type { SeoProps } from "@/components/fundations/seo.astro";
 import Seo from "@/components/fundations/seo.astro";
 import TailwindIndicator from "@/components/tailwind-indicator.astro";
 import { BUSINESS_CONFIG } from "@/config/business";
+import Header from "@/components/globals/header.astro";
+import Footer from "@/components/globals/footer.astro";
 
 interface Props {
   metadata?: SeoProps;
@@ -31,7 +33,7 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
         : ""}
     />
   </head>
-  <body>
+  <body class="relative">
     {
       gtmId && (
         <noscript>
@@ -44,7 +46,9 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
         </noscript>
       )
     }
+    <Header />
     <main><slot /></main>
     <TailwindIndicator />
+    <Footer />
   </body>
 </html>

@@ -7,6 +7,10 @@
   --font-mozilla: var(--font-mozilla);
   --font-montserrat: var(--font-montserrat);
   --font-inter: var(--font-inter);
+  
+  --color-website-primary: #ffff;
+  --color-website-secondary: #6c6c6c;
+  --color-website-orange: #ff8d28;
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -81,11 +85,6 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
-
-  --color-website-primary: #ffff;
-  --color-website-secondary: #6C6C6C;
-  --color-website-orange: #FF8D28;
-
 }
 
 .dark {
@@ -132,4 +131,8 @@
   html {
     @apply font-inter;
   }
+}
+
+.max-wrapper {
+  @apply max-w-screen-2xl mx-auto px-6 md:px-12;
 }
