@@ -32,7 +32,8 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
     />
   </head>
   <body>
-    {gtmId && (
+    {
+      gtmId && (
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
@@ -41,7 +42,8 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
             style="display:none;visibility:hidden"
           />
         </noscript>
-      )}
+      )
+    }
     <main><slot /></main>
     <TailwindIndicator />
   </body>
