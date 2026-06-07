@@ -18,7 +18,7 @@ content:
           maxLenght: 170
       - name: site
         label: URL Website
-        description: "Example: https://elevenestudio.com"
+        description: "Example: https://website.com"
         type: string
         required: true
         pattern: ^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?$

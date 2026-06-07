@@ -104,7 +104,7 @@ export const EmailContact = ({
                   alt={logo?.alt ?? business.name}
                   className={twMerge(
                     "mx-auto my-0 h-auto",
-                    logo?.className ?? ""
+                    logo?.className ?? "",
                   )}
                   src={logo.src}
                   // width={logo.height}
@@ -199,15 +199,12 @@ export const EmailContact = ({
               </Row>
               <Row>
                 <Column className="mb-4 pt-1 pb-4 text-center">
-                  <Link
-                    className="no-underline"
-                    href="https://elevenestudio.link/web"
-                  >
+                  <Link className="no-underline" href="">
                     <Img
-                      alt="Eleven Estudio"
+                      alt="alt name"
                       className="mx-auto h-auto w-[120px] max-w-[120px]"
                       height={494}
-                      src="https://storage.elevenestudio.me/logo-eleven.png"
+                      src=""
                       width={1256}
                     />
                   </Link>
@@ -217,7 +214,7 @@ export const EmailContact = ({
                 <Column className="py-4 pr-4 text-center">
                   <Link
                     className="text-center text-gray-400 text-sm underline"
-                    href="https://elevenestudio.link/ig"
+                    href=""
                   >
                     {t.socialLinks.instagram}
                   </Link>
@@ -225,7 +222,7 @@ export const EmailContact = ({
                 <Column className="py-4 pr-4 text-center">
                   <Link
                     className="text-center text-gray-400 text-sm underline"
-                    href="https://elevenestudio.link/wa"
+                    href=""
                   >
                     {t.socialLinks.whatsapp}
                   </Link>
@@ -233,7 +230,7 @@ export const EmailContact = ({
                 <Column className="py-4 pr-4 text-center">
                   <Link
                     className="text-center text-gray-400 text-sm underline"
-                    href="https://elevenestudio.link/fb"
+                    href=""
                   >
                     {t.socialLinks.facebook}
                   </Link>
@@ -241,7 +238,7 @@ export const EmailContact = ({
                 <Column className="py-4 text-center">
                   <Link
                     className="text-center text-gray-400 text-sm underline"
-                    href="https://elevenestudio.link/help-center"
+                    href=""
                   >
                     {t.socialLinks.helpCenter}
                   </Link>
@@ -260,8 +257,7 @@ export const EmailContact = ({
                   className="py-1 text-center text-[#AFAFAF] text-sm"
                   style={resetText}
                 >
-                  © {new Date().getFullYear()} Eleven Corporation, S.A.{" "}
-                  {t.copyright}
+                  © {new Date().getFullYear()} KAN. {t.copyright}
                 </Text>
               </Row>
             </Section>
