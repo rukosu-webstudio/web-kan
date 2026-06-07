@@ -1,7 +1,7 @@
 import { ActionError, defineAction } from "astro:actions";
-import { z } from "astro:schema";
 import { render } from "@react-email/render";
 import { captureException } from "@sentry/astro";
+import { z } from "astro/zod";
 import { Resend } from "resend";
 import {
   EmailContact,
@@ -12,7 +12,7 @@ import { truncate } from "@/lib/truncate";
 
 interface IEmailData {
   email: string;
-  message?: string;
+  message?: string | null;
   name: string;
   phone: string;
 }
@@ -20,7 +20,7 @@ interface IEmailData {
 const BCC_EMAIL = Array.isArray(BUSINESS_CONFIG.settings?.bccEmail)
   ? BUSINESS_CONFIG.settings?.bccEmail
   : [];
-const EMAIL_SENDER = BUSINESS_CONFIG.settings.emailSender;
+const EMAIL_SENDER = BUSINESS_CONFIG.settings?.emailSender;
 const resend = new Resend(
   import.meta.env.RESEND_API_KEY || "re_xxxxxxxxxxxxxxxxxxxxxxxxxxx"
 );
@@ -31,24 +31,17 @@ export const server = {
     input: z.object({
       name: z
         .string({
-          required_error: "El nombre es requeridoo",
-          invalid_type_error: "El nombre es requerido",
+          message: "El nombre es requerido",
         })
         .min(3, {
           message: "El nombre debe tener al menos 3 caracteres",
         }),
 
-      email: z
-        .string({
-          required_error: "Correo electrónico requerido",
-          invalid_type_error: "Correo electrónico requerido",
-        })
-        .email({ message: "El correo electrónico no es válido." }),
+      email: z.email("El correo electrónico no es válido."),
 
       phone: z
         .string({
-          required_error: "El número de teléfono es requerido",
-          invalid_type_error: "El número de teléfono es requerido",
+          message: "El número de teléfono es requerido",
         })
         .min(8, {
           message: "El número de teléfono debe tener exactamente 8 caracteres",
@@ -60,13 +53,14 @@ export const server = {
 
       message: z
         .string({
-          invalid_type_error: "Mensaje no valido",
+          message: "Mensaje no valido",
         })
         .max(300, {
           message: "El mensaje no puede exceder los 300 caracteres",
         })
         .nullable(),
     }),
+
     handler: async (contact: IEmailData) => {
       try {
         const { name, message, email, phone } = contact;
@@ -83,7 +77,7 @@ export const server = {
         const isDev = import.meta.env.MODE === "development";
         const bcc = isDev
           ? []
-          : BUSINESS_CONFIG.settings.resendToCompany
+          : BUSINESS_CONFIG.settings?.resendToCompany
             ? [...BCC_EMAIL, BUSINESS_CONFIG.contact.email.trim()]
             : [...BCC_EMAIL];
 
