@@ -22,7 +22,9 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
     <Meta />
     <Seo metadata={metadata} />
     <Favicons />
-    <Font cssVariable="--font-geist" />
+    <Font cssVariable="--font-mozilla" />
+    <Font cssVariable="--font-montserrat" />
+    <Font cssVariable="--font-inter" />
     <Fragment
       set:html={gtmId
         ? `<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');</script>`
@@ -42,6 +44,5 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
       )}
     <main><slot /></main>
     <TailwindIndicator />
-    <script src="@/scripts/eleven.ts"></script>
   </body>
 </html>

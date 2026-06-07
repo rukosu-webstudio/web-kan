@@ -14,6 +14,7 @@ export default defineConfig({
     react(),
     robotsTxt(),
     sentry({
+      dsn: process.env.SENTRY_DSN,
       sourceMapsUploadOptions: {
         project: process.env.SENTRY_PROJECT,
         authToken: process.env.SENTRY_AUTH_TOKEN,
@@ -28,14 +29,20 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.fontsource(),
-      name: "Geist",
-      cssVariable: "--font-geist",
+      name: "Mozilla Text",
+      cssVariable: "--font-mozilla",
       weights: ["100 900"],
     },
     {
       provider: fontProviders.fontsource(),
-      name: "Geist Mono",
-      cssVariable: "--font-geist-mono",
+      name: "Montserrat",
+      cssVariable: "--font-montserrat",
+      weights: ["100 900"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Inter",
+      cssVariable: "--font-inter",
       weights: ["100 900"],
     },
   ],
