@@ -1,14 +1,14 @@
-!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"d8c12cfbe17f71e1e77220f656d682661c0862ff"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="094ac2bb-5bd5-4f82-9a86-7566125187d2",e._sentryDebugIdIdentifier="sentry-dbid-094ac2bb-5bd5-4f82-9a86-7566125187d2");}catch(e){}}();import { parsePhoneNumberFromString } from 'libphonenumber-js';
+!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"1dc07b35b0583b43bc2361e999b8228f15f82ed0"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="dc276765-97e1-4724-9ed4-f9e972cf5a19",e._sentryDebugIdIdentifier="sentry-dbid-dc276765-97e1-4724-9ed4-f9e972cf5a19");}catch(e){}}();import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
-const name = "Eleven Estudio";
-const description = "Somos una firma de arquitectos fundada en el año 2002, apasionados por crear arquitectura que explore posibilidades, emocione e inspire a la comunidad.";
-const site = "https://www.elevenestudio.com";
+const name = "";
+const description = "";
+const site = "";
 const openGraph = "/og.png";
 const lang = "es";
-const contact = {"tel":{"ext":502,"number":45431635},"whatsapp":{"ext":502,"number":45431635},"email":"info@elevenestudio.com"};
+const contact = {"tel":{"ext":0,"number":0},"whatsapp":{"ext":0,"number":0},"email":""};
 const address = {"location":"Guatemala, Guatemala"};
 const googleTagManager = {"id":"GTM-XXXXXXX"};
-const social = {"facebook":"https://www.facebook.com/elevenestudio/","instagram":"https://www.instagram.com/elevenstudio.gt/"};
+const social = {"facebook":"","instagram":""};
 const settings = {"emailSender":"noreply@correo.com","bccEmail":["monitoreo@correo.com"],"resendToCompany":false};
 const BUSINESS = {
   name,

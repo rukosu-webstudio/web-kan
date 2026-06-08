@@ -23,10 +23,16 @@ import { cls11 } from "@/lib/utils";
           ))
         }
       </div>
-      <div class="w-full flex justify-center">
-        <img class="h-16 w-auto object-cover" src="/images/w-kan.png" alt="" />
+      <div class="w-full flex justify-center relative">
         <img
-          class="h-16 w-auto object-cover hidden"
+          id="logo-kan"
+          class="h-16 w-auto object-cover transition-all duration-500 ease-in-out"
+          src="/images/w-kan.png"
+          alt=""
+        />
+        <img
+          id="logo-main"
+          class="h-16 w-auto object-cover absolute opacity-0 scale-90 transition-all duration-500 ease-in-out pointer-events-none"
           src="/images/w-logo.png"
           alt=""
         />
@@ -48,16 +54,42 @@ import { cls11 } from "@/lib/utils";
 <script>
   const header = document.getElementById("main-header");
   const nav = document.getElementById("main-nav");
+  const logoKan = document.getElementById("logo-kan");
+  const logoMain = document.getElementById("logo-main");
+  const heroSnake = document.getElementById("hero-snake");
 
   const handleScroll = () => {
-    if (window.scrollY > 50) {
+    const isScrolled = window.scrollY > 50;
+
+    if (isScrolled) {
       header?.classList.add("bg-black/90", "backdrop-blur-sm");
       nav?.classList.remove("pt-10");
       nav?.classList.add("pt-4");
+
+      // Swap Logos
+      logoKan?.classList.add("opacity-0", "scale-90", "pointer-events-none");
+      logoMain?.classList.remove(
+        "opacity-0",
+        "scale-90",
+        "pointer-events-none",
+      );
+      logoMain?.classList.add("opacity-100", "scale-100");
+
+      // Snake Animation
+      heroSnake?.classList.add("opacity-0", "-translate-y-20");
     } else {
       header?.classList.remove("bg-black/90", "backdrop-blur-sm");
       nav?.classList.add("pt-10");
       nav?.classList.remove("pt-4");
+
+      // Reverse Logos
+      logoKan?.classList.remove("opacity-0", "scale-90", "pointer-events-none");
+      logoKan?.classList.add("opacity-100", "scale-100");
+      logoMain?.classList.add("opacity-0", "scale-90", "pointer-events-none");
+      logoMain?.classList.remove("opacity-100", "scale-100");
+
+      // Reverse Snake
+      heroSnake?.classList.remove("opacity-0", "-translate-y-20");
     }
   };
 

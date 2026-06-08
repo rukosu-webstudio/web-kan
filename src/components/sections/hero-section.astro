@@ -5,13 +5,18 @@ import PrimaryButton from "../section-components/primaryButton.astro";
 <section class="w-full min-h-screen flex justify-center relative">
   <div class="w-full h-full absolute top-0">
     <div class="w-full h-full relative">
-      <img class="w-full h-full object-fill" src="/images/hero.jpeg" alt="" />
+      <img class="w-full h-full object-fill" src="/images/hero.jpeg" alt="">
       <div class="w-full h-full absolute top-0 bg-black/40"></div>
     </div>
   </div>
   <div class="w-full max-wrapper z-10 flex flex-col justify-end">
     <div class="w-full h-full flex justify-center items-center pt-20">
-      <img class="w-20 object-cover" src="/images/w-snake.png" alt="" />
+      <img
+        id="hero-snake"
+        class="w-20 object-cover transition-all duration-700 ease-out"
+        src="/images/w-snake.png"
+        alt=""
+      >
     </div>
     <div class="w-full flex flex-col gap-8 pb-20">
       <h1

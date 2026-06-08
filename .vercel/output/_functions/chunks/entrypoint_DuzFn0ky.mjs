@@ -1,5 +1,5 @@
-!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"d8c12cfbe17f71e1e77220f656d682661c0862ff"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="9a4ecc61-e6e9-4332-9d0a-ab8667994949",e._sentryDebugIdIdentifier="sentry-dbid-9a4ecc61-e6e9-4332-9d0a-ab8667994949");}catch(e){}}();import { p as pipelineSymbol, A as AstroError, a as ActionCalledFromServerError } from './params-and-props_D_OjNncc.mjs';
-import { c as createActionsProxy, d as defineAction, A as ActionError } from './entrypoint_Deg0V08C.mjs';
+!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"1dc07b35b0583b43bc2361e999b8228f15f82ed0"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="b0f91273-1022-446f-9a88-9be7a6f275b4",e._sentryDebugIdIdentifier="sentry-dbid-b0f91273-1022-446f-9a88-9be7a6f275b4");}catch(e){}}();import { p as pipelineSymbol, A as AstroError, a as ActionCalledFromServerError } from './params-and-props_CQL3fTpr.mjs';
+import { c as createActionsProxy, d as defineAction, A as ActionError } from './entrypoint_CQSE2Wtj.mjs';
 import { render } from '@react-email/render';
 import { captureException } from '@sentry/astro';
 import * as z from 'zod/v4';
@@ -7,7 +7,7 @@ import { Resend } from 'resend';
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import { Html, Head, Preview, Tailwind, Body, Container, Section, Link, Img, Text, Row, Column, Hr } from '@react-email/components';
 import { twMerge } from 'tailwind-merge';
-import { B as BUSINESS_CONFIG } from './business_CpkKYv6b.mjs';
+import { B as BUSINESS_CONFIG } from './business_RMZ_Lh7A.mjs';
 
 createActionsProxy({
   handleAction: async (param, path, context) => {
@@ -140,29 +140,22 @@ const EmailContact = ({
                 children: t.poweredBy
               }
             ) }),
-            /* @__PURE__ */ jsx(Row, { children: /* @__PURE__ */ jsx(Column, { className: "mb-4 pt-1 pb-4 text-center", children: /* @__PURE__ */ jsx(
-              Link,
+            /* @__PURE__ */ jsx(Row, { children: /* @__PURE__ */ jsx(Column, { className: "mb-4 pt-1 pb-4 text-center", children: /* @__PURE__ */ jsx(Link, { className: "no-underline", href: "", children: /* @__PURE__ */ jsx(
+              Img,
               {
-                className: "no-underline",
-                href: "https://elevenestudio.link/web",
-                children: /* @__PURE__ */ jsx(
-                  Img,
-                  {
-                    alt: "Eleven Estudio",
-                    className: "mx-auto h-auto w-[120px] max-w-[120px]",
-                    height: 494,
-                    src: "https://storage.elevenestudio.me/logo-eleven.png",
-                    width: 1256
-                  }
-                )
+                alt: "alt name",
+                className: "mx-auto h-auto w-[120px] max-w-[120px]",
+                height: 494,
+                src: "",
+                width: 1256
               }
-            ) }) }),
+            ) }) }) }),
             /* @__PURE__ */ jsxs(Row, { className: "mx-auto w-fit", children: [
               /* @__PURE__ */ jsx(Column, { className: "py-4 pr-4 text-center", children: /* @__PURE__ */ jsx(
                 Link,
                 {
                   className: "text-center text-gray-400 text-sm underline",
-                  href: "https://elevenestudio.link/ig",
+                  href: "",
                   children: t.socialLinks.instagram
                 }
               ) }),
@@ -170,7 +163,7 @@ const EmailContact = ({
                 Link,
                 {
                   className: "text-center text-gray-400 text-sm underline",
-                  href: "https://elevenestudio.link/wa",
+                  href: "",
                   children: t.socialLinks.whatsapp
                 }
               ) }),
@@ -178,7 +171,7 @@ const EmailContact = ({
                 Link,
                 {
                   className: "text-center text-gray-400 text-sm underline",
-                  href: "https://elevenestudio.link/fb",
+                  href: "",
                   children: t.socialLinks.facebook
                 }
               ) }),
@@ -186,7 +179,7 @@ const EmailContact = ({
                 Link,
                 {
                   className: "text-center text-gray-400 text-sm underline",
-                  href: "https://elevenestudio.link/help-center",
+                  href: "",
                   children: t.socialLinks.helpCenter
                 }
               ) })
@@ -207,8 +200,7 @@ const EmailContact = ({
                 children: [
                   "© ",
                   (/* @__PURE__ */ new Date()).getFullYear(),
-                  " Eleven Corporation, S.A.",
-                  " ",
+                  " KAN. ",
                   t.copyright
                 ]
               }

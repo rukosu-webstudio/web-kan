@@ -1,10 +1,10 @@
-!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"d8c12cfbe17f71e1e77220f656d682661c0862ff"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="798d0e57-0e0a-4919-890e-ac688e943782",e._sentryDebugIdIdentifier="sentry-dbid-798d0e57-0e0a-4919-890e-ac688e943782");}catch(e){}}();import { init } from '@sentry/astro';
-import { c as createComponent, $ as $$Font } from './_astro_assets_CNDdJ4wJ.mjs';
+!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"1dc07b35b0583b43bc2361e999b8228f15f82ed0"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="fb7ef891-bcc7-400e-8595-4d3d9c1194de",e._sentryDebugIdIdentifier="sentry-dbid-fb7ef891-bcc7-400e-8595-4d3d9c1194de");}catch(e){}}();import { init } from '@sentry/astro';
+import { c as createComponent, $ as $$Font } from './_astro_assets_B4WxaL8q.mjs';
 import 'piccolore';
-import { U as createRenderInstruction, Q as renderTemplate, a4 as addAttribute, b3 as unescapeHTML, b4 as renderHead, b2 as renderSlot, F as Fragment } from './params-and-props_D_OjNncc.mjs';
-import { s as spreadAttributes, r as renderComponent } from './entrypoint_Deg0V08C.mjs';
+import { U as createRenderInstruction, Q as renderTemplate, a4 as addAttribute, b2 as unescapeHTML, T as maybeRenderHead, b3 as renderHead, b4 as renderSlot, F as Fragment } from './params-and-props_CQL3fTpr.mjs';
+import { s as spreadAttributes, r as renderComponent } from './entrypoint_CQSE2Wtj.mjs';
 import 'clsx';
-import { B as BUSINESS_CONFIG } from './business_CpkKYv6b.mjs';
+import { B as BUSINESS_CONFIG } from './business_RMZ_Lh7A.mjs';
 
 async function renderScript(result, id) {
   const inlined = result.inlinedScripts.get(id);
@@ -158,6 +158,41 @@ const $$Seo = createComponent(($$result, $$props, $$slots) => {
   }, ...rest })}`;
 }, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/fundations/seo.astro", void 0);
 
+const $$Footer = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate``;
+}, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/footer.astro", void 0);
+
+const ROUTE = {
+  MEN: {
+    title: "Men",
+    path: "/"
+  },
+  WOMEN: {
+    title: "Women",
+    path: "/"
+  },
+  FEATURED: {
+    title: "Featured",
+    path: "/"
+  },
+  SHOP: {
+    title: "Shop"},
+  HISTORY: {
+    title: "History",
+    path: "/"
+  },
+  CONTACT: {
+    title: "Contact",
+    path: "/"
+  }
+};
+const NAV_COLLECTIONS = [ROUTE.MEN, ROUTE.WOMEN, ROUTE.FEATURED];
+const NAV_ROUTES = [ROUTE.HISTORY, ROUTE.CONTACT];
+
+const $$Header = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${maybeRenderHead()}<header class="w-full fixed top-0 z-40 transition-all duration-300 ease-in-out" id="main-header"> <nav class="w-full flex justify-center pt-10 pb-2 transition-all duration-300 ease-in-out" id="main-nav"> <div class="w-full max-wrapper flex justify-between items-center text-xl text-white uppercase font-light gap-10"> <div class="w-fit flex items-center gap-12 basis-0"> ${NAV_COLLECTIONS.map((route) => renderTemplate`<a${addAttribute(route.path, "key")} class=""${addAttribute(route.path, "href")}> ${route.title} </a>`)} </div> <div class="w-full flex justify-center relative"> <img id="logo-kan" class="h-16 w-auto object-cover transition-all duration-500 ease-in-out" src="/images/w-kan.png" alt=""> <img id="logo-main" class="h-16 w-auto object-cover absolute opacity-0 scale-90 transition-all duration-500 ease-in-out pointer-events-none" src="/images/w-logo.png" alt=""> </div> <div class="w-fit flex items-center gap-12 basis-0"> <a class="text-website-orange" href=""> ${ROUTE.SHOP.title} </a> ${NAV_ROUTES.map((route) => renderTemplate`<a${addAttribute(route.path, "key")} class=""${addAttribute(route.path, "href")}> ${route.title} </a>`)} </div> </div> </nav> </header> ${renderScript($$result, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/header.astro?astro&type=script&index=0&lang.ts")}`;
+}, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/header.astro", void 0);
+
 const $$TailwindIndicator = createComponent(($$result, $$props, $$slots) => {
   const view = "production";
   return renderTemplate`${view === "development"}`;
@@ -168,7 +203,7 @@ const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$BaseLayout;
   const { metadata } = Astro2.props;
   const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
-  return renderTemplate`<html lang="es"${addAttribute(["scroll-smooth"], "class:list")}> <head>${renderComponent($$result, "Meta", $$Meta, {})}${renderComponent($$result, "Seo", $$Seo, { "metadata": metadata })}${renderComponent($$result, "Favicons", $$Favicons, {})}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-geist" })}${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${unescapeHTML(gtmId ? `<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');<\/script>` : "")}` })}${renderHead()}</head> <body> ${gtmId && renderTemplate`<noscript> <iframe${addAttribute(`https://www.googletagmanager.com/ns.html?id=${gtmId}`, "src")} height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript>`} <main>${renderSlot($$result, $$slots["default"])}</main> ${renderComponent($$result, "TailwindIndicator", $$TailwindIndicator, {})} ${renderScript($$result, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/layouts/base-layout.astro?astro&type=script&index=0&lang.ts")} </body> </html>`;
+  return renderTemplate`<html lang="es"${addAttribute(["scroll-smooth"], "class:list")}> <head>${renderComponent($$result, "Meta", $$Meta, {})}${renderComponent($$result, "Seo", $$Seo, { "metadata": metadata })}${renderComponent($$result, "Favicons", $$Favicons, {})}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-mozilla" })}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-montserrat" })}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-inter" })}${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${unescapeHTML(gtmId ? `<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');<\/script>` : "")}` })}${renderHead()}</head> <body class="relative"> ${gtmId && renderTemplate`<noscript> <iframe${addAttribute(`https://www.googletagmanager.com/ns.html?id=${gtmId}`, "src")} height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript>`} ${renderComponent($$result, "Header", $$Header, {})} <main>${renderSlot($$result, $$slots["default"])}</main> ${renderComponent($$result, "TailwindIndicator", $$TailwindIndicator, {})} ${renderComponent($$result, "Footer", $$Footer, {})} </body></html>`;
 }, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/layouts/base-layout.astro", void 0);
 
 export { $$BaseLayout as $ };
