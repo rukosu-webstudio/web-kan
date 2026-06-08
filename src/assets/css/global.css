@@ -140,3 +140,24 @@
 .logoHeaderAnimation {
   @apply absolute opacity-0 pointer-events-none;
 }
+
+.nav-link-animated a {
+  position: relative;
+}
+
+.nav-link-animated a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out;
+}
+
+.nav-link-animated a:hover::after {
+  transform: scaleX(1);
+}

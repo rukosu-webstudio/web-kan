@@ -14,9 +14,8 @@ import Menu from "../icons/menu.astro";
     <div
       class="w-full max-wrapper flex justify-between items-center max-md:text-xl lg:text-lg xl:text-xl text-white uppercase font-light gap-6 xl:gap-10"
     >
-    
       <div
-        class="w-fit flex items-center gap-6 xl:gap-12 basis-0 max-md:hidden"
+        class="flex-1 basis-0 flex items-center gap-6 xl:gap-12 max-md:hidden nav-link-animated"
       >
         {
           NAV_COLLECTIONS.map((route) => (
@@ -31,7 +30,7 @@ import Menu from "../icons/menu.astro";
         {ROUTE.SHOP.title}
       </a>
       <div
-        class="w-full flex justify-center items-center relative h-12 lg:h-16"
+        class="flex-none flex justify-center items-center relative h-12 lg:h-16"
       >
         <img
           id="logo-kan"
@@ -49,7 +48,7 @@ import Menu from "../icons/menu.astro";
       <button class="md:hidden"> <Menu /> </button>
 
       <div
-        class="w-fit flex items-center gap-6 xl:gap-12 basis-0 max-md:hidden"
+        class="flex-1 basis-0 flex items-center justify-end gap-6 xl:gap-12 max-md:hidden nav-link-animated"
       >
         <a class="text-website-orange" href={ROUTE.SHOP.path}>
           {ROUTE.SHOP.title}
