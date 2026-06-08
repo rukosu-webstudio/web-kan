@@ -5,10 +5,10 @@ import Favicons from "@/components/fundations/favicons.astro";
 import Meta from "@/components/fundations/meta.astro";
 import type { SeoProps } from "@/components/fundations/seo.astro";
 import Seo from "@/components/fundations/seo.astro";
+import Footer from "@/components/globals/footer.astro";
+import Header from "@/components/globals/header.astro";
 import TailwindIndicator from "@/components/tailwind-indicator.astro";
 import { BUSINESS_CONFIG } from "@/config/business";
-import Header from "@/components/globals/header.astro";
-import Footer from "@/components/globals/footer.astro";
 
 interface Props {
   metadata?: SeoProps;
@@ -34,8 +34,7 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
     />
   </head>
   <body class="relative">
-    {
-      gtmId && (
+    {gtmId && (
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
@@ -44,8 +43,7 @@ const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
             style="display:none;visibility:hidden"
           />
         </noscript>
-      )
-    }
+      )}
     <Header />
     <main><slot /></main>
     <TailwindIndicator />

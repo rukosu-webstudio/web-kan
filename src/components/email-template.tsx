@@ -104,7 +104,7 @@ export const EmailContact = ({
                   alt={logo?.alt ?? business.name}
                   className={twMerge(
                     "mx-auto my-0 h-auto",
-                    logo?.className ?? "",
+                    logo?.className ?? ""
                   )}
                   src={logo.src}
                   // width={logo.height}

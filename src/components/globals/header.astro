@@ -1,11 +1,16 @@
 ---
-import { ROUTE } from "@/config/routes";
-import { NAV_COLLECTIONS, NAV_ROUTES } from "@/config/routes";
+import { NAV_COLLECTIONS, NAV_ROUTES, ROUTE } from "@/config/routes";
 import { cls11 } from "@/lib/utils";
 ---
 
-<header class="w-full fixed top-0 z-40">
-  <nav class="w-full flex justify-center pt-10 pb-2">
+<header
+  class="w-full fixed top-0 z-40 transition-all duration-300 ease-in-out"
+  id="main-header"
+>
+  <nav
+    class="w-full flex justify-center pt-10 pb-2 transition-all duration-300 ease-in-out"
+    id="main-nav"
+  >
     <div
       class="w-full max-wrapper flex justify-between items-center text-xl text-white uppercase font-light gap-10"
     >
@@ -27,9 +32,7 @@ import { cls11 } from "@/lib/utils";
         />
       </div>
       <div class="w-fit flex items-center gap-12 basis-0">
-        <a class="text-website-orange" href="">
-          {ROUTE.SHOP.title}
-        </a>
+        <a class="text-website-orange" href=""> {ROUTE.SHOP.title} </a>
         {
           NAV_ROUTES.map((route) => (
             <a class="" href={route.path}>
@@ -41,3 +44,24 @@ import { cls11 } from "@/lib/utils";
     </div>
   </nav>
 </header>
+
+<script>
+  const header = document.getElementById("main-header");
+  const nav = document.getElementById("main-nav");
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      header?.classList.add("bg-black/90", "backdrop-blur-sm");
+      nav?.classList.remove("pt-10");
+      nav?.classList.add("pt-4");
+    } else {
+      header?.classList.remove("bg-black/90", "backdrop-blur-sm");
+      nav?.classList.add("pt-10");
+      nav?.classList.remove("pt-4");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  // Check on initial load
+  handleScroll();
+</script>
