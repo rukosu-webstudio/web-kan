@@ -23,7 +23,7 @@ import { cls11 } from "@/lib/utils";
           ))
         }
       </div>
-      <div class="w-full flex justify-center relative">
+      <div class="w-full flex justify-center items-center relative h-16">
         <img
           id="logo-kan"
           class="h-16 w-auto object-cover transition-all duration-500 ease-in-out"
@@ -32,11 +32,12 @@ import { cls11 } from "@/lib/utils";
         />
         <img
           id="logo-main"
-          class="h-16 w-auto object-cover absolute opacity-0 scale-90 transition-all duration-500 ease-in-out pointer-events-none"
-          src="/images/w-logo.png"
+          class="h-16 w-auto object-cover transition-all duration-500 ease-in-out logoHeaderAnimation"
+          src="/images/w-snake.png"
           alt=""
         />
       </div>
+
       <div class="w-fit flex items-center gap-12 basis-0">
         <a class="text-website-orange" href=""> {ROUTE.SHOP.title} </a>
         {
@@ -67,13 +68,8 @@ import { cls11 } from "@/lib/utils";
       nav?.classList.add("pt-4");
 
       // Swap Logos
-      logoKan?.classList.add("opacity-0", "scale-90", "pointer-events-none");
-      logoMain?.classList.remove(
-        "opacity-0",
-        "scale-90",
-        "pointer-events-none",
-      );
-      logoMain?.classList.add("opacity-100", "scale-100");
+      logoKan?.classList.add("logoHeaderAnimation");
+      logoMain?.classList.remove("logoHeaderAnimation");
 
       // Snake Animation
       heroSnake?.classList.add("opacity-0", "-translate-y-20");
@@ -83,10 +79,8 @@ import { cls11 } from "@/lib/utils";
       nav?.classList.remove("pt-4");
 
       // Reverse Logos
-      logoKan?.classList.remove("opacity-0", "scale-90", "pointer-events-none");
-      logoKan?.classList.add("opacity-100", "scale-100");
-      logoMain?.classList.add("opacity-0", "scale-90", "pointer-events-none");
-      logoMain?.classList.remove("opacity-100", "scale-100");
+      logoKan?.classList.remove("logoHeaderAnimation");
+      logoMain?.classList.add("logoHeaderAnimation");
 
       // Reverse Snake
       heroSnake?.classList.remove("opacity-0", "-translate-y-20");
