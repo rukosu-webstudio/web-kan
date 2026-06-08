@@ -1,6 +1,6 @@
 ---
 import { NAV_COLLECTIONS, NAV_ROUTES, ROUTE } from "@/config/routes";
-import { cls11 } from "@/lib/utils";
+import Menu from "../icons/menu.astro";
 ---
 
 <header
@@ -12,9 +12,12 @@ import { cls11 } from "@/lib/utils";
     id="main-nav"
   >
     <div
-      class="w-full max-wrapper flex justify-between items-center text-xl text-white uppercase font-light gap-10"
+      class="w-full max-wrapper flex justify-between items-center max-md:text-xl lg:text-lg xl:text-xl text-white uppercase font-light gap-6 xl:gap-10"
     >
-      <div class="w-fit flex items-center gap-12 basis-0">
+    
+      <div
+        class="w-fit flex items-center gap-6 xl:gap-12 basis-0 max-md:hidden"
+      >
         {
           NAV_COLLECTIONS.map((route) => (
             <a class="" href={route.path}>
@@ -23,23 +26,34 @@ import { cls11 } from "@/lib/utils";
           ))
         }
       </div>
-      <div class="w-full flex justify-center items-center relative h-16">
+
+      <a class="md:hidden text-website-orange" href={ROUTE.SHOP.path}>
+        {ROUTE.SHOP.title}
+      </a>
+      <div
+        class="w-full flex justify-center items-center relative h-12 lg:h-16"
+      >
         <img
           id="logo-kan"
-          class="h-16 w-auto object-cover transition-all duration-500 ease-in-out"
+          class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out"
           src="/images/w-kan.png"
           alt=""
         />
         <img
           id="logo-main"
-          class="h-16 w-auto object-cover transition-all duration-500 ease-in-out logoHeaderAnimation"
+          class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out logoHeaderAnimation"
           src="/images/w-snake.png"
           alt=""
         />
       </div>
+      <button class="md:hidden"> <Menu /> </button>
 
-      <div class="w-fit flex items-center gap-12 basis-0">
-        <a class="text-website-orange" href=""> {ROUTE.SHOP.title} </a>
+      <div
+        class="w-fit flex items-center gap-6 xl:gap-12 basis-0 max-md:hidden"
+      >
+        <a class="text-website-orange" href={ROUTE.SHOP.path}>
+          {ROUTE.SHOP.title}
+        </a>
         {
           NAV_ROUTES.map((route) => (
             <a class="" href={route.path}>
@@ -88,6 +102,5 @@ import { cls11 } from "@/lib/utils";
   };
 
   window.addEventListener("scroll", handleScroll);
-  // Check on initial load
   handleScroll();
 </script>

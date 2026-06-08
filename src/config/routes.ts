@@ -5,27 +5,27 @@ export const ROUTE = {
   },
   MEN: {
     title: "Men",
-    path: "/",
+    path: "/#men",
   },
   WOMEN: {
     title: "Women",
-    path: "/",
+    path: "/#women",
   },
   FEATURED: {
     title: "Featured",
-    path: "/",
+    path: "/#featured",
   },
   SHOP: {
     title: "Shop",
-    path: "/",
+    path: "/shop",
   },
   HISTORY: {
     title: "History",
-    path: "/",
+    path: "/history",
   },
   CONTACT: {
     title: "Contact",
-    path: "/",
+    path: "/#contact",
   },
 };
 
