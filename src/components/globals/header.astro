@@ -26,9 +26,11 @@ import Menu from "../icons/menu.astro";
         }
       </div>
 
-      <a class="md:hidden text-website-orange" href={ROUTE.SHOP.path}>
-        {ROUTE.SHOP.title}
-      </a>
+      <div class="flex-1 basis-0 flex items-center justify-start md:hidden">
+        <a class="text-website-orange" href={ROUTE.SHOP.path}>
+          {ROUTE.SHOP.title}
+        </a>
+      </div>
       <div
         class="flex-none flex justify-center items-center relative h-12 lg:h-16"
       >
@@ -45,7 +47,9 @@ import Menu from "../icons/menu.astro";
           alt=""
         />
       </div>
-      <button class="md:hidden"> <Menu /> </button>
+      <div class="flex-1 basis-0 flex items-center justify-end md:hidden">
+        <button> <Menu /> </button>
+      </div>
 
       <div
         class="flex-1 basis-0 flex items-center justify-end gap-6 xl:gap-12 max-md:hidden nav-link-animated"
