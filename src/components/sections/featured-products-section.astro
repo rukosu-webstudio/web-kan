@@ -1,0 +1,57 @@
+---
+import ProductCard from "../section-components/productCard.astro";
+
+const products = [
+  {
+    name: "calcetines deportivos de algodón",
+    price: 320,
+    tag: "algodón",
+    img: "/default/medias.png",
+    hoverImg: "/default/medias-hover.png",
+    size: ["7", "8", "9", "9.5"],
+  },
+  {
+    name: "calcetines deportivos de algodón",
+    price: 100.5,
+    tag: "nuevo",
+    img: "/default/medias.png",
+    hoverImg: "/default/medias-hover.png",
+    size: ["s", "m", "l", "xl"],
+  },
+  {
+    name: "calcetines deportivos de algodón",
+    price: 80,
+    tag: "negro",
+    img: "/default/medias.png",
+    hoverImg: "/default/medias-hover.png",
+    size: ["unitalla"],
+  },
+];
+---
+
+<section class="w-full py-14 lg:py-20 flex justify-center">
+  <div class="w-full max-wrapper flex flex-col gap-6 lg:gap-10">
+    <h2 class="w-full text-2xl font-montserrat uppercase">
+      productos destacados
+    </h2>
+    <div class="w-full border border-[#DADADA]"></div>
+    <div
+      class="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 xl:gap-10"
+    >
+      {
+        products.map((product) => {
+          return (
+            <ProductCard
+              img={product.img}
+              imgHover={product.hoverImg}
+              name={product.name}
+              price={product.price}
+              tag={product.tag}
+              size={product.size}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
