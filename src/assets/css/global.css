@@ -146,7 +146,7 @@
 }
 
 .nav-link-animated a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -160,4 +160,8 @@
 
 .nav-link-animated a:hover::after {
   transform: scaleX(1);
+}
+
+.button-hover {
+  @apply cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300;
 }
