@@ -1,29 +1,78 @@
 ---
+import type { IProductCard } from "@/types/pages-cms";
 import ProductCard from "../section-components/productCard.astro";
 
-const products = [
+const products: IProductCard[] = [
   {
-    name: "calcetines deportivos de algodón",
-    price: 320,
-    tag: "algodón",
+    name: "camiseta deportiva transpirable",
+    slug: "camiseta-deportiva-transpirable",
+    price: 250,
+    tag: "running",
     img: "/default/medias.png",
-    hoverImg: "/default/medias-hover.png",
-    size: ["7", "8", "9", "9.5"],
-  },
-  {
-    name: "calcetines deportivos de algodón",
-    price: 100.5,
-    tag: "nuevo",
-    img: "/default/medias.png",
-    hoverImg: "/default/medias-hover.png",
+    imgHover: "/default/medias-hover.png",
     size: ["s", "m", "l", "xl"],
   },
   {
-    name: "calcetines deportivos de algodón",
-    price: 80,
-    tag: "negro",
+    name: "shorts de entrenamiento",
+    slug: "shorts-de-entrenamiento",
+    price: 180.5,
+    tag: "gym",
     img: "/default/medias.png",
-    hoverImg: "/default/medias-hover.png",
+    imgHover: "/default/medias-hover.png",
+    size: ["m", "l", "xl"],
+  },
+  {
+    name: "sudadera con capucha",
+    slug: "sudadera-con-capucha",
+    price: 450,
+    tag: "invierno",
+    img: "/default/medias.png",
+    imgHover: "/default/medias-hover.png",
+    size: ["s", "m", "l", "xl", "xxl"],
+  },
+  {
+    name: "leggings de compresión",
+    slug: "leggings-de-compresion",
+    price: 300,
+    tag: "yoga",
+    img: "/default/medias.png",
+    imgHover: "/default/medias-hover.png",
+    size: ["xs", "s", "m", "l"],
+  },
+  {
+    name: "top deportivo sin costuras",
+    slug: "top-deportivo-sin-costuras",
+    price: 150,
+    tag: "mujer",
+    img: "/default/medias.png",
+    imgHover: "/default/medias-hover.png",
+    size: ["s", "m", "l"],
+  },
+  {
+    name: "pantalón jogger ligero",
+    slug: "pantalon-jogger-ligero",
+    price: 320,
+    tag: "casual",
+    img: "/default/medias.png",
+    imgHover: "/default/medias-hover.png",
+    size: ["s", "m", "l", "xl"],
+  },
+  {
+    name: "chamarra rompevientos",
+    slug: "chamarra-rompevientos",
+    price: 550,
+    tag: "outdoor",
+    img: "/default/medias.png",
+    imgHover: "/default/medias-hover.png",
+    size: ["m", "l", "xl"],
+  },
+  {
+    name: "muñequeras de tenis",
+    slug: "munequeras-de-tenis",
+    price: 60,
+    tag: "accesorios",
+    img: "/default/medias.png",
+    imgHover: "/default/medias-hover.png",
     size: ["unitalla"],
   },
 ];
@@ -43,7 +92,7 @@ const products = [
           return (
             <ProductCard
               img={product.img}
-              imgHover={product.hoverImg}
+              imgHover={product.imgHover}
               name={product.name}
               price={product.price}
               tag={product.tag}

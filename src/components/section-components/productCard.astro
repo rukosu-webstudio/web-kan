@@ -1,10 +1,16 @@
 ---
+import { ROUTE } from "@/config/routes";
 import { formatPrice } from "@/lib/utils";
+import type { IProductCard } from "@/types/pages-cms";
 
-const { name, price, tag, img, imgHover, size } = Astro.props;
+const { name, price, tag, img, imgHover, size, slug } =
+  Astro.props as IProductCard;
 ---
 
-<div class="w-full flex flex-col gap-2.5 group">
+<a
+  href={`${ROUTE.SHOP.path}/${slug}`}
+  class="w-full flex flex-col gap-2.5 group"
+>
   <div class="w-full aspect-3/4">
     <div class="w-full h-full relative">
       <img
@@ -47,4 +53,4 @@ const { name, price, tag, img, imgHover, size } = Astro.props;
       </div>
     </div>
   </div>
-</div>
+</a>
