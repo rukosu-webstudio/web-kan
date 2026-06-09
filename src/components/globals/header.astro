@@ -1,6 +1,7 @@
 ---
 import { NAV_COLLECTIONS, NAV_ROUTES, ROUTE } from "@/config/routes";
 import Menu from "../icons/menu.astro";
+import MobileMenu from "./mobile-menu.astro";
 ---
 
 <header
@@ -48,7 +49,7 @@ import Menu from "../icons/menu.astro";
         />
       </a>
       <div class="flex-1 basis-0 flex items-center justify-end md:hidden">
-        <button> <Menu /> </button>
+        <button id="mobile-menu-open"> <Menu /> </button>
       </div>
 
       <div
@@ -68,6 +69,8 @@ import Menu from "../icons/menu.astro";
     </div>
   </nav>
 </header>
+
+<MobileMenu />
 
 <script>
   const header = document.getElementById("main-header");

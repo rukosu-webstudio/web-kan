@@ -15,9 +15,9 @@ const footerRoutes = [
 
 <footer class="w-full bg-black">
   <div class="w-full max-wrapper flex flex-col gap-10 py-20">
-    <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
       <div class="w-full h-full">
-        <div class="w-full h-full flex max-lg:justify-center max-h-[210px]">
+        <div class="w-full h-full flex max-lg:justify-center max-h-[180px]">
           <img
             class="h-full object-cover"
             src="/images/footer-logo.png"
@@ -30,7 +30,7 @@ const footerRoutes = [
           {
             footerRoutes.map((item) => {
               return (
-                <div class="flex flex-col gap-10 items-end">
+                <div class="flex flex-col gap-y-4 gap-x-10 items-end">
                   <p class="text-end font-montserrat font-semibold text-2xl">
                     {item.title}
                   </p>
@@ -50,7 +50,7 @@ const footerRoutes = [
         </div>
       </div>
     </div>
-    <p class="w-full text-center text-website-orange text-lg">
+    <p class="w-full text-center text-website-orange">
       KAN © - All rights reserved
     </p>
   </div>

@@ -1,0 +1,68 @@
+---
+import { NAV_COLLECTIONS, NAV_ROUTES, ROUTE } from "@/config/routes";
+import Close from "../icons/close.astro";
+
+const allLinks = [...NAV_COLLECTIONS, ROUTE.SHOP, ...NAV_ROUTES];
+---
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center translate-x-full transition-transform duration-300 md:hidden"
+>
+  <button
+    id="mobile-menu-close"
+    class="absolute top-10 right-6 text-white w-10 h-10"
+  >
+    <Close class="w-full h-full" />
+  </button>
+
+  <div
+    class="w-full h-full max-h-[600px] flex flex-col justify-between items-center p-4 gap-20"
+  >
+    <div class="w-full h-20 flex justify-center">
+      <img src="/images/w-snake.png" alt="" />
+    </div>
+    <nav
+      class="flex flex-col items-center gap-6 text-white uppercase text-2xl font-light nav-link-animated"
+    >
+      {
+        allLinks.map((route) => (
+          <a
+            href={route.path}
+            class={`nav-link-mobile ${route.path === ROUTE.SHOP.path ? "text-website-orange" : ""}`}
+          >
+            {route.title}
+          </a>
+        ))
+      }
+    </nav>
+    <p class="w-full text-center text-website-orange text-sm">
+      KAN © - All rights reserved
+    </p>
+  </div>
+</div>
+
+<script>
+  const mobileMenu = document.getElementById("mobile-menu");
+  const openButton = document.getElementById("mobile-menu-open");
+  const closeButton = document.getElementById("mobile-menu-close");
+  const menuLinks = document.querySelectorAll(".nav-link-mobile");
+
+  const openMenu = () => {
+    mobileMenu?.classList.remove("translate-x-full");
+    document.body.classList.add("overflow-hidden");
+  };
+
+  const closeMenu = () => {
+    mobileMenu?.classList.add("translate-x-full");
+    document.body.classList.remove("overflow-hidden");
+  };
+
+  openButton?.addEventListener("click", openMenu);
+  closeButton?.addEventListener("click", closeMenu);
+
+  // Close menu when a link is clicked (especially for anchor links)
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+</script>
