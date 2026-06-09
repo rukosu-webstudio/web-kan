@@ -78,7 +78,7 @@ const products: IProductCard[] = [
 ];
 ---
 
-<section class="w-full py-14 lg:py-20 flex justify-center">
+<section id="featured" class="w-full py-14 lg:py-20 flex justify-center scroll-mt-10">
   <div class="w-full max-wrapper flex flex-col gap-6 lg:gap-10">
     <h2 class="w-full text-2xl font-montserrat uppercase">
       productos destacados
@@ -97,6 +97,7 @@ const products: IProductCard[] = [
               price={product.price}
               tag={product.tag}
               size={product.size}
+              slug={product.slug}
             />
           );
         })

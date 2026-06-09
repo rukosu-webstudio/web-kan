@@ -9,9 +9,9 @@ const { name, price, tag, img, imgHover, size, slug } =
 
 <a
   href={`${ROUTE.SHOP.path}/${slug}`}
-  class="w-full flex flex-col gap-2.5 group"
+  class="w-full h-full flex flex-col gap-2.5 group"
 >
-  <div class="w-full aspect-3/4">
+  <div class="w-full aspect-4/4">
     <div class="w-full h-full relative">
       <img
         class="w-full h-full object-cover absolute inset-0"
@@ -25,7 +25,7 @@ const { name, price, tag, img, imgHover, size, slug } =
       />
     </div>
   </div>
-  <div class="w-full flex flex-col gap-2.5">
+  <div class="w-full h-full flex flex-col justify-between gap-2.5">
     <div class="w-full flex justify-between max-md:text-sm">
       <p class="w-full font-light line-clamp-4 md:line-clamp-3 uppercase mr-2">
         {name}
