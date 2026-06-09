@@ -1,6 +1,7 @@
-!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"1dc07b35b0583b43bc2361e999b8228f15f82ed0"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="8cd7742a-8d26-4f2b-9e8e-2dfa0f97b3a4",e._sentryDebugIdIdentifier="sentry-dbid-8cd7742a-8d26-4f2b-9e8e-2dfa0f97b3a4");}catch(e){}}();import { A as AstroError, b5 as NoImageMetadata, b6 as FailedToFetchRemoteImageDimensions, b7 as RemoteImageNotAllowed, b8 as InvalidComponentArgs, b9 as removeQueryString, aw as joinPaths, ba as ExpectedImage, b1 as isRemotePath, bb as LocalImageUsedWrongly, bc as MissingImageDimension, bd as UnsupportedImageFormat, be as IncompatibleDescriptorOptions, bf as UnsupportedImageConversion, bg as InvalidImageService, bh as ExpectedImageOptions, bi as ExpectedNotESMImage, bj as ImageMissingAlt, T as maybeRenderHead, a4 as addAttribute, Q as renderTemplate, bk as FontFamilyNotFound, b2 as unescapeHTML, bl as MissingGetFontFileRequestUrl } from './params-and-props_CQL3fTpr.mjs';
-import { t as typeHandlers, a as types, i as isRemoteAllowed, s as spreadAttributes } from './entrypoint_CQSE2Wtj.mjs';
+!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"fc0a3215185208421c8509241fe46789d2fcc797"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="217abce0-304c-4b1e-ad3c-885e1f191f39",e._sentryDebugIdIdentifier="sentry-dbid-217abce0-304c-4b1e-ad3c-885e1f191f39");}catch(e){}}();import { A as AstroError, b5 as NoImageMetadata, b6 as FailedToFetchRemoteImageDimensions, b7 as RemoteImageNotAllowed, b8 as removeQueryString, aw as joinPaths, b9 as ExpectedImage, b1 as isRemotePath, ba as LocalImageUsedWrongly, bb as MissingImageDimension, bc as UnsupportedImageFormat, bd as IncompatibleDescriptorOptions, be as UnsupportedImageConversion, bf as InvalidImageService, bg as ExpectedImageOptions, bh as ExpectedNotESMImage, bi as ImageMissingAlt, T as maybeRenderHead, a4 as addAttribute, Q as renderTemplate, bj as FontFamilyNotFound, b2 as unescapeHTML, bk as MissingGetFontFileRequestUrl } from './params-and-props_DEd3TzkK.mjs';
+import { t as typeHandlers, a as types, i as isRemoteAllowed, s as spreadAttributes } from './entrypoint_rwGAyWuX.mjs';
 import * as mime from 'mrmime';
+import { c as createComponent } from './astro-component_4lonc0yU.mjs';
 import 'clsx';
 import 'piccolore';
 
@@ -211,40 +212,6 @@ async function inferRemoteSize(url, imageConfig) {
     ...NoImageMetadata,
     message: NoImageMetadata.message(url)
   });
-}
-
-function validateArgs(args) {
-  if (args.length !== 3) return false;
-  if (!args[0] || typeof args[0] !== "object") return false;
-  return true;
-}
-function baseCreateComponent(cb, moduleId, propagation) {
-  const name = moduleId?.split("/").pop()?.replace(".astro", "") ?? "";
-  const fn = (...args) => {
-    if (!validateArgs(args)) {
-      throw new AstroError({
-        ...InvalidComponentArgs,
-        message: InvalidComponentArgs.message(name)
-      });
-    }
-    return cb(...args);
-  };
-  Object.defineProperty(fn, "name", { value: name, writable: false });
-  fn.isAstroComponentFactory = true;
-  fn.moduleId = moduleId;
-  fn.propagation = propagation;
-  return fn;
-}
-function createComponentWithOptions(opts) {
-  const cb = baseCreateComponent(opts.factory, opts.moduleId, opts.propagation);
-  return cb;
-}
-function createComponent(arg1, moduleId, propagation) {
-  if (typeof arg1 === "function") {
-    return baseCreateComponent(arg1, moduleId, propagation);
-  } else {
-    return createComponentWithOptions(arg1);
-  }
 }
 
 const VALID_SUPPORTED_FORMATS = [
@@ -583,7 +550,7 @@ const baseService = {
     Object.entries(params).forEach(([param, key]) => {
       options[key] && searchParams.append(param, options[key].toString());
     });
-    const imageEndpoint = joinPaths("/.", imageConfig.endpoint.route);
+    const imageEndpoint = joinPaths("/", imageConfig.endpoint.route);
     let url = `${imageEndpoint}?${searchParams}`;
     if (imageConfig.assetQueryParams) {
       const assetQueryString = imageConfig.assetQueryParams.toString();
@@ -651,7 +618,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_CKXK9QWs.mjs'
+      './sharp_DZTwd7R9.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -1033,4 +1000,4 @@ const assetQueryParams = undefined;
 					});
 							const getImage = async (options) => await getImage$1(options, imageConfig);
 
-export { $$Font as $, baseService as b, createComponent as c, detector as d, fetchWithRedirects as f, getConfiguredImageService as g, imageConfig as i, parseQuality as p, resolveDefaultOutputFormat as r };
+export { $$Font as $, baseService as b, detector as d, fetchWithRedirects as f, getConfiguredImageService as g, imageConfig as i, parseQuality as p, resolveDefaultOutputFormat as r };

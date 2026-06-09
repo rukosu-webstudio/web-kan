@@ -1,10 +1,10 @@
-!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"1dc07b35b0583b43bc2361e999b8228f15f82ed0"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="fb7ef891-bcc7-400e-8595-4d3d9c1194de",e._sentryDebugIdIdentifier="sentry-dbid-fb7ef891-bcc7-400e-8595-4d3d9c1194de");}catch(e){}}();import { init } from '@sentry/astro';
-import { c as createComponent, $ as $$Font } from './_astro_assets_B4WxaL8q.mjs';
+!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"fc0a3215185208421c8509241fe46789d2fcc797"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="4688f566-3266-49ce-98d3-bd4607e51d06",e._sentryDebugIdIdentifier="sentry-dbid-4688f566-3266-49ce-98d3-bd4607e51d06");}catch(e){}}();import { c as createComponent } from './astro-component_4lonc0yU.mjs';
 import 'piccolore';
-import { U as createRenderInstruction, Q as renderTemplate, a4 as addAttribute, b2 as unescapeHTML, T as maybeRenderHead, b3 as renderHead, b4 as renderSlot, F as Fragment } from './params-and-props_CQL3fTpr.mjs';
-import { s as spreadAttributes, r as renderComponent } from './entrypoint_CQSE2Wtj.mjs';
+import { U as createRenderInstruction, Q as renderTemplate, a4 as addAttribute, b2 as unescapeHTML, T as maybeRenderHead, b3 as renderHead, b4 as renderSlot, F as Fragment } from './params-and-props_DEd3TzkK.mjs';
+import { s as spreadAttributes, r as renderComponent } from './entrypoint_rwGAyWuX.mjs';
+import { $ as $$Font } from './_astro_assets_DwExGD3h.mjs';
 import 'clsx';
-import { B as BUSINESS_CONFIG } from './business_RMZ_Lh7A.mjs';
+import { B as BUSINESS_CONFIG } from './business_BbZCAVXO.mjs';
 
 async function renderScript(result, id) {
   const inlined = result.inlinedScripts.get(id);
@@ -19,11 +19,6 @@ async function renderScript(result, id) {
   }
   return createRenderInstruction({ type: "script", id, content });
 }
-
-init({
-  dsn: undefined                          
-  // Add other server-side options here
-});
 
 const $$Favicons = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`<!-- Favicons --><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><!-- Favicon for IE --><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><!-- Favicons for different sizes --><link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png"><link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><!-- Apple Touch Icon (for backwards compatibility) --><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">`;
@@ -158,39 +153,81 @@ const $$Seo = createComponent(($$result, $$props, $$slots) => {
   }, ...rest })}`;
 }, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/fundations/seo.astro", void 0);
 
-const $$Footer = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate``;
-}, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/footer.astro", void 0);
-
 const ROUTE = {
+  HOME: {
+    title: "Inicio",
+    path: "/"
+  },
   MEN: {
     title: "Men",
-    path: "/"
+    path: "/#men"
   },
   WOMEN: {
     title: "Women",
-    path: "/"
+    path: "/#women"
   },
   FEATURED: {
     title: "Featured",
-    path: "/"
+    path: "/#featured"
   },
   SHOP: {
-    title: "Shop"},
+    title: "Shop",
+    path: "/shop"
+  },
   HISTORY: {
     title: "History",
-    path: "/"
+    path: "/history"
   },
   CONTACT: {
     title: "Contact",
-    path: "/"
+    path: "/#contact"
   }
 };
 const NAV_COLLECTIONS = [ROUTE.MEN, ROUTE.WOMEN, ROUTE.FEATURED];
 const NAV_ROUTES = [ROUTE.HISTORY, ROUTE.CONTACT];
 
+const $$Footer = createComponent(($$result, $$props, $$slots) => {
+  const footerRoutes = [
+    {
+      title: "Menú",
+      routes: [ROUTE.HOME, ROUTE.HISTORY, ROUTE.SHOP]
+    },
+    {
+      title: "COLECCIONES",
+      routes: [ROUTE.FEATURED, ROUTE.WOMEN, ROUTE.MEN]
+    }
+  ];
+  return renderTemplate`${maybeRenderHead()}<footer class="w-full bg-black"> <div class="w-full max-wrapper flex flex-col gap-10 py-20"> <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-10"> <div class="w-full h-full"> <div class="w-full h-full flex max-lg:justify-center max-h-[180px]"> <img class="h-full object-cover" src="/images/footer-logo.png" alt=""> </div> </div> <div class="w-full flex max-lg:justify-center justify-end items-center"> <div class="w-fit flex justify-end gap-x-10 text-white uppercase"> ${footerRoutes.map((item) => {
+    return renderTemplate`<div class="flex flex-col gap-y-4 gap-x-10 items-end"> <p class="text-end font-montserrat font-semibold text-2xl"> ${item.title} </p> <div class=" flex flex-col gap-2 items-end nav-link-animated"> ${item.routes.map((route) => {
+      return renderTemplate`<a class=" text-end font-light"${addAttribute(route.path, "href")}> ${route.title} </a>`;
+    })} </div> </div>`;
+  })} </div> </div> </div> <p class="w-full text-center text-website-orange">
+KAN © - All rights reserved
+</p> </div> </footer>`;
+}, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/footer.astro", void 0);
+
+const $$Menu = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$props, $$slots);
+  Astro2.self = $$Menu;
+  return renderTemplate`${maybeRenderHead()}<svg${addAttribute(Astro2.props.class, "class")} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>`;
+}, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/icons/menu.astro", void 0);
+
+const $$Close = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$props, $$slots);
+  Astro2.self = $$Close;
+  const { class: className } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"${addAttribute(`${className}`, "class")}> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path> </svg>`;
+}, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/icons/close.astro", void 0);
+
+const $$MobileMenu = createComponent(($$result, $$props, $$slots) => {
+  const allLinks = [...NAV_COLLECTIONS, ROUTE.SHOP, ...NAV_ROUTES];
+  return renderTemplate`${maybeRenderHead()}<div id="mobile-menu" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center translate-x-full transition-transform duration-300 md:hidden"> <button id="mobile-menu-close" class="absolute top-10 right-6 text-white w-10 h-10"> ${renderComponent($$result, "Close", $$Close, { "class": "w-full h-full" })} </button> <div class="w-full h-full max-h-[600px] flex flex-col justify-between items-center p-4 gap-20"> <div class="w-full h-20 flex justify-center"> <img src="/images/w-snake.png" alt=""> </div> <nav class="flex flex-col items-center gap-6 text-white uppercase text-2xl font-light nav-link-animated"> ${allLinks.map((route) => renderTemplate`<a${addAttribute(route.path, "href")}${addAttribute(`nav-link-mobile ${route.path === ROUTE.SHOP.path ? "text-website-orange" : ""}`, "class")}> ${route.title} </a>`)} </nav> <p class="w-full text-center text-website-orange text-sm">
+KAN © - All rights reserved
+</p> </div> </div> ${renderScript($$result, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/mobile-menu.astro?astro&type=script&index=0&lang.ts")}`;
+}, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/mobile-menu.astro", void 0);
+
 const $$Header = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${maybeRenderHead()}<header class="w-full fixed top-0 z-40 transition-all duration-300 ease-in-out" id="main-header"> <nav class="w-full flex justify-center pt-10 pb-2 transition-all duration-300 ease-in-out" id="main-nav"> <div class="w-full max-wrapper flex justify-between items-center text-xl text-white uppercase font-light gap-10"> <div class="w-fit flex items-center gap-12 basis-0"> ${NAV_COLLECTIONS.map((route) => renderTemplate`<a${addAttribute(route.path, "key")} class=""${addAttribute(route.path, "href")}> ${route.title} </a>`)} </div> <div class="w-full flex justify-center relative"> <img id="logo-kan" class="h-16 w-auto object-cover transition-all duration-500 ease-in-out" src="/images/w-kan.png" alt=""> <img id="logo-main" class="h-16 w-auto object-cover absolute opacity-0 scale-90 transition-all duration-500 ease-in-out pointer-events-none" src="/images/w-logo.png" alt=""> </div> <div class="w-fit flex items-center gap-12 basis-0"> <a class="text-website-orange" href=""> ${ROUTE.SHOP.title} </a> ${NAV_ROUTES.map((route) => renderTemplate`<a${addAttribute(route.path, "key")} class=""${addAttribute(route.path, "href")}> ${route.title} </a>`)} </div> </div> </nav> </header> ${renderScript($$result, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/header.astro?astro&type=script&index=0&lang.ts")}`;
+  return renderTemplate`${maybeRenderHead()}<header class="w-full fixed top-0 z-40 transition-all duration-300 ease-in-out" id="main-header"> <nav class="w-full flex justify-center pt-10 pb-2 transition-all duration-300 ease-in-out" id="main-nav"> <div class="w-full max-wrapper flex justify-between items-center max-md:text-xl lg:text-lg xl:text-xl text-white uppercase font-light gap-6 xl:gap-10"> <div class="flex-1 basis-0 flex items-center gap-6 xl:gap-12 max-md:hidden nav-link-animated"> ${NAV_COLLECTIONS.map((route) => renderTemplate`<a class=""${addAttribute(route.path, "href")}> ${route.title} </a>`)} </div> <div class="flex-1 basis-0 flex items-center justify-start md:hidden"> <a class="text-website-orange"${addAttribute(ROUTE.SHOP.path, "href")}> ${ROUTE.SHOP.title} </a> </div> <a class="flex-none flex justify-center items-center relative h-12 lg:h-16 button-hover"> <img id="logo-kan" class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out" src="/images/w-kan.png" alt=""> <img id="logo-main" class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out logoHeaderAnimation" src="/images/w-snake.png" alt=""> </a> <div class="flex-1 basis-0 flex items-center justify-end md:hidden"> <button id="mobile-menu-open"> ${renderComponent($$result, "Menu", $$Menu, {})} </button> </div> <div class="flex-1 basis-0 flex items-center justify-end gap-6 xl:gap-12 max-md:hidden nav-link-animated"> <a class="text-website-orange"${addAttribute(ROUTE.SHOP.path, "href")}> ${ROUTE.SHOP.title} </a> ${NAV_ROUTES.map((route) => renderTemplate`<a class=""${addAttribute(route.path, "href")}> ${route.title} </a>`)} </div> </div> </nav> </header> ${renderComponent($$result, "MobileMenu", $$MobileMenu, {})} ${renderScript($$result, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/header.astro?astro&type=script&index=0&lang.ts")}`;
 }, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/components/globals/header.astro", void 0);
 
 const $$TailwindIndicator = createComponent(($$result, $$props, $$slots) => {
@@ -203,7 +240,7 @@ const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$BaseLayout;
   const { metadata } = Astro2.props;
   const gtmId = BUSINESS_CONFIG.googleTagManager?.id;
-  return renderTemplate`<html lang="es"${addAttribute(["scroll-smooth"], "class:list")}> <head>${renderComponent($$result, "Meta", $$Meta, {})}${renderComponent($$result, "Seo", $$Seo, { "metadata": metadata })}${renderComponent($$result, "Favicons", $$Favicons, {})}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-mozilla" })}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-montserrat" })}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-inter" })}${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${unescapeHTML(gtmId ? `<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');<\/script>` : "")}` })}${renderHead()}</head> <body class="relative"> ${gtmId && renderTemplate`<noscript> <iframe${addAttribute(`https://www.googletagmanager.com/ns.html?id=${gtmId}`, "src")} height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript>`} ${renderComponent($$result, "Header", $$Header, {})} <main>${renderSlot($$result, $$slots["default"])}</main> ${renderComponent($$result, "TailwindIndicator", $$TailwindIndicator, {})} ${renderComponent($$result, "Footer", $$Footer, {})} </body></html>`;
+  return renderTemplate`<html lang="es"${addAttribute(["scroll-smooth"], "class:list")}> <head>${renderComponent($$result, "Meta", $$Meta, {})}${renderComponent($$result, "Seo", $$Seo, { "metadata": metadata })}${renderComponent($$result, "Favicons", $$Favicons, {})}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-mozilla" })}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-montserrat" })}${renderComponent($$result, "Font", $$Font, { "cssVariable": "--font-inter" })}${renderComponent($$result, "Fragment", Fragment, {}, { "default": ($$result2) => renderTemplate`${unescapeHTML(gtmId ? `<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');<\/script>` : "")}` })}${renderHead()}</head> <body class="relative"> ${gtmId && renderTemplate`<noscript> <iframe${addAttribute(`https://www.googletagmanager.com/ns.html?id=${gtmId}`, "src")} height="0" width="0" style="display:none;visibility:hidden"></iframe> </noscript>`} ${renderComponent($$result, "Header", $$Header, {})} <main>${renderSlot($$result, $$slots["default"])}</main> ${renderComponent($$result, "Footer", $$Footer, {})} ${renderComponent($$result, "TailwindIndicator", $$TailwindIndicator, {})} </body></html>`;
 }, "/Users/mpacheco/Documents/projects/PROJECT-web-kan/web-kan/src/layouts/base-layout.astro", void 0);
 
-export { $$BaseLayout as $ };
+export { $$BaseLayout as $, ROUTE as R };

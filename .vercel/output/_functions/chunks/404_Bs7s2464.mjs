@@ -1,8 +1,9 @@
-!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"1dc07b35b0583b43bc2361e999b8228f15f82ed0"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="4730f64c-bd09-427e-9a8d-06b3dc399474",e._sentryDebugIdIdentifier="sentry-dbid-4730f64c-bd09-427e-9a8d-06b3dc399474");}catch(e){}}();import { $ as $$BaseLayout } from './base-layout_744HASVC.mjs';
-import { c as createComponent } from './_astro_assets_B4WxaL8q.mjs';
+!function(){try{var e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:{};e.SENTRY_RELEASE={id:"fc0a3215185208421c8509241fe46789d2fcc797"};var n=(new e.Error).stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="c58ce04c-5661-43a7-b941-d1f72513bde7",e._sentryDebugIdIdentifier="sentry-dbid-c58ce04c-5661-43a7-b941-d1f72513bde7");}catch(e){}}();import './sentry.server.config_CPMNECBo.mjs';
+import { c as createComponent } from './astro-component_4lonc0yU.mjs';
 import 'piccolore';
-import { Q as renderTemplate, T as maybeRenderHead, a4 as addAttribute } from './params-and-props_CQL3fTpr.mjs';
-import { r as renderComponent } from './entrypoint_CQSE2Wtj.mjs';
+import { Q as renderTemplate, T as maybeRenderHead, a4 as addAttribute } from './params-and-props_DEd3TzkK.mjs';
+import { r as renderComponent } from './entrypoint_rwGAyWuX.mjs';
+import { $ as $$BaseLayout } from './base-layout_BcZAYz_a.mjs';
 
 const $$404 = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, {}, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="h-screen flex flex-col justify-center items-center gap-6"> <img class="max-w-[350px]" src="/images/404.svg" alt="404"${addAttribute(350, "width")}> <div class="flex flex-col gap-1 text-center"> <h1 class="text-4xl font-bold text-gray-700">
