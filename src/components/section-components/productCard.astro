@@ -26,11 +26,15 @@ const { name, price, tag, img, imgHover, size, slug } =
     </div>
   </div>
   <div class="w-full h-full flex flex-col justify-between gap-2.5">
-    <div class="w-full flex justify-between max-md:text-sm">
-      <p class="w-full font-light line-clamp-4 md:line-clamp-3 uppercase mr-2">
+    <div
+      class="w-full flex max-sm:flex-col justify-end sm:justify-between  max-md:text-sm"
+    >
+      <p class="w-full font-light line-clamp-3 uppercase sm:mr-2">
         {name}
       </p>
-      <p class="min-w-fit text-website-orange font-mozilla font-medium">
+      <p
+        class="min-w-fit text-website-orange font-mozilla font-medium text-end"
+      >
         {formatPrice(price)}
       </p>
     </div>
