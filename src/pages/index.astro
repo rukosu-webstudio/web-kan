@@ -1,5 +1,6 @@
 ---
 import CollectionsSection from "@/components/sections/collections-section.astro";
+import ContactSection from "@/components/sections/contact-section.astro";
 import FeaturedProductsSection from "@/components/sections/featured-products-section.astro";
 import HeroSection from "@/components/sections/hero-section.astro";
 import TwoCollumnsSection from "@/components/sections/two-collumns-section.astro";
@@ -102,6 +103,7 @@ const men = [products[2], products[3], products[4], products[5]];
     desc="EL ESTÁNDAR KAN AHORA SE EXTIENDE A LAS mujeres"
     cover="/images/women-banner.png"
     url={`${ROUTE.SHOP.path}?category=women`}
+    slug="women"
   />
   <TwoCollumnsSection
     mode="2"
@@ -110,6 +112,8 @@ const men = [products[2], products[3], products[4], products[5]];
     desc="EL ESTÁNDAR KAN AHORA SE EXTIENDE A LOS HOMBRES"
     cover="/images/men-banner.png"
     url={`${ROUTE.SHOP.path}?category=men`}
+    slug="men"
   />
   <CollectionsSection />
+  <ContactSection />
 </BaseLayout>

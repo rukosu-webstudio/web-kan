@@ -11,6 +11,7 @@ const {
   desc,
   cover,
   url,
+  slug,
 } = Astro.props as {
   mode: number;
   products: IProductCard[];
@@ -18,11 +19,12 @@ const {
   desc: string;
   cover: string;
   url: string;
+  slug: string;
 };
 ---
 
 <section
-  id="women"
+  id={slug}
   class="w-full py-14 lg:py-20 flex justify-center scroll-mt-10"
 >
   <div class="w-full max-wrapper flex flex-col gap-6 lg:gap-10">

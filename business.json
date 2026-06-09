@@ -1,19 +1,19 @@
 {
-  "name": "",
-  "description": "",
+  "name": "KAN Athletic - Ropta y accesorios deportivos",
+  "description": "La constancia supera la motivación. Descubre ropa deportiva técnica y minimalista para hombres y mujeres. Diseñada para deportistas disciplinados.",
   "site": "https://web-kan.vercel.app",
   "openGraph": "og.png",
   "lang": "es",
   "contact": {
     "tel": {
-      "ext": 0,
-      "number": 0
+      "ext": 502,
+      "number": 59104345
     },
     "whatsapp": {
-      "ext": 0,
-      "number": 0
+      "ext": 502,
+      "number": 59104345
     },
-    "email": ""
+    "email": "kan@gmail.com"
   },
   "address": {
     "location": "Guatemala, Guatemala"
@@ -22,12 +22,15 @@
     "id": "GTM-XXXXXXX"
   },
   "social": {
-    "facebook": "",
-    "instagram": ""
+    "facebook": "https://www.facebook.com/",
+    "instagram": "https://www.instagram.com/",
+    "tiktok": "https://www.tiktok.com/"
   },
   "settings": {
     "emailSender": "noreply@correo.com",
-    "bccEmail": ["monitoreo@correo.com"],
+    "bccEmail": [
+      "monitoreo@correo.com"
+    ],
     "resendToCompany": false
   }
 }
