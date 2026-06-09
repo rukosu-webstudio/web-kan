@@ -1,4 +1,5 @@
 ---
+import CollectionsSection from "@/components/sections/collections-section.astro";
 import FeaturedProductsSection from "@/components/sections/featured-products-section.astro";
 import HeroSection from "@/components/sections/hero-section.astro";
 import TwoCollumnsSection from "@/components/sections/two-collumns-section.astro";
@@ -110,4 +111,5 @@ const men = [products[2], products[3], products[4], products[5]];
     cover="/images/men-banner.png"
     url={`${ROUTE.SHOP.path}?category=men`}
   />
+  <CollectionsSection />
 </BaseLayout>

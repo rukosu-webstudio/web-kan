@@ -1,0 +1,42 @@
+---
+import { ROUTE } from "@/config/routes";
+import CollectionCard from "../section-components/collectionCard.astro";
+
+const collections = [
+  {
+    title: "camisetas",
+    cover: "/default/camisetas-collection.png",
+    url: `${ROUTE.SHOP.path}?category=runners`,
+  },
+  {
+    title: "medias",
+    cover: "/default/medias-collection.png",
+    url: `${ROUTE.SHOP.path}?category=runners`,
+  },
+];
+---
+
+<section
+  id="featured"
+  class="w-full py-14 lg:py-20 flex justify-center scroll-mt-10"
+>
+  <div class="w-full max-wrapper flex flex-col gap-6 lg:gap-10">
+    <h2 class="w-full text-2xl font-montserrat uppercase">COLECCIONES</h2>
+    <div class="w-full border border-[#DADADA]"></div>
+    <div
+      class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 xl:gap-10"
+    >
+      {
+        collections.map((collection) => {
+          return (
+            <CollectionCard
+              title={collection.title}
+              cover={collection.cover}
+              url={collection.url}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
