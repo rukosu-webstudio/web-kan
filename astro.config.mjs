@@ -4,6 +4,7 @@ import vercel from "@astrojs/vercel";
 import sentry from "@sentry/astro";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
+import vercel from "@astrojs/vercel/serverless";
 import robotsTxt from "astro-robots-txt";
 
 export default defineConfig({
