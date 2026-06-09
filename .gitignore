@@ -31,6 +31,9 @@ bun.lockb
 # astro
 .astro
 
+# vercel
+.vercel
+
 # env
 .env
 .env.local
