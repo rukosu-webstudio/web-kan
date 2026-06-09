@@ -19,7 +19,8 @@ export function getCurrentPath(url: URL, level = 0) {
 }
 
 export function formatPrice(price: number | string): string {
-  const numericPrice = typeof price === "string" ? parseFloat(price) : price;
+  const numericPrice =
+    typeof price === "string" ? Number.parseFloat(price) : price;
 
   if (isNaN(numericPrice)) {
     return "GTQ 0.00";

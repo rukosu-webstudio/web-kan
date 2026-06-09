@@ -2,19 +2,25 @@
 const { title, cover, url } = Astro.props;
 ---
 
-<a href={url} class="w-full aspect-square sm:aspect-3/4 relative button-hover group">
+<a
+  href={url}
+  class="w-full aspect-square sm:aspect-3/4 relative button-hover group"
+>
   <div class="w-full h-full">
     <div class="w-full h-full relative">
-      <img class="w-full h-full object-cover" src={cover} alt="" />
+      <img class="w-full h-full object-cover" src={cover} alt="">
       <div
         class="w-full h-full absolute inset-0 bg-black/50 group-hover:bg-black/75 transition-colors duration-200 z-10"
-      >
-      </div>
+      ></div>
     </div>
   </div>
   <div class="w-full h-full inset-0 absolute z-10">
     <div class="w-full h-full flex flex-col justify-center items-center">
-      <p class="text-white text-2xl md:text-3xl xl:text-4xl font-light text-center uppercase">{title}</p>
+      <p
+        class="text-white text-2xl md:text-3xl xl:text-4xl font-light text-center uppercase"
+      >
+        {title}
+      </p>
     </div>
   </div>
 </a>

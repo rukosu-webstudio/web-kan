@@ -18,13 +18,11 @@ import MobileMenu from "./mobile-menu.astro";
       <div
         class="flex-1 basis-0 flex items-center gap-6 xl:gap-12 max-md:hidden nav-link-animated"
       >
-        {
-          NAV_COLLECTIONS.map((route) => (
+        {NAV_COLLECTIONS.map((route) => (
             <a class="" href={route.path}>
               {route.title}
             </a>
-          ))
-        }
+          ))}
       </div>
 
       <div class="flex-1 basis-0 flex items-center justify-start md:hidden">
@@ -40,16 +38,16 @@ import MobileMenu from "./mobile-menu.astro";
           class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out"
           src="/images/w-kan.png"
           alt=""
-        />
+        >
         <img
           id="logo-main"
           class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out logoHeaderAnimation"
           src="/images/w-snake.png"
           alt=""
-        />
+        >
       </a>
       <div class="flex-1 basis-0 flex items-center justify-end md:hidden">
-        <button id="mobile-menu-open"> <Menu /> </button>
+        <button id="mobile-menu-open"><Menu /> </button>
       </div>
 
       <div
@@ -58,13 +56,11 @@ import MobileMenu from "./mobile-menu.astro";
         <a class="text-website-orange" href={ROUTE.SHOP.path}>
           {ROUTE.SHOP.title}
         </a>
-        {
-          NAV_ROUTES.map((route) => (
+        {NAV_ROUTES.map((route) => (
             <a class="" href={route.path}>
               {route.title}
             </a>
-          ))
-        }
+          ))}
       </div>
     </div>
   </nav>

@@ -17,8 +17,7 @@ const { products } = Astro.props as { products: IProductCard[] };
     <div
       class="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 xl:gap-10"
     >
-      {
-        products.map((product) => {
+      {products.map((product) => {
           return (
             <ProductCard
               img={product.img}
@@ -30,8 +29,7 @@ const { products } = Astro.props as { products: IProductCard[] };
               slug={product.slug}
             />
           );
-        })
-      }
+        })}
     </div>
   </div>
 </section>

@@ -20,21 +20,19 @@ const allLinks = [...NAV_COLLECTIONS, ROUTE.SHOP, ...NAV_ROUTES];
     class="w-full h-full max-h-[600px] flex flex-col justify-between items-center p-4 gap-20"
   >
     <div class="w-full h-20 flex justify-center">
-      <img src="/images/w-snake.png" alt="" />
+      <img src="/images/w-snake.png" alt="">
     </div>
     <nav
       class="flex flex-col items-center gap-6 text-white uppercase text-2xl font-light nav-link-animated"
     >
-      {
-        allLinks.map((route) => (
+      {allLinks.map((route) => (
           <a
             href={route.path}
             class={`nav-link-mobile ${route.path === ROUTE.SHOP.path ? "text-website-orange" : ""}`}
           >
             {route.title}
           </a>
-        ))
-      }
+        ))}
     </nav>
     <p class="w-full text-center text-website-orange text-sm">
       KAN © - All rights reserved

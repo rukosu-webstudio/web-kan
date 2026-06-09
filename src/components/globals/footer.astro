@@ -1,5 +1,9 @@
 ---
+import { BUSINESS_CONFIG } from "@/config/business";
 import { ROUTE } from "@/config/routes";
+import Facebook from "../icons/facebook.astro";
+import Instagram from "../icons/instagram.astro";
+import Tiktok from "../icons/tiktok.astro";
 
 const footerRoutes = [
   {
@@ -11,47 +15,104 @@ const footerRoutes = [
     routes: [ROUTE.FEATURED, ROUTE.WOMEN, ROUTE.MEN],
   },
 ];
+
+const socialMediaLinks = [
+  {
+    title: "instagram",
+    url: BUSINESS_CONFIG.social.instagram,
+    icon: Instagram,
+  },
+  { title: "facebook", url: BUSINESS_CONFIG.social.facebook, icon: Facebook },
+  { title: "tiktok", url: BUSINESS_CONFIG.social.tiktok, icon: Tiktok },
+].filter((link) => link.url);
 ---
 
 <footer class="w-full bg-black mt-20">
-  <div class="w-full max-wrapper flex flex-col gap-10 pt-20 pb-80">
-    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div class="w-full h-full py-20">
-        <div class="w-full h-full flex max-lg:justify-center max-h-[180px]">
+  <div class="w-full max-wrapper flex flex-col gap-10 pt-20 pb-20">
+    <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="w-full h-full flex flex-col max-lg:items-center">
+        <div class="w-full h-full flex max-lg:justify-center max-h-[140px]">
           <img
-            class="h-full object-cover"
+            class="h-full object-contain"
             src="/images/footer-logo.png"
-            alt=""
-          />
+            alt="KAN Athletic"
+          >
+        </div>
+        <div
+          class="mt-8 flex flex-col gap-2 max-lg:text-center text-white/60 font-light text-sm max-w-sm"
+        >
+          <p>{BUSINESS_CONFIG.description}</p>
+          <p>{BUSINESS_CONFIG.address.location}</p>
         </div>
       </div>
-      <div class="w-full flex max-lg:justify-center justify-end items-center">
-        <div class="w-fit flex justify-end gap-x-10 text-white uppercase">
-          {
-            footerRoutes.map((item) => {
-              return (
-                <div class="flex flex-col gap-y-4 gap-x-10 items-end">
-                  <p class="text-end font-montserrat font-semibold text-2xl">
-                    {item.title}
-                  </p>
-                  <div class=" flex flex-col gap-2 items-end nav-link-animated text-sm">
-                    {item.routes.map((route) => {
-                      return (
-                        <a class=" text-end font-light" href={route.path}>
-                          {route.title}
-                        </a>
-                      );
-                    })}
-                  </div>
+      <div
+        class="w-full flex max-lg:justify-center lg:justify-end items-center"
+      >
+        <div
+          class="w-fit flex flex-wrap max-sm:flex-col max-sm:items-center justify-end gap-x-16 gap-y-10 text-white uppercase"
+        >
+          {footerRoutes.map((item) => (
+              <div
+                key={item.title}
+                class="flex flex-col gap-y-4 lg:items-end max-sm:items-center"
+              >
+                <p class="lg:text-end font-montserrat font-semibold text-2xl">
+                  {item.title}
+                </p>
+                <div class=" flex flex-col gap-2 lg:items-end max-sm:items-center nav-link-animated text-sm">
+                  {item.routes.map((route) => (
+                    <a
+                      key={route.path}
+                      class=" lg:text-end font-light"
+                      href={route.path}
+                    >
+                      {route.title}
+                    </a>
+                  ))}
                 </div>
-              );
-            })
-          }
+              </div>
+            ))}
+          <div class="flex flex-col gap-y-4 lg:items-end max-sm:items-center">
+            <p class="lg:text-end font-montserrat font-semibold text-2xl">
+              Contacto
+            </p>
+            <div
+              class="flex flex-col gap-2 lg:items-end max-sm:items-center text-sm font-light"
+            >
+              <a
+                href={BUSINESS_CONFIG.phone.link}
+                class="hover:text-website-orange transition-colors"
+                >{BUSINESS_CONFIG.phone.formatted}</a
+              >
+              <a
+                href={BUSINESS_CONFIG.email.link}
+                class="hover:text-website-orange transition-colors lowercase"
+                >{BUSINESS_CONFIG.email.address}</a
+              >
+            </div>
+            <div class="flex gap-4 mt-2">
+              {socialMediaLinks.map((item) => (
+                <a
+                  key={item.title}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-white hover:text-website-orange transition-colors"
+                >
+                  <item.icon class="size-5" />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <p class="w-full text-center text-website-orange">
-      KAN © - All rights reserved
-    </p>
+    <div class="w-full border-t border-white/10 pt-8">
+      <p
+        class="w-full text-center text-website-orange font-mozilla text-xs uppercase tracking-widest"
+      >
+        KAN © {new Date().getFullYear()} - All rights reserved
+      </p>
+    </div>
   </div>
 </footer>

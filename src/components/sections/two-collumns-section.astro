@@ -1,8 +1,8 @@
 ---
 import { cls11 } from "@/lib/utils";
 import type { IProductCard } from "@/types/pages-cms";
-import ProductCard from "../section-components/productCard.astro";
 import PrimaryButton from "../section-components/primaryButton.astro";
+import ProductCard from "../section-components/productCard.astro";
 
 const {
   mode = 1,
@@ -52,7 +52,7 @@ const {
               class="w-full h-full object-cover absolute inset-0"
               src={cover}
               alt=""
-            />
+            >
           </div>
         </div>
       </div>
@@ -76,18 +76,18 @@ const {
                 </p>
                 <PrimaryButton label="Ver todo" href={url} />
               </div>
-              <div class="w-full h-full bg-black/25 absolute inset-0 z-10">
-              </div>
+              <div
+                class="w-full h-full bg-black/25 absolute inset-0 z-10"
+              ></div>
               <img
                 class="w-full h-full object-cover absolute inset-0"
                 src={cover}
                 alt=""
-              />
+              >
             </div>
           </div>
           <div class="w-full grid grid-cols-2 gap-6 md:gap-8 xl:gap-10">
-            {
-              products.map((product) => {
+            {products.map((product) => {
                 return (
                   <ProductCard
                     img={product.img}
@@ -99,8 +99,7 @@ const {
                     slug={product.slug}
                   />
                 );
-              })
-            }
+              })}
           </div>
         </div>
       </div>
