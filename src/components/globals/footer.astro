@@ -1,0 +1,57 @@
+---
+import { ROUTE } from "@/config/routes";
+
+const footerRoutes = [
+  {
+    title: "Menú",
+    routes: [ROUTE.HOME, ROUTE.HISTORY, ROUTE.SHOP],
+  },
+  {
+    title: "COLECCIONES",
+    routes: [ROUTE.FEATURED, ROUTE.WOMEN, ROUTE.MEN],
+  },
+];
+---
+
+<footer class="w-full bg-black">
+  <div class="w-full max-wrapper flex flex-col gap-10 py-20">
+    <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="w-full h-full">
+        <div class="w-full h-full flex max-lg:justify-center max-h-[210px]">
+          <img
+            class="h-full object-cover"
+            src="/images/footer-logo.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="w-full flex max-lg:justify-center justify-end items-center">
+        <div class="w-fit flex justify-end gap-x-10 text-white uppercase">
+          {
+            footerRoutes.map((item) => {
+              return (
+                <div class="flex flex-col gap-10 items-end">
+                  <p class="text-end font-montserrat font-semibold text-2xl">
+                    {item.title}
+                  </p>
+                  <div class=" flex flex-col gap-2 items-end nav-link-animated">
+                    {item.routes.map((route) => {
+                      return (
+                        <a class=" text-end font-light" href={route.path}>
+                          {route.title}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+    <p class="w-full text-center text-website-orange text-lg">
+      KAN © - All rights reserved
+    </p>
+  </div>
+</footer>
