@@ -13,10 +13,10 @@ const footerRoutes = [
 ];
 ---
 
-<footer class="w-full bg-black">
-  <div class="w-full max-wrapper flex flex-col gap-10 py-20">
+<footer class="w-full bg-black mt-20">
+  <div class="w-full max-wrapper flex flex-col gap-10 pt-20 pb-80">
     <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div class="w-full h-full">
+      <div class="w-full h-full py-20">
         <div class="w-full h-full flex max-lg:justify-center max-h-[180px]">
           <img
             class="h-full object-cover"
@@ -34,7 +34,7 @@ const footerRoutes = [
                   <p class="text-end font-montserrat font-semibold text-2xl">
                     {item.title}
                   </p>
-                  <div class=" flex flex-col gap-2 items-end nav-link-animated">
+                  <div class=" flex flex-col gap-2 items-end nav-link-animated text-sm">
                     {item.routes.map((route) => {
                       return (
                         <a class=" text-end font-light" href={route.path}>

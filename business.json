@@ -1,8 +1,8 @@
 {
   "name": "",
   "description": "",
-  "site": "",
-  "openGraph": "/og.png",
+  "site": "https://web-kan.vercel.app",
+  "openGraph": "og.png",
   "lang": "es",
   "contact": {
     "tel": {

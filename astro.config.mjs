@@ -7,7 +7,7 @@ import { defineConfig, fontProviders } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://web-kan.vercel.app",
   integrations: [
     sitemap(),
     react(),

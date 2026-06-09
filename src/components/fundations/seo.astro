@@ -26,13 +26,16 @@ const absoluteImageUrl = ogImageUrl?.startsWith("http")
   : ogImageUrl?.startsWith("/")
     ? `${Astro.site}${ogImageUrl}`
     : ogImageUrl
-      ? `${Astro.site}/${ogImageUrl}`
+      ? // ? `${Astro.site}/${ogImageUrl}`
+        `${Astro.site}${ogImageUrl}`
       : BUSINESS_CONFIG.openGraph;
 ---
 
 <SEO
   title={title}
-  titleTemplate={ignoreTitleTemplate ? undefined : `%s - ${BUSINESS_CONFIG.name}`}
+  titleTemplate={ignoreTitleTemplate
+    ? undefined
+    : `%s - ${BUSINESS_CONFIG.name}`}
   description={description}
   canonical={canonical}
   openGraph={{
