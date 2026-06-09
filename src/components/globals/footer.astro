@@ -36,13 +36,12 @@ const socialMediaLinks = [
             class="h-full object-contain"
             src="/images/footer-logo.png"
             alt="KAN Athletic"
-          >
+          />
         </div>
         <div
           class="mt-8 flex flex-col gap-2 max-lg:text-center text-white/60 font-light text-sm max-w-sm"
         >
           <p>{BUSINESS_CONFIG.description}</p>
-          <p>{BUSINESS_CONFIG.address.location}</p>
         </div>
       </div>
       <div
@@ -51,27 +50,22 @@ const socialMediaLinks = [
         <div
           class="w-fit flex flex-wrap max-sm:flex-col max-sm:items-center justify-end gap-x-16 gap-y-10 text-white uppercase"
         >
-          {footerRoutes.map((item) => (
-              <div
-                key={item.title}
-                class="flex flex-col gap-y-4 lg:items-end max-sm:items-center"
-              >
+          {
+            footerRoutes.map((item) => (
+              <div class="flex flex-col gap-y-4 lg:items-end max-sm:items-center">
                 <p class="lg:text-end font-montserrat font-semibold text-2xl">
                   {item.title}
                 </p>
                 <div class=" flex flex-col gap-2 lg:items-end max-sm:items-center nav-link-animated text-sm">
                   {item.routes.map((route) => (
-                    <a
-                      key={route.path}
-                      class=" lg:text-end font-light"
-                      href={route.path}
-                    >
+                    <a class=" lg:text-end font-light" href={route.path}>
                       {route.title}
                     </a>
                   ))}
                 </div>
               </div>
-            ))}
+            ))
+          }
           <div class="flex flex-col gap-y-4 lg:items-end max-sm:items-center">
             <p class="lg:text-end font-montserrat font-semibold text-2xl">
               Contacto
@@ -91,17 +85,18 @@ const socialMediaLinks = [
               >
             </div>
             <div class="flex gap-4 mt-2">
-              {socialMediaLinks.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-white hover:text-website-orange transition-colors"
-                >
-                  <item.icon class="size-5" />
-                </a>
-              ))}
+              {
+                socialMediaLinks.map((item) => (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-white hover:text-website-orange transition-colors"
+                  >
+                    <item.icon class="size-5" />
+                  </a>
+                ))
+              }
             </div>
           </div>
         </div>
