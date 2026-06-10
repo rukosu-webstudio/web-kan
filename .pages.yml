@@ -169,14 +169,18 @@ content:
         label: Imagen Principal
         type: image
         options:
-          media: products
+          path: public/products/
+          input: public/products/
+          output: /
           extensions: [jpg, jpeg, png]
       - name: gallery
         label: Galería de Imágenes
         type: image
         list: true
         options:
-          media: products
+          path: public/products/
+          input: public/products/
+          output: /
           extensions: [jpg, jpeg, png]
       - name: size
         label: Tallas Disponibles
