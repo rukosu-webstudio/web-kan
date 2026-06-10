@@ -168,14 +168,21 @@ content:
       - name: img
         label: Imagen Principal
         type: image
-      - name: imgHover
-        label: Imagen Hover
-        type: image
+        options:
+          path: /products
+          input: /products
+          output: /
+          extensions: [jpg, jpeg, png]
       - name: gallery
         label: Galería de Imágenes
         type: image
-        list: true # Esto permite agregar múltiples imágenes (array)
+        options:
+          path: /products
+          input: /products
+          output: /
+          extensions: [jpg, jpeg, png]
+        type: array
       - name: size
         label: Tallas Disponibles
         type: string
-        list: true # Esto permite agregar múltiples textos (array)
+        type: array
