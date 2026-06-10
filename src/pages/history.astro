@@ -1,0 +1,16 @@
+---
+import HistoryContentSection from "@/components/sections/history-content-section.astro";
+import HistoryHeroSection from "@/components/sections/history-hero-section.astro";
+import BaseLayout from "@/layouts/base-layout.astro";
+---
+
+<BaseLayout
+  metadata={{
+    title: "History",
+    description: "Sobre nosotros",
+    ignoreTitleTemplate: true,
+  }}
+>
+  <HistoryHeroSection />
+  <HistoryContentSection />
+</BaseLayout>
