@@ -1,6 +1,20 @@
-import { getEntry } from "astro:content";
-
 export const getProductPrueba = async () => {
-  const entry = await getEntry("products", "2026-06-10-calcetin-deportivo-transpirable");
-  return entry;
+  try {
+    const products = import.meta.glob("../content/products/2026-06-10-calcetin-deportivo-transpirable.md", {
+      query: "?raw",
+      import: "default",
+      eager: true,
+    });
+
+    const content = Object.values(products)[0] as string;
+
+    if (!content) {
+      throw new Error("Product file not found or empty");
+    }
+
+    return JSON.parse(content);
+  } catch (error) {
+    console.error("Error loading product:", error);
+    return null;
+  }
 };
