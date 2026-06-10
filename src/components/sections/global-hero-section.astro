@@ -1,8 +1,11 @@
+---
+const { img, title } = Astro.props;
+---
+
 <section class="relative w-full h-[50vh] flex justify-center">
   <img
     class="absolute inset-0 w-full h-full object-cover object-bottom z-0"
-    src="/default/history-bg.png"
-    alt="Fondo sobre nosotros"
+    src={img}
   />
 
   <div class="absolute inset-0 bg-black/50 z-10"></div>
@@ -12,7 +15,7 @@
     <h1
       class="text-white text-4xl xl:text-5xl font-light font-montserrat uppercase"
     >
-      sobre nosotros
+      {title}
     </h1>
   </div>
 </section>
