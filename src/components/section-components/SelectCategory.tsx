@@ -18,10 +18,10 @@ export const SelectCategory = ({
 }) => {
   return (
     <Select defaultValue={defaultValue}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-full rounded-none border-black px-5 font-mozilla uppercase text-base">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="">
         <SelectGroup>
           {items.map((item, index) => {
             return (
