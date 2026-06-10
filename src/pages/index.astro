@@ -4,85 +4,9 @@ import ContactSection from "@/components/sections/contact-section.astro";
 import FeaturedProductsSection from "@/components/sections/featured-products-section.astro";
 import HeroSection from "@/components/sections/hero-section.astro";
 import TwoCollumnsSection from "@/components/sections/two-collumns-section.astro";
-import { BUSINESS_CONFIG } from "@/config/business";
 import { ROUTE } from "@/config/routes";
 import BaseLayout from "@/layouts/base-layout.astro";
-import type { IProductCard } from "@/types/pages-cms";
-
-const products: IProductCard[] = [
-  {
-    name: "camiseta deportiva transpirable",
-    slug: "camiseta-deportiva-transpirable",
-    price: 250,
-    tag: "running",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["s", "m", "l", "xl"],
-  },
-  {
-    name: "shorts de entrenamiento",
-    slug: "shorts-de-entrenamiento",
-    price: 180.5,
-    tag: "gym",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["m", "l", "xl"],
-  },
-  {
-    name: "sudadera con capucha",
-    slug: "sudadera-con-capucha",
-    price: 450,
-    tag: "invierno",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["s", "m", "l", "xl", "xxl"],
-  },
-  {
-    name: "leggings de compresión",
-    slug: "leggings-de-compresion",
-    price: 300,
-    tag: "yoga",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["xs", "s", "m", "l"],
-  },
-  {
-    name: "top deportivo sin costuras",
-    slug: "top-deportivo-sin-costuras",
-    price: 150,
-    tag: "mujer",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["s", "m", "l"],
-  },
-  {
-    name: "pantalón jogger ligero",
-    slug: "pantalon-jogger-ligero",
-    price: 320,
-    tag: "casual",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["s", "m", "l", "xl"],
-  },
-  {
-    name: "chamarra rompevientos",
-    slug: "chamarra-rompevientos",
-    price: 550,
-    tag: "outdoor",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["m", "l", "xl"],
-  },
-  {
-    name: "muñequeras de tenis",
-    slug: "munequeras-de-tenis",
-    price: 60,
-    tag: "accesorios",
-    img: "/default/medias.png",
-    imgHover: "/default/medias-hover.png",
-    size: ["unitalla"],
-  },
-];
+import products from "@/data/products.json";
 
 const women = [products[0], products[1], products[2], products[3]];
 const men = [products[2], products[3], products[4], products[5]];

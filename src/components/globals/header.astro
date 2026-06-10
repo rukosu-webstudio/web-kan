@@ -2,14 +2,25 @@
 import { NAV_COLLECTIONS, NAV_ROUTES, ROUTE } from "@/config/routes";
 import Menu from "../icons/menu.astro";
 import MobileMenu from "./mobile-menu.astro";
+
+const { pathname } = Astro.url;
+const isShopDetail =
+  pathname.startsWith(ROUTE.SHOP.path) && pathname !== ROUTE.SHOP.path;
 ---
 
 <header
-  class="w-full fixed top-0 z-40 transition-all duration-300 ease-in-out"
+  class:list={[
+    "w-full fixed top-0 z-40 transition-all duration-300 ease-in-out",
+    isShopDetail && "bg-black/90 backdrop-blur-sm",
+  ]}
   id="main-header"
+  data-shop-detail={isShopDetail}
 >
   <nav
-    class="w-full flex justify-center pt-10 pb-2 transition-all duration-300 ease-in-out"
+    class:list={[
+      "w-full flex justify-center pb-2 transition-all duration-300 ease-in-out",
+      isShopDetail ? "pt-4" : "pt-10",
+    ]}
     id="main-nav"
   >
     <div
@@ -38,13 +49,19 @@ import MobileMenu from "./mobile-menu.astro";
       >
         <img
           id="logo-kan"
-          class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out"
+          class:list={[
+            "h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out",
+            isShopDetail && "logoHeaderAnimation",
+          ]}
           src="/images/w-kan.png"
           alt=""
         />
         <img
           id="logo-main"
-          class="h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out logoHeaderAnimation"
+          class:list={[
+            "h-12 lg:h-16 w-auto object-cover transition-all duration-500 ease-in-out",
+            !isShopDetail && "logoHeaderAnimation",
+          ]}
           src="/images/w-snake.png"
           alt=""
         />
@@ -79,9 +96,10 @@ import MobileMenu from "./mobile-menu.astro";
   const logoKan = document.getElementById("logo-kan");
   const logoMain = document.getElementById("logo-main");
   const heroSnake = document.getElementById("hero-snake");
+  const isShopDetail = header?.dataset.shopDetail === "true";
 
   const handleScroll = () => {
-    const isScrolled = window.scrollY > 50;
+    const isScrolled = window.scrollY > 50 || isShopDetail;
 
     if (isScrolled) {
       header?.classList.add("bg-black/90", "backdrop-blur-sm");

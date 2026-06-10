@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@/layouts/base-layout.astro";
+import type { IProductCard } from "@/types/pages-cms";
+
+const { slug } = Astro.params;
+---
+
+<BaseLayout
+  metadata={{
+    title: slug,
+    description: "Descripción  de producto",
+    ignoreTitleTemplate: true,
+  }}
+/>
