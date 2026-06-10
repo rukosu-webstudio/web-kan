@@ -1,6 +1,8 @@
 ---
-import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import BaseLayout from "@/layouts/base-layout.astro";
+//@ts-ignore
+import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
+import ProductsSection from "@/components/sections/products-section";
 ---
 
 <BaseLayout
@@ -12,4 +14,5 @@ import BaseLayout from "@/layouts/base-layout.astro";
   }}
 >
   <GlobalHeroSection img="/default/shop-bg.png" title="TIENDA" />
+  <ProductsSection client:load />
 </BaseLayout>
