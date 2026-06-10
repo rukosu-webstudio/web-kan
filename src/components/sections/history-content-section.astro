@@ -5,16 +5,36 @@ const content = history.compiledContent();
 
 <section class="w-full flex justify-center relative">
   <div
-    class="w-full max-wrapper flex flex-col items-center justify-center gap-20 py-20"
+    class="w-full max-wrapper flex flex-col items-center justify-center gap-16 py-20"
   >
     <div class="size-20 aspect-square">
       <img class="h-full object-cover" src="/images/b-snake.png" alt="" />
     </div>
-    <div class="w-full max-w-[800px] border">
+    <div class="w-full max-w-[800px]">
       <div
         set:html={content}
-        class="w-full prose font-inter"
+        class="history-content w-full prose prose-neutral max-w-none font-inter"
       />
     </div>
   </div>
 </section>
+
+<style is:global>
+  @reference "../../assets/css/global.css";
+
+  .history-content h1 {
+    @apply text-[40px] font-extralight font-mozilla border-b border-website-secondary py-2 mb-16;
+  }
+  .history-content h2 {
+    @apply text-2xl font-semibold font-mozilla my-3;
+  }
+  .history-content h3 {
+    @apply text-xl font-medium my-3;
+  }
+  .history-content p {
+    @apply text-lg font-inter;
+  }
+  .history-content img {
+    @apply my-10 mx-auto max-h-[280px] w-auto block;
+  }
+</style>
