@@ -44,7 +44,7 @@ content:
           path: public/
           input: public/
           output: /
-          extensions: [ jpg, jpeg, png ]
+          extensions: [jpg, jpeg, png]
       - name: contact
         label: Contact
         type: object
@@ -140,5 +140,42 @@ content:
             description: "Si es verdadero, el correo también será enviado a la dirección de correo de la empresa"
             type: boolean
             default: true
-
-      
+  - name: products
+    label: Productos Deportivos
+    type: folder
+    path: content/products # La carpeta donde se guardarán los productos
+    format: json # Guarda cada producto como un archivo .json individual
+    icon: shopping-bag
+    fields:
+      - name: name
+        label: Nombre del Producto
+        type: string
+        required: true
+      - name: slug
+        label: Slug (URL)
+        type: string
+        required: true
+      - name: price
+        label: Precio
+        type: number
+        required: true
+      - name: description
+        label: Descripción
+        type: rich-text # Esto activa el editor de texto/Markdown visual
+      - name: tag
+        label: Etiqueta (Ej. running, gym)
+        type: string
+      - name: img
+        label: Imagen Principal
+        type: image
+      - name: imgHover
+        label: Imagen Hover
+        type: image
+      - name: gallery
+        label: Galería de Imágenes
+        type: image
+        list: true # Esto permite agregar múltiples imágenes (array)
+      - name: size
+        label: Tallas Disponibles
+        type: string
+        list: true # Esto permite agregar múltiples textos (array)
