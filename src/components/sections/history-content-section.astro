@@ -1,5 +1,6 @@
 ---
-
+import * as history from "../../content/history.md";
+const content = history.compiledContent();
 ---
 
 <section class="w-full flex justify-center relative">
@@ -10,7 +11,10 @@
       <img class="h-full object-cover" src="/images/b-snake.png" alt="" />
     </div>
     <div class="w-full max-w-[800px] border">
-      <div set:html="" class="w-full" />
+      <div
+        set:html={content}
+        class="w-full prose font-inter"
+      />
     </div>
   </div>
 </section>
