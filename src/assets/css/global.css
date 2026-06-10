@@ -165,3 +165,22 @@
 .button-hover {
   @apply cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300;
 }
+
+.markdawn-content {
+  @apply font-inter;
+}
+.markdawn-content h1 {
+  @apply text-[40px] font-extralight font-mozilla border-b border-website-secondary py-2 mb-16;
+}
+.markdawn-content h2 {
+  @apply text-2xl font-semibold font-mozilla my-3;
+}
+.markdawn-content h3 {
+  @apply text-xl font-medium my-3;
+}
+.markdawn-content p {
+  @apply text-lg font-inter;
+}
+.markdawn-content img {
+  @apply my-10 mx-auto max-h-[280px] w-auto block;
+}

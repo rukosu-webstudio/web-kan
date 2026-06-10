@@ -1,17 +1,14 @@
 ---
 import BaseLayout from "@/layouts/base-layout.astro";
-import products from "@/data/products.json";
 import { getProductPrueba } from "@/services/product.service";
 
 const productPrueba = await getProductPrueba();
-console.log(productPrueba);
 
-const { slug } = Astro.params;
-const product = products.find((p) => p.slug === slug);
-
-if (!product) {
+if (!productPrueba) {
   return Astro.redirect("/404");
 }
+
+const product = productPrueba;
 ---
 
 <BaseLayout
@@ -23,12 +20,29 @@ if (!product) {
 >
   <section class="w-full pt-40 pb-20 flex justify-center">
     <div class="max-wrapper w-full flex flex-col md:flex-row gap-10">
-      <div class="w-full md:w-1/2 aspect-square">
-        <img
-          src={product.img}
-          alt={product.name}
-          class="w-full h-full object-cover rounded-xl"
-        />
+      <div class="w-full md:w-1/2 flex flex-col gap-4">
+        <div class="aspect-square w-full">
+          <img
+            src={product.img.replace("/public", "")}
+            alt={product.name}
+            class="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+        {
+          product.gallery && product.gallery.length > 0 && (
+            <div class="grid grid-cols-3 gap-4">
+              {product.gallery.map((img) => (
+                <div class="aspect-square">
+                  <img
+                    src={img.replace("/public", "")}
+                    alt={product.name}
+                    class="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+              ))}
+            </div>
+          )
+        }
       </div>
       <div class="w-full md:w-1/2 flex flex-col gap-6">
         <h1 class="text-4xl font-bold uppercase">{product.name}</h1>
@@ -36,12 +50,27 @@ if (!product) {
           ${product.price}
         </p>
         <p class="text-gray-600 uppercase">Categoría: {product.tag}</p>
-        <div class="flex gap-4">
-          {
-            product.size.map((s) => (
-              <span class="px-4 py-2 border border-black uppercase">{s}</span>
-            ))
-          }
+
+        {
+          product.description && (
+            <div
+              class="markdawn-content w-full prose prose-neutral max-w-none font-inter"
+              set:html={product.description}
+            />
+          )
+        }
+
+        <div class="flex flex-col gap-2">
+          <p class="font-bold uppercase text-sm">Tallas disponibles:</p>
+          <div class="flex gap-4">
+            {
+              product.size.map((s) => (
+                <span class="px-4 py-2 border border-black uppercase text-xs font-bold">
+                  {s}
+                </span>
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>

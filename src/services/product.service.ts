@@ -1,4 +1,7 @@
-export const getProductPrueba = async () => {
+import { marked } from "marked";
+import type { IProduct } from "@/types/pages-cms";
+
+export const getProductPrueba = async (): Promise<IProduct | null> => {
   try {
     const products = import.meta.glob("../content/products/2026-06-10-calcetin-deportivo-transpirable.md", {
       query: "?raw",
@@ -12,7 +15,13 @@ export const getProductPrueba = async () => {
       throw new Error("Product file not found or empty");
     }
 
-    return JSON.parse(content);
+    const product = JSON.parse(content) as IProduct;
+
+    if (product.description) {
+      product.description = await marked.parse(product.description);
+    }
+
+    return product;
   } catch (error) {
     console.error("Error loading product:", error);
     return null;
