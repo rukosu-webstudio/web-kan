@@ -130,7 +130,8 @@ content:
             pattern: ^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$
           - name: bccEmail
             label: Correos en copia oculta (BCC)
-            type: array
+            type: string
+            list: true
             items:
               type: string
               pattern: ^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$
