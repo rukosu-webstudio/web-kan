@@ -132,20 +132,19 @@ content:
             label: Correos en copia oculta (BCC)
             type: string
             list: true
-            items:
-              type: string
-              pattern: ^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$
+            pattern: ^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$
             required: false
           - name: resendToCompany
             label: Reenviar a la empresa
             description: "Si es verdadero, el correo también será enviado a la dirección de correo de la empresa"
             type: boolean
             default: true
+            
   - name: products
     label: Productos Deportivos
-    type: folder
-    path: content/products # La carpeta donde se guardarán los productos
-    format: json # Guarda cada producto como un archivo .json individual
+    type: collection
+    path: content/products
+    format: json
     icon: shopping-bag
     fields:
       - name: name
@@ -162,7 +161,7 @@ content:
         required: true
       - name: description
         label: Descripción
-        type: rich-text # Esto activa el editor de texto/Markdown visual
+        type: rich-text
       - name: tag
         label: Etiqueta (Ej. running, gym)
         type: string
@@ -177,13 +176,13 @@ content:
       - name: gallery
         label: Galería de Imágenes
         type: image
+        list: true
         options:
           path: /products
           input: /products
           output: /
           extensions: [jpg, jpeg, png]
-        type: array
       - name: size
         label: Tallas Disponibles
         type: string
-        type: array
+        list: true
