@@ -141,9 +141,9 @@ content:
             default: true
             
   - name: products
-    label: Productos Deportivos
+    label: Productos
     type: collection
-    path: content/products
+    path: src/content/products
     format: json
     icon: shopping-bag
     fields:
