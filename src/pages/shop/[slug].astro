@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "@/layouts/base-layout.astro";
 import products from "@/data/products.json";
+import { getProductPrueba } from "@/services/product.service";
+
+const productPrueba = await getProductPrueba();
+console.log(productPrueba);
 
 const { slug } = Astro.params;
 const product = products.find((p) => p.slug === slug);

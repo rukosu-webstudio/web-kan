@@ -7,3 +7,15 @@ export interface IProductCard {
   slug: string;
   tag: string;
 }
+
+export interface IProduct {
+  img: string;
+  imgHover?: string;
+  name: string;
+  price: number;
+  size: string[];
+  slug: string;
+  tag: string;
+  description?: string;
+  gallery?: string[];
+}
