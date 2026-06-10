@@ -150,24 +150,25 @@ content:
       - name: name
         label: Nombre del Producto
         type: string
-        description: "eje: Calcetines de algodon"
+        description: "Ej.  Calcetines de algodon"
         required: true
       - name: slug
         label: Slug (URL)
         type: string
-        description: "eje: calcetines-dealgodon"
+        description: "Ej.  calcetines-de-algodon"
         required: true
       - name: price
         label: Precio
-        description: "eje: 250"
+        description: "Ej.  250"
         type: number
         required: true
       - name: description
         label: Descripción
         type: rich-text
       - name: tag
-        label: Etiqueta (Ej. running, gym)
+        label: Etiqueta
         type: string
+        description: "Ej. women, destacado, running, gym, algodo, blanco"
       - name: img
         label: Imagen Principal
         type: image
