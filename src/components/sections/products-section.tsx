@@ -1,15 +1,15 @@
-import { useMemo } from "react";
 import type { IProductCard } from "@/types/pages-cms";
+import type { FilterGroup } from "@/services/filter.service";
 import ProductCard from "../section-components/productCard";
 import SelectCategory from "../section-components/SelectCategory";
-import { getProductFilterGroups } from "@/services/filter.service";
 
-export const ProductsSection = ({ products }: { products: IProductCard[] }) => {
-  const filterGroups = useMemo(
-    () => getProductFilterGroups(products),
-    [products],
-  );
-
+export const ProductsSection = ({
+  products,
+  filterGroups,
+}: {
+  products: IProductCard[];
+  filterGroups: FilterGroup[];
+}) => {
   return (
     <section className="w-full py-14 lg:py-20 flex justify-center">
       <div className="w-full max-wrapper ">

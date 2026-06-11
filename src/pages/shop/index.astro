@@ -4,8 +4,10 @@ import BaseLayout from "@/layouts/base-layout.astro";
 import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import ProductsSection from "@/components/sections/products-section";
 import { getAllProducts } from "@/services/product.service";
+import { getProductFilterGroups } from "@/services/filter.service";
 
 const products = await getAllProducts();
+const filterGroups = getProductFilterGroups(products);
 ---
 
 <BaseLayout
@@ -17,5 +19,9 @@ const products = await getAllProducts();
   }}
 >
   <GlobalHeroSection img="/default/shop-bg.png" title="TIENDA" />
-  <ProductsSection products={products} client:load />
+  <ProductsSection
+    products={products}
+    filterGroups={filterGroups}
+    client:load
+  />
 </BaseLayout>
