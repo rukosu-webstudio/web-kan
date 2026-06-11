@@ -30,7 +30,7 @@ const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
       <div
         class="w-full grid grid-cols-1 lg:grid-cols-[3fr_2fr] justify-between items-start gap-x-10 gap-y-10"
       >
-        <div class="w-full h-full flex flex-col">
+        <div class="w-full min-w-0 overflow-hidden">
           <ProductGallery 
             cover={cover}
             gallery={gallery}
