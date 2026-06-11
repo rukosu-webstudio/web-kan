@@ -21,6 +21,17 @@ const {
   url: string;
   slug: string;
 };
+
+const orderClasses = {
+  1: {
+    cover: "lg:order-1",
+    content: "lg:order-2",
+  },
+  2: {
+    cover: "lg:order-2",
+    content: "lg:order-1",
+  },
+}[mode as 1 | 2] || { cover: "lg:order-1", content: "lg:order-2" };
 ---
 
 <section
@@ -30,7 +41,7 @@ const {
   <div class="w-full max-wrapper flex flex-col gap-6 lg:gap-10">
     <div class="w-full grid grid-cols-1 lg:grid-cols-5">
       <!-- COVER -->
-      <div class={cls11("lg:col-span-2", `lg:order-${mode}`)}>
+      <div class={cls11("lg:col-span-2", orderClasses.cover)}>
         <div
           class="max-lg:hidden w-full h-full flex justify-center items-center"
         >
@@ -52,13 +63,15 @@ const {
               class="w-full h-full object-cover absolute inset-0"
               src={cover}
               alt=""
-            >
+            />
           </div>
         </div>
       </div>
 
       <!-- PRODUCTOS -->
-      <div class={cls11("lg:col-span-3 lg:px-6 xl:px-10")}>
+      <div
+        class={cls11("lg:col-span-3 lg:px-6 xl:px-10", orderClasses.content)}
+      >
         <div class="w-full flex flex-col gap-5">
           <h2 class="w-full text-2xl font-montserrat uppercase">{title}</h2>
           <div class="w-full border border-[#DADADA]"></div>
@@ -76,22 +89,22 @@ const {
                 </p>
                 <PrimaryButton label="Ver todo" href={url} />
               </div>
-              <div
-                class="w-full h-full bg-black/25 absolute inset-0 z-10"
-              ></div>
+              <div class="w-full h-full bg-black/25 absolute inset-0 z-10">
+              </div>
               <img
                 class="w-full h-full object-cover absolute inset-0"
                 src={cover}
                 alt=""
-              >
+              />
             </div>
           </div>
           <div class="w-full grid grid-cols-2 gap-6 md:gap-8 xl:gap-10">
-            {products.map((product) => {
+            {
+              products.map((product) => {
                 return (
                   <ProductCard
                     img={product.img}
-                    imgHover={product.imgHover}
+                    gallery={product.gallery}
                     name={product.name}
                     price={product.price}
                     tag={product.tag}
@@ -99,7 +112,8 @@ const {
                     slug={product.slug}
                   />
                 );
-              })}
+              })
+            }
           </div>
         </div>
       </div>
