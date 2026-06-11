@@ -1,6 +1,5 @@
-media:
-  path: public
-  public_path: /
+media: public
+path: public/
 content:
   - name: business
     label: Business Config
