@@ -20,7 +20,6 @@ const allImages = [cover, ...gallery].map((url) => ({
 <style>
   .swiper {
     width: 100%;
-    height: 300px;
     margin: 0 auto;
   }
 
@@ -29,10 +28,8 @@ const allImages = [cover, ...gallery].map((url) => ({
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 18px;
     background: #fff;
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 1 / 1;
   }
 
   .swiper-slide-img {
@@ -43,27 +40,31 @@ const allImages = [cover, ...gallery].map((url) => ({
   }
 
   .mySwiper2 {
-    height: 500px;
     width: 100%;
+    max-width: 550px;
+    aspect-ratio: 1 / 1;
   }
 
   .mySwiper {
-    height: 120px;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
     box-sizing: border-box;
     padding: 10px 0;
   }
 
   .mySwiper .swiper-slide {
     width: 25%;
-    height: 100%;
+    max-width: 120px;
+    aspect-ratio: 1 / 1;
     opacity: 0.7;
-    border-radius: 12px;
     overflow: hidden;
+    border: 2px solid transparent; /* Bordes transparentes por defecto */
   }
 
   .mySwiper .swiper-slide-thumb-active {
     opacity: 1;
-    border: 2px solid #ff8d28;
+    border-color: #ff8d28; /* Solo el naranja destaca */
   }
 
   .swiper-button-next,
@@ -74,9 +75,9 @@ const allImages = [cover, ...gallery].map((url) => ({
     background-color: #0000006b;
     padding: 10px;
     color: #fff !important;
-    border-radius: 100%;
     width: 44px !important;
     height: 44px !important;
+    border-radius: 50%;
   }
 
   .swiper-button-next:after,
@@ -86,8 +87,11 @@ const allImages = [cover, ...gallery].map((url) => ({
   }
 
   .swiper-slide-cover {
-    @apply w-auto h-full object-fill;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
+
   img {
     user-select: none;
     -webkit-user-select: none;
@@ -98,22 +102,27 @@ const allImages = [cover, ...gallery].map((url) => ({
   }
 </style>
 
-<section class="w-full max-w-full flex flex-col gap-4 overflow-hidden">
-  <div class="swiper mySwiper2 relative rounded-2xl overflow-hidden bg-gray-50 border w-full min-w-0">
+<section
+  class="w-full max-w-full flex flex-col gap-4 overflow-hidden items-center lg:items-start"
+>
+  {/* Contenedor Principal Square */}
+  <div
+    class="swiper mySwiper2 relative overflow-hidden bg-white border border-transparent min-w-0"
+  >
     <div class="swiper-wrapper">
       {
         allImages.map((img) => (
-          <div class="swiper-slide overflow-hidden">
+          <div class="swiper-slide">
             <a
-                href={img.url}
-                class="glightbox w-full h-full flex justify-center items-center"
+              href={img.url}
+              class="glightbox w-full h-full flex justify-center items-center"
             >
-                <img
+              <img
                 loading="lazy"
                 class="swiper-slide-cover select-none"
                 src={img.url}
                 alt={img.alt}
-                />
+              />
             </a>
           </div>
         ))
@@ -130,12 +139,13 @@ const allImages = [cover, ...gallery].map((url) => ({
     </div>
   </div>
 
+  {/* Miniaturas Swiper Square */}
   <div class="w-full min-w-0 overflow-hidden">
     <div thumbsSlider="" class="swiper mySwiper relative w-full">
       <div class="swiper-wrapper cursor-grab">
         {
           allImages.map((img) => (
-            <div class="swiper-slide overflow-hidden cursor-pointer bg-gray-50 border rounded-xl">
+            <div class="swiper-slide cursor-pointer bg-white border border-transparent">
               <img
                 loading="lazy"
                 class="swiper-slide-img select-none"
@@ -157,7 +167,7 @@ const allImages = [cover, ...gallery].map((url) => ({
   const setupSwiper = () => {
     const swiper = new Swiper(".mySwiper", {
       modules: [FreeMode, Thumbs, Navigation],
-      loop: false,
+      loop: true,
       spaceBetween: 10,
       slidesPerView: 4,
       freeMode: true,
@@ -165,7 +175,7 @@ const allImages = [cover, ...gallery].map((url) => ({
     });
 
     new Swiper(".mySwiper2", {
-      loop: false,
+      loop: true,
       spaceBetween: 10,
       modules: [Navigation, Pagination, Thumbs],
       navigation: {
@@ -176,10 +186,7 @@ const allImages = [cover, ...gallery].map((url) => ({
     });
   };
 
-  // Run on first load
   setupSwiper();
-
-  // Run on view transition
   document.addEventListener("astro:after-swap", setupSwiper);
 </script>
 
@@ -201,9 +208,6 @@ const allImages = [cover, ...gallery].map((url) => ({
     });
   };
 
-  // Run on first load
   setupLightbox();
-
-  // Run on view transition
   document.addEventListener("astro:after-swap", setupLightbox);
 </script>
