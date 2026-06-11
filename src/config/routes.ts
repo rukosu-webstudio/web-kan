@@ -27,6 +27,11 @@ export const ROUTE = {
     title: "Contact",
     path: "/#contact",
   },
+
+  ERROR: {
+    title: "404",
+    path: "/404",
+  },
 };
 
 export const ROUTES = [ROUTE.HOME];

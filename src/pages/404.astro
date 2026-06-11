@@ -1,23 +1,73 @@
 ---
 import BaseLayout from "@/layouts/base-layout.astro";
+import { ROUTE } from "@/config/routes";
 ---
 
-<BaseLayout>
-  <main class="h-screen flex flex-col justify-center items-center gap-6">
-    <img class="max-w-[350px]" src="/images/404.svg" alt="404" width={350}>
-    <div class="flex flex-col gap-1 text-center">
-      <h1 class="text-4xl font-bold text-gray-700">
-        Oops!, Página no encontrada
-      </h1>
-      <p class="text-2xl text-gray-400">El enlace puede estar dañado</p>
-      <small class="text-sm text-gray-600"
-        >o la página pudo haber sido removida</small
+<BaseLayout
+  metadata={{
+    title: "404 - Página no encontrada",
+    description:
+      "Lo sentimos, la página que buscas no existe o ha sido movida.",
+  }}
+>
+  <main
+    class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20"
+  >
+    <!-- Background elements for aesthetic -->
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none"
+    >
+      <span class="text-[20rem] md:text-[30rem] font-mozilla font-black"
+        >404</span
       >
     </div>
-    <a
-      href="/"
-      class="bg-black py-3 px-4 rounded-sm text-white text-sm font-bold hover:bg-slate-900"
-      >Regresar al inicio</a
+
+    <div class="z-10 flex flex-col items-center gap-8 max-wrapper">
+      <div class="w-24 md:w-32 aspect-square mb-4">
+        <img
+          class="w-full h-full object-contain"
+          src="/images/b-snake.png"
+          alt="KAN Athletic Snake Logo"
+        />
+      </div>
+
+      <div class="flex flex-col gap-4 text-center">
+        <h1
+          class="text-4xl md:text-6xl font-mozilla uppercase tracking-tighter leading-none"
+        >
+          Ruta no <span class="text-website-orange">encontrada</span>
+        </h1>
+        <div class="flex flex-col gap-1 italic">
+          <p class="text-xl md:text-2xl font-light uppercase tracking-widest">
+            La constancia supera la motivación
+          </p>
+          <p class="text-sm md:text-base opacity-60 uppercase font-light">
+            Pero incluso los mejores se pierden a veces.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-4">
+        <a
+          href={ROUTE.HOME.path}
+          class="bg-black text-white px-8 py-4 text-lg font-mozilla uppercase tracking-widest hover:bg-website-orange transition-colors duration-300 text-center"
+        >
+          Volver al inicio
+        </a>
+        <a
+          href={ROUTE.SHOP.path}
+          class="border border-black px-8 py-4 text-lg font-mozilla uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300 text-center"
+        >
+          Ir a la tienda
+        </a>
+      </div>
+    </div>
+
+    <!-- Technical detail footer -->
+    <div
+      class="absolute bottom-10 w-full text-center opacity-30 text-xs font-mozilla uppercase tracking-widest"
     >
+      <p>Error Code: 404_NOT_FOUND // KAN_ATHLETIC_CORE</p>
+    </div>
   </main>
 </BaseLayout>

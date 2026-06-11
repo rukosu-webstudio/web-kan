@@ -5,7 +5,7 @@ import MobileMenu from "./mobile-menu.astro";
 
 const { pathname } = Astro.url;
 const isShopDetail =
-  pathname.startsWith(ROUTE.SHOP.path) && pathname !== ROUTE.SHOP.path;
+  (pathname.startsWith(ROUTE.SHOP.path) && pathname !== ROUTE.SHOP.path) || pathname.startsWith(ROUTE.ERROR.path);
 ---
 
 <header
