@@ -4,7 +4,7 @@
   "price": 250,
   "tag": "running",
   "color": "Azul oscuro",
-  "description": "### camiseta deportiva transpirable\n\ncamiseta deportiva transpirable\n\n- camiseta\n- deportiva\n- transpirable\n\n",
+  "description": "### camiseta deportiva transpirable\n\nDiseñadas para soportar la fricción de tus entrenamientos más pesados. Fabricadas con algodón premium de alta densidad, estas medias ofrecen la amortiguación exacta y la sujeción necesaria para que tu único enfoque sea la siguiente repetición. Estética completamente negra, sin distracciones, pura disciplina.\n\n- camiseta\n- deportiva\n- transpirable\n\n",
   "moreDetails": [
     {
       "title": "Soporte estratégico",
