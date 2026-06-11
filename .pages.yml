@@ -1,4 +1,6 @@
-media: public
+media:
+  path: public
+  public_path: /
 content:
   - name: business
     label: Business Config
@@ -41,9 +43,6 @@ content:
         required: true
         type: image
         options:
-          path: public/
-          input: public/
-          output: /
           extensions: [jpg, jpeg, png]
       - name: contact
         label: Contact
@@ -199,16 +198,10 @@ content:
         type: image
         required: true
         options:
-          path: public/products/
-          input: public/products/
-          output: /
           extensions: [jpg, jpeg, png]
       - name: gallery
         label: Galería de Imágenes
         type: image
         list: true
         options:
-          path: public/products/
-          input: public/products/
-          output: /
           extensions: [jpg, jpeg, png]
