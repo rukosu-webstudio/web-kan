@@ -10,15 +10,17 @@ import {
 export const SelectCategory = ({
   placeholder,
   items,
-  defaultValue = "Todo",
+  value,
+  onValueChange,
 }: {
   placeholder: string;
   items: string[];
-  defaultValue?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
 }) => {
   return (
-    <Select defaultValue={defaultValue}>
-      <SelectTrigger className="w-full rounded-none border-black px-5 font-mozilla uppercase text-base">
+    <Select value={value} onValueChange={onValueChange}>
+      <SelectTrigger className="w-full rounded-none border-black px-5 font-mozilla uppercase text-base bg-white">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent className="">
