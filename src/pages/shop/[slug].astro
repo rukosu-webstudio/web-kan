@@ -1,4 +1,5 @@
 ---
+import ProductHeaderInfo from "@/components/section-components/product-header-info.astro";
 import BaseLayout from "@/layouts/base-layout.astro";
 import { getProductPrueba } from "@/services/product.service";
 
@@ -18,61 +19,77 @@ const product = productPrueba;
     ignoreTitleTemplate: true,
   }}
 >
-  <section class="w-full pt-40 pb-20 flex justify-center">
-    <div class="max-wrapper w-full flex flex-col md:flex-row gap-10">
-      <div class="w-full md:w-1/2 flex flex-col gap-4">
-        <div class="aspect-square w-full">
-          <img
-            src={product.img.replace("/public", "")}
-            alt={product.name}
-            class="w-full h-full object-cover rounded-xl"
-          />
-        </div>
-        {
-          product.gallery && product.gallery.length > 0 && (
-            <div class="grid grid-cols-3 gap-4">
-              {product.gallery.map((img) => (
-                <div class="aspect-square">
-                  <img
-                    src={img.replace("/public", "")}
-                    alt={product.name}
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-              ))}
-            </div>
-          )
-        }
-      </div>
-      <div class="w-full md:w-1/2 flex flex-col gap-6">
-        <h1 class="text-4xl font-bold uppercase">{product.name}</h1>
-        <p class="text-2xl text-website-orange font-mozilla">
-          ${product.price}
-        </p>
-        <p class="text-gray-600 uppercase">Categoría: {product.tag}</p>
-
-        {
-          product.description && (
-            <div
-              class="markdawn-content w-full prose prose-neutral max-w-none font-inter"
-              set:html={product.description}
+  <section class="w-full py-14 lg:py-20 flex justify-center mt-32">
+    <div class="w-full max-wrapper flex flex-col">
+      <div
+        class="w-full grid grid-cols-[3fr_2fr] justify-between items-stretch gap-x-10 gap-y-3"
+      >
+        <div class="w-full border h-4"></div>
+        <div class="w-full h-full">
+          <div class="w-full h-full flex flex-col gap-6">
+            <ProductHeaderInfo
+              name={product.name}
+              tag={product.tag}
+              price={product.price}
             />
-          )
-        }
-
-        <div class="flex flex-col gap-2">
-          <p class="font-bold uppercase text-sm">Tallas disponibles:</p>
-          <div class="flex gap-4">
-            {
-              product.size.map((s) => (
-                <span class="px-4 py-2 border border-black uppercase text-xs font-bold">
-                  {s}
-                </span>
-              ))
-            }
           </div>
         </div>
       </div>
     </div>
   </section>
+  <!-- 
+
+<div class="w-full md:w-1/2 flex flex-col gap-4">
+  <div class="aspect-square w-full">
+    <img
+      src={product.img.replace("/public", "")}
+      alt={product.name}
+      class="w-full h-full object-cover rounded-xl"
+    />
+  </div>
+  {
+    product.gallery && product.gallery.length > 0 && (
+      <div class="grid grid-cols-3 gap-4">
+        {product.gallery.map((img) => (
+          <div class="aspect-square">
+            <img
+              src={img.replace("/public", "")}
+              alt={product.name}
+              class="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+        ))}
+      </div>
+    )
+  }
+</div>
+<div class="w-full md:w-1/2 flex flex-col gap-6">
+  <h1 class="text-4xl font-bold uppercase">{product.name}</h1>
+  <p class="text-2xl text-website-orange font-mozilla">
+    ${product.price}
+  </p>
+  <p class="text-gray-600 uppercase">Categoría: {product.tag}</p>
+
+  {
+    product.description && (
+      <div
+        class="markdawn-content w-full prose prose-neutral max-w-none font-inter"
+        set:html={product.description}
+      />
+    )
+  }
+
+  <div class="flex flex-col gap-2">
+    <p class="font-bold uppercase text-sm">Tallas disponibles:</p>
+    <div class="flex gap-4">
+      {
+        product.size.map((s) => (
+          <span class="px-4 py-2 border border-black uppercase text-xs font-bold">
+            {s}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div> -->
 </BaseLayout>

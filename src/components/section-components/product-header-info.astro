@@ -1,0 +1,19 @@
+---
+import { formatPrice } from "@/lib/utils";
+
+const { name, tag, price } = Astro.props as {
+  name: string;
+  tag: string;
+  price: number;
+};
+---
+
+<div class="w-full flex flex-col gap-6">
+  <p class="w-fit bg-black text-white font-bold text-center px-4 py-1">
+    {tag}
+  </p>
+  <h1 class="w-full text-4xl font-mozilla font-light">{name}</h1>
+  <p class="w-full text-website-orange text-2xl font-mozilla font-medium">
+    {formatPrice(price)}
+  </p>
+</div>
