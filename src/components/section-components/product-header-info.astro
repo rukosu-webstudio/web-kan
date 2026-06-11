@@ -9,17 +9,19 @@ const {
 } = Astro.props as {
   class?: string;
   name: string;
-  tag: string;
+  tag?: string;
   price: number;
 };
 ---
 
 <div class={cls11("w-full flex flex-col gap-6", className)}>
-  <p
-    class="w-fit bg-black text-white text-sm font-semibold text-center px-4 py-1 uppercase"
-  >
-    {tag}
-  </p>
+  {
+    tag && (
+      <p class="w-fit bg-black text-white text-sm font-semibold text-center px-4 py-1 uppercase">
+        {tag}
+      </p>
+    )
+  }
   <h1 class="w-full text-4xl font-mozilla font-light uppercase">{name}</h1>
   <p
     class="w-full text-website-orange text-2xl font-mozilla font-medium uppercase"

@@ -57,10 +57,14 @@ const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
                 tag={product.tag}
                 price={product.price}
               />
-              <div class="w-full flex flex-col gap-1 uppercase">
-                <p class="text-sm font-light">COLOR:</p>
-                <p class="font-bold">negro</p>
-              </div>
+              {
+                product.color && (
+                  <div class="w-full flex flex-col gap-1 uppercase">
+                    <p class="text-sm font-light">COLOR:</p>
+                    <p class="font-bold">{product.color}</p>
+                  </div>
+                )
+              }
               <div class="w-full flex flex-col gap-1 uppercase">
                 <p class="text-sm font-light">TALLAS:</p>
                 <div
@@ -75,12 +79,17 @@ const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
                   }
                 </div>
               </div>
-              <div class="w-full max-w-full">
-                <div
-                  class="markdawn-content w-full prose prose-neutral max-w-none font-inter"
-                  set:html={product.description}
-                />
-              </div>
+              {
+                product.description && (
+                  <div class="w-full max-w-full">
+                    <div
+                      class="markdawn-content w-full prose prose-neutral max-w-none font-inter"
+                      set:html={product.description}
+                    />
+                  </div>
+                )
+              }
+
               <div class="w-full flex flex-col justify-end pt-10">
                 <a
                   class="flex justify-center items-center gap-5 px-6 py-2.5 bg-black text-white text-xl"
@@ -94,54 +103,32 @@ const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
           </div>
         </div>
       </div>
-      <div class="w-full flex flex-col gap-10 justify-center items-center">
-        <div class="size-20 aspect-square">
-          <img class="h-full object-cover" src="/images/b-snake.png" alt="" />
-        </div>
-        <p
-          class="w-full text-center text-2xl font-mozilla font-light uppercase"
-        >
-          MáS SOBRE EL PRODUCTO
-        </p>
-        <div class="w-full flex">
-          <div
-            class="w-full grid grid-cols-1 sm:grid-cols-2  xl:grid-cols-4 justify-center items-stretch gap-6"
-          >
-            {
-              (
-                <div class="w-full h-full flex flex-col gap-4 lg:gap-5 p-5 border-l-2 border-black">
-                  <p class="w-full text-3xl font-light">Soporte estratégico</p>
-                  <p class="w-full text-lg font-light">
-                    Compresión ligera en el arco plantar para evitar
-                    deslizamientos dentro del calzado.
-                  </p>
-                </div>
-                <div class="w-full h-full flex flex-col gap-5 p-5 border-l-2 border-black">
-                  <p class="w-full text-3xl font-light">Soporte estratégico</p>
-                  <p class="w-full text-lg font-light">
-                    Compresión ligera en el arco plantar para evitar
-                    deslizamientos dentro del calzado.
-                  </p>
-                </div>
-                <div class="w-full h-full flex flex-col gap-5 p-5 border-l-2 border-black">
-                  <p class="w-full text-3xl font-light">Soporte estratégico</p>
-                  <p class="w-full text-lg font-light">
-                    Compresión ligera en el arco plantar para evitar
-                    deslizamientos dentro del calzado.
-                  </p>
-                </div>
-                <div class="w-full h-full flex flex-col gap-5 p-5 border-l-2 border-black">
-                  <p class="w-full text-3xl font-light">Soporte estratégico</p>
-                  <p class="w-full text-lg font-light">
-                    Compresión ligera en el arco plantar para evitar
-                    deslizamientos dentro del calzado.
-                  </p>
-                </div>
-              )
-            }
+      {
+        product.moreDetails?.length && product.moreDetails?.length > 0 && (
+          <div class="w-full flex flex-col gap-10 justify-center items-center">
+            <div class="size-20 aspect-square">
+              <img
+                class="h-full object-cover"
+                src="/images/b-snake.png"
+                alt=""
+              />
+            </div>
+            <p class="w-full text-center text-2xl font-mozilla font-light uppercase">
+              MáS SOBRE EL PRODUCTO
+            </p>
+            <div class="w-full flex">
+              <div class="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 justify-center items-stretch gap-6">
+                {product.moreDetails?.map((item) => (
+                  <div class="w-full h-full flex flex-col gap-4 lg:gap-5 p-5 border-l-2 border-black">
+                    <p class="w-full text-3xl font-light">{item.title}</p>
+                    <p class="w-full text-lg font-light">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        )
+      }
     </div>
   </section>
 </BaseLayout>
