@@ -2,7 +2,7 @@
   "name": "KAN Athletic - Ropta y accesorios deportivos",
   "description": "La constancia supera la motivación. Descubre ropa deportiva técnica y minimalista para hombres y mujeres. Diseñada para deportistas disciplinados.",
   "site": "https://web-kan.vercel.app",
-  "openGraph": "public/og.png",
+  "openGraph": "/og.png",
   "lang": "es",
   "contact": {
     "tel": {
