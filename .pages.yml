@@ -152,6 +152,28 @@ content:
         type: string
         description: "Ej.  Calcetines de algodón"
         required: true
+      
+      - name: slug
+        label: Slug (URL)
+        type: string
+        description: "Ej.  calcetines-de-algodon"
+        required: true
+      - name: price
+        label: Precio
+        description: "Ej.  250"
+        type: number
+        required: true
+      - name: tag
+        label: Etiqueta o categoría
+        type: string
+        description: "Ej. women, destacado, running, gym, algodón, blanco"
+      - name: color
+        label: Color del producto
+        type: string
+        description: "Ej. blanco, negro, beige"
+      - name: description
+        label: Descripción
+        type: rich-text
       - name: moreDetails
         label: Más detalles del producto
         type: object
@@ -168,23 +190,6 @@ content:
           type: string
           description: "Ej.  Refuerzos de triple hilo en talón y punta para resistir el desgaste del uso diario y el asfalto."
           required: true
-      - name: slug
-        label: Slug (URL)
-        type: string
-        description: "Ej.  calcetines-de-algodon"
-        required: true
-      - name: price
-        label: Precio
-        description: "Ej.  250"
-        type: number
-        required: true
-      - name: description
-        label: Descripción
-        type: rich-text
-      - name: tag
-        label: Etiqueta
-        type: string
-        description: "Ej. women, destacado, running, gym, algodón, blanco"
       - name: img
         label: Imagen Principal
         type: image
