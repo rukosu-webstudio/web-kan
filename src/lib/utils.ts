@@ -23,13 +23,13 @@ export function formatPrice(price: number | string): string {
     typeof price === "string" ? Number.parseFloat(price) : price;
 
   if (isNaN(numericPrice)) {
-    return "GTQ 0.00";
+    return "0.00 GTQ";
   }
 
-  return new Intl.NumberFormat("es-GT", {
-    style: "currency",
-    currency: "GTQ",
+  const formattedPrice = new Intl.NumberFormat("es-GT", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(numericPrice);
+
+  return `${formattedPrice} GTQ`;
 }
