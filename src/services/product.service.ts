@@ -3,7 +3,7 @@ import type { IProduct } from "@/types/pages-cms";
 
 export const getProductPrueba = async (): Promise<IProduct | null> => {
   try {
-    const products = import.meta.glob("../content/products/2026-06-09-camiseta-deportiva-transpirable.md", {
+    const products = import.meta.glob("../content/products/2026-06-10-calcetin-deportivo-transpirable.md", {
       query: "?raw",
       import: "default",
       eager: true,
