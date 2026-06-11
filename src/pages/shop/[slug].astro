@@ -1,6 +1,7 @@
 ---
 import WhatsappIcon from "@/components/icons/whatsapp-icon.astro";
 import ProductHeaderInfo from "@/components/section-components/product-header-info.astro";
+import ProductGallery from "@/components/section-components/product-gallery.astro";
 import BaseLayout from "@/layouts/base-layout.astro";
 import { getProductPrueba } from "@/services/product.service";
 
@@ -25,7 +26,9 @@ const product = productPrueba;
       <div
         class="w-full grid grid-cols-[3fr_2fr] justify-between items-stretch gap-x-10 gap-y-3"
       >
-        <div class="w-full border h-4"></div>
+        <div class="w-full h-full flex flex-col border">
+          <ProductGallery />
+        </div>
         <div class="w-full h-full">
           <div class="w-full h-full flex flex-col gap-6">
             <ProductHeaderInfo
