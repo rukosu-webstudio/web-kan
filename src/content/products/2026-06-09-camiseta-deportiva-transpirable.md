@@ -3,6 +3,7 @@
   "slug": "camiseta-deportiva-transpirable",
   "price": 250,
   "tag": "running",
+  "color": "Azul oscuro",
   "description": "### camiseta deportiva transpirable\n\ncamiseta deportiva transpirable\n\n- camiseta\n- deportiva\n- transpirable\n\n",
   "moreDetails": [
     {
