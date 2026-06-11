@@ -20,7 +20,7 @@ export const SelectCategory = ({
 }) => {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="w-full rounded-none border-black px-5 font-mozilla uppercase text-base bg-white">
+      <SelectTrigger className="w-full rounded-none border-black px-5 font-mozilla uppercase text-base bg-white cursor-pointer">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent className="">

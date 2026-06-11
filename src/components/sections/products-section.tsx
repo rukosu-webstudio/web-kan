@@ -72,7 +72,7 @@ export const ProductsSection = ({
   return (
     <section className="w-full py-14 lg:py-20 flex justify-center">
       <div className="w-full max-wrapper ">
-        <div className="w-full grid md:grid-cols-[30%_auto] lg:grid-cols-[20%_auto] justify-between items-stretch gap-8 sm:gap-5 ">
+        <div className="w-full grid md:grid-cols-[30%_1fr] lg:grid-cols-[20%_1fr] items-stretch gap-8 sm:gap-5 ">
           {/* FILTROS */}
           <div className="w-full h-full">
             <div className="w-full sticky top-28 flex flex-col gap-4 md:gap-6 lg:gap-10">
@@ -97,7 +97,7 @@ export const ProductsSection = ({
               {hasActiveFilters && (
                 <button
                   onClick={clearFilters}
-                  className="w-fit text-website-orange uppercase font-mozilla text-sm border-b border-website-orange button-hover"
+                  className="w-fit text-website-orange uppercase font-mozilla text-sm link-animated"
                 >
                   Borrar filtros
                 </button>
@@ -129,13 +129,13 @@ export const ProductsSection = ({
                 ))}
               </div>
             ) : (
-              <div className="min-w-full py-20 flex flex-col items-center gap-4">
+              <div className="w-full py-20 flex flex-col items-center justify-center gap-4 text-center border border-dashed border-black/10">
                 <p className="text-xl font-light uppercase">
                   No se encontraron productos
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="text-website-orange border-b border-website-orange uppercase text-sm"
+                  className="text-website-orange uppercase text-sm link-animated"
                 >
                   Ver todos los productos
                 </button>
