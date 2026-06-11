@@ -12,6 +12,10 @@ if (!productPrueba) {
 }
 
 const product = productPrueba;
+
+// Limpiamos los paths si contienen /public
+const cover = product.img.replace("/public", "");
+const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
 ---
 
 <BaseLayout
@@ -24,10 +28,14 @@ const product = productPrueba;
   <section class="w-full py-14 lg:py-20 flex justify-center mt-32">
     <div class="w-full max-wrapper flex flex-col">
       <div
-        class="w-full grid grid-cols-[3fr_2fr] justify-between items-stretch gap-x-10 gap-y-3"
+        class="w-full grid grid-cols-1 lg:grid-cols-[3fr_2fr] justify-between items-start gap-x-10 gap-y-10"
       >
-        <div class="w-full h-full flex flex-col border">
-          <ProductGallery />
+        <div class="w-full h-full flex flex-col">
+          <ProductGallery 
+            cover={cover}
+            gallery={gallery}
+            name={product.name}
+          />
         </div>
         <div class="w-full h-full">
           <div class="w-full h-full flex flex-col gap-6">
