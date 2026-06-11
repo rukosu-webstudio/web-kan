@@ -3,19 +3,23 @@ import WhatsappIcon from "@/components/icons/whatsapp-icon.astro";
 import ProductHeaderInfo from "@/components/section-components/product-header-info.astro";
 import ProductGallery from "@/components/section-components/product-gallery.astro";
 import BaseLayout from "@/layouts/base-layout.astro";
-import { getProductPrueba } from "@/services/product.service";
+import { getProductBySlug } from "@/services/product.service";
 
-const productPrueba = await getProductPrueba();
+const { slug } = Astro.params;
 
-if (!productPrueba) {
+if (!slug) {
   return Astro.redirect("/404");
 }
 
-const product = productPrueba;
+const product = await getProductBySlug(slug);
 
-// Limpiamos los paths si contienen /public
-const cover = product.img?.replace("/public", "");
-const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
+if (!product) {
+  return Astro.redirect("/404");
+}
+
+// Image paths are already cleaned in the service
+const cover = product.img;
+const gallery = product.gallery || [];
 ---
 
 <BaseLayout

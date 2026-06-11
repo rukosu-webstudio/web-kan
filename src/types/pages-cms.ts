@@ -6,6 +6,7 @@ export interface IProductCard {
   size?: string[];
   slug: string;
   tag?: string;
+  color?: string;
 }
 
 export interface IProduct {

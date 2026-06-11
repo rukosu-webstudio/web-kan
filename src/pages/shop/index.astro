@@ -3,7 +3,9 @@ import BaseLayout from "@/layouts/base-layout.astro";
 //@ts-ignore
 import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import ProductsSection from "@/components/sections/products-section";
-import products from "@/data/products.json";
+import { getAllProducts } from "@/services/product.service";
+
+const products = await getAllProducts();
 ---
 
 <BaseLayout
