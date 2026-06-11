@@ -21,6 +21,7 @@ export const getAllProducts = async (): Promise<IProductCard[]> => {
         ...parsed,
         img: parsed.img?.replace("/public", ""),
         imgHover: parsed.imgHover?.replace("/public", ""),
+        gallery: parsed.gallery?.map((img) => img.replace("/public", "")),
       } as IProductCard;
     });
 

@@ -7,10 +7,12 @@ export const ProductCard = ({
   price,
   tag,
   img,
-  imgHover,
+  gallery,
   size,
   slug,
 }: IProductCard) => {
+  const hoverImage = gallery && gallery.length > 0 ? gallery[0] : img;
+
   return (
     <a
       href={`${ROUTE.SHOP.path}/${slug}`}
@@ -23,11 +25,13 @@ export const ProductCard = ({
             src={img}
             alt={name}
           />
-          <img
-            className="w-full h-full object-cover absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            src={imgHover}
-            alt={`${name} hover`}
-          />
+          {hoverImage && (
+            <img
+              className="w-full h-full object-cover absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              src={hoverImage}
+              alt={`${name} hover`}
+            />
+          )}
         </div>
       </div>
       <div className="w-full h-full flex flex-col justify-between gap-2.5">

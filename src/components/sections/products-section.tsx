@@ -72,7 +72,8 @@ export const ProductsSection = ({
   return (
     <section className="w-full py-14 lg:py-20 flex justify-center">
       <div className="w-full max-wrapper ">
-        <div className="w-full grid md:grid-cols-[30%_auto] lg:grid-cols-[20%_auto] justify-between items-stretch gap-8 sm:gap-5">
+        <div className="w-full grid md:grid-cols-[30%_auto] lg:grid-cols-[20%_auto] justify-between items-stretch gap-8 sm:gap-5 ">
+          {/* FILTROS */}
           <div className="w-full h-full">
             <div className="w-full sticky top-28 flex flex-col gap-4 md:gap-6 lg:gap-10">
               <div className="flex flex-col gap-8">
@@ -103,7 +104,9 @@ export const ProductsSection = ({
               )}
             </div>
           </div>
-          <div className="w-full flex flex-col gap-10">
+
+          {/* PRODUCTOS */}
+          <div className="w-full flex flex-col gap-10 ">
             <div className="w-full flex justify-between items-end border-b border-black/10 pb-4">
               <p className="text-sm font-light uppercase tracking-wider">
                 {filteredProducts.length} Productos encontrados
@@ -116,7 +119,7 @@ export const ProductsSection = ({
                   <ProductCard
                     key={product.slug}
                     img={product.img}
-                    imgHover={product.imgHover}
+                    gallery={product.gallery}
                     name={product.name}
                     price={product.price}
                     tag={product.tag}
@@ -126,7 +129,7 @@ export const ProductsSection = ({
                 ))}
               </div>
             ) : (
-              <div className="w-full py-20 flex flex-col items-center gap-4">
+              <div className="min-w-full py-20 flex flex-col items-center gap-4">
                 <p className="text-xl font-light uppercase">
                   No se encontraron productos
                 </p>
