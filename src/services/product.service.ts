@@ -19,9 +19,9 @@ export const getAllProducts = async (): Promise<IProductCard[]> => {
       // Clean /public prefix from image paths for Astro/Vite compatibility
       return {
         ...parsed,
-        img: parsed.img?.replace("/public", ""),
-        imgHover: parsed.imgHover?.replace("/public", ""),
-        gallery: parsed.gallery?.map((img) => img.replace("/public", "")),
+        img: parsed.img?.replace(/^(\/)?public/, ""),
+        imgHover: parsed.imgHover?.replace(/^(\/)?public/, ""),
+        gallery: parsed.gallery?.map((img) => img.replace(/^(\/)?public/, "")),
       } as IProductCard;
     });
 
@@ -57,9 +57,11 @@ export const getProductBySlug = async (slug: string): Promise<IProduct | null> =
     }
 
     // Clean image paths
-    product.img = product.img?.replace("/public", "");
-    product.imgHover = product.imgHover?.replace("/public", "");
-    product.gallery = product.gallery?.map(img => img.replace("/public", ""));
+    product.img = product.img?.replace(/^(\/)?public/, "");
+    product.imgHover = product.imgHover?.replace(/^(\/)?public/, "");
+    product.gallery = product.gallery?.map((img) =>
+      img.replace(/^(\/)?public/, ""),
+    );
 
     return product;
   } catch (error) {

@@ -23,12 +23,7 @@ const {
 const ogImageUrl = (openGraph as any)?.image?.url || BUSINESS_CONFIG.openGraph;
 const absoluteImageUrl = ogImageUrl?.startsWith("http")
   ? ogImageUrl
-  : ogImageUrl?.startsWith("/")
-    ? `${Astro.site}${ogImageUrl}`
-    : ogImageUrl
-      ? // ? `${Astro.site}/${ogImageUrl}`
-        `${Astro.site}${ogImageUrl}`
-      : BUSINESS_CONFIG.openGraph;
+  : `${Astro.site?.toString().replace(/\/$/, "")}/${ogImageUrl?.replace(/^\//, "")}`;
 ---
 
 <SEO

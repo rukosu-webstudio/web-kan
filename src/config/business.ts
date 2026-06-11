@@ -13,6 +13,7 @@ const parsedPhoneNumber = parsePhoneNumberFromString(phoneNumber, {
 
 export const BUSINESS_CONFIG = {
   ...DATA_BUSINESS,
+  openGraph: DATA_BUSINESS.openGraph?.replace(/^(\/)?public\//, ""),
   phone: {
     formatted: parsedPhoneNumber?.formatInternational(),
     ext: DATA_BUSINESS.contact.tel.ext,

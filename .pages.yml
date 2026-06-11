@@ -41,9 +41,9 @@ content:
         required: true
         type: image
         options:
-          path: /public/
-          input: /public/
-          output: /
+          path: public/
+          input: public/
+          output: public/
           extensions: [jpg, jpeg, png]
       - name: contact
         label: Contact
@@ -201,7 +201,7 @@ content:
         options:
           path: public/products/
           input: public/products/
-          output: /
+          output: public/products/
           extensions: [jpg, jpeg, png]
       - name: gallery
         label: Galería de Imágenes
@@ -210,5 +210,5 @@ content:
         options:
           path: public/products/
           input: public/products/
-          output: /
+          output: public/products/
           extensions: [jpg, jpeg, png]
