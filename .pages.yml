@@ -139,7 +139,7 @@ content:
             description: "Si es verdadero, el correo también será enviado a la dirección de correo de la empresa"
             type: boolean
             default: true
-            
+
   - name: products
     label: Productos
     type: collection
@@ -152,7 +152,6 @@ content:
         type: string
         description: "Ej.  Calcetines de algodón"
         required: true
-      
       - name: slug
         label: Slug (URL)
         type: string
@@ -171,6 +170,12 @@ content:
         label: Color del producto
         type: string
         description: "Ej. blanco, negro, beige"
+      - name: size
+        label: Tallas Disponibles
+        type: string
+        description: "Ej. unitalla"
+        list: true
+        required: true
       - name: description
         label: Descripción
         type: rich-text
@@ -178,21 +183,21 @@ content:
         label: Más detalles del producto
         type: object
         list: true
-        required: false
         fields:
-        - name: title
-          label: Título
-          type: string
-          description: "Ej. Durabilidad extrema"
-          required: true
-        - name: description
-          label: Descripción
-          type: string
-          description: "Ej.  Refuerzos de triple hilo en talón y punta para resistir el desgaste del uso diario y el asfalto."
-          required: true
+          - name: title
+            label: Título
+            type: string
+            description: "Ej. Durabilidad extrema"
+            required: true
+          - name: description
+            label: Descripción
+            type: string
+            description: "Ej.  Refuerzos de triple hilo en talón y punta para resistir el desgaste del uso diario y el asfalto."
+            required: true
       - name: img
         label: Imagen Principal
         type: image
+        required: true
         options:
           path: public/products/
           input: public/products/
@@ -207,7 +212,3 @@ content:
           input: public/products/
           output: /
           extensions: [jpg, jpeg, png]
-      - name: size
-        label: Tallas Disponibles
-        type: string
-        list: true

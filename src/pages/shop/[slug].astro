@@ -14,7 +14,7 @@ if (!productPrueba) {
 const product = productPrueba;
 
 // Limpiamos los paths si contienen /public
-const cover = product.img.replace("/public", "");
+const cover = product.img?.replace("/public", "");
 const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
 ---
 
@@ -44,7 +44,7 @@ const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
         >
           <div class="w-full min-w-0 overflow-hidden">
             <ProductGallery
-              cover={cover}
+              cover={cover || ""}
               gallery={gallery}
               name={product.name}
             />
@@ -67,7 +67,7 @@ const gallery = product.gallery?.map((img) => img.replace("/public", "")) || [];
                   class="w-full flex justify-center items-center gap-2.5 font-mozilla font-light"
                 >
                   {
-                    product.size.map((s) => (
+                    product.size?.map((s) => (
                       <button class="w-full px-4 border text-center hover:border-black transition-all duration-200 cursor-pointer active:opacity-50">
                         {s}
                       </button>
