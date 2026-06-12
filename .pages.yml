@@ -176,6 +176,16 @@ content:
         description: "Ej. unitalla"
         list: true
         required: true
+      - name: featured
+        label: Producto destacada
+        description: "Saldra en la seccion de Featured"
+        type: boolean
+        default: false
+      - name: active
+        label: Procuto habiitado
+        description: "Desactivar esto hace que no se muestre el producto"
+        type: boolean
+        default: true
       - name: description
         label: Descripción
         type: rich-text
@@ -212,3 +222,13 @@ content:
           input: public/products/
           output: public/products/
           extensions: [jpg, jpeg, png]
+  - name: history
+    label: Historia
+    path: src/content/history.json
+    type: file
+    icon: building
+    fields:
+      - name: content
+        label: Contenido
+        description: "Para ingresar una imagen: @public/history/tu-imagen.png"
+        type: rich-text

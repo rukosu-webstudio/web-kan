@@ -1,3 +1,8 @@
+---
+title: sobre nosotros
+heroImage: /default/history-bg.webp
+---
+
 # EL ORIGEN DE LA DISCIPLINA
         
 ## Más allá de la motivación, existe el hábito.
