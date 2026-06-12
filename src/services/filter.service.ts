@@ -50,6 +50,10 @@ export const getProductFilterGroups = (products: IProductCard[]): FilterGroup[] 
       items: getUniqueFilters(activeProducts.map((p) => p.category)),
     },
     {
+      title: "Etiquetas",
+      items: getUniqueFilters(activeProducts.map((p) => p.tag)),
+    },
+    {
       title: "Tallas",
       items: getUniqueFilters(activeProducts.map((p) => p.size)),
     },
