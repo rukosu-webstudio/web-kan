@@ -30,5 +30,12 @@ export interface IProduct {
   }
 
   export interface IHistory {
-  content: string;
+    content: string;
+  }
+
+  export interface ICovers {
+    home?: string;
+    history?: string;
+    shop?: string;
+    contact?: string;
   }

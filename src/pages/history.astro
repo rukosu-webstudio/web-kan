@@ -4,6 +4,9 @@ import BaseLayout from "@/layouts/base-layout.astro";
 import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import ContactSection from "@/components/sections/contact-section.astro";
 import HistoryContentSection from "@/components/sections/history-content-section.astro";
+import { getCovers } from "@/services/cover.service";
+
+const covers = await getCovers();
 ---
 
 <BaseLayout
@@ -13,7 +16,7 @@ import HistoryContentSection from "@/components/sections/history-content-section
     ignoreTitleTemplate: true,
   }}
 >
-  <GlobalHeroSection img="/default/history-bg.webp" title="sobre nosotros" />
+  <GlobalHeroSection img={covers.history} title="sobre nosotros" />
   <HistoryContentSection />
   <ContactSection />
 </BaseLayout>

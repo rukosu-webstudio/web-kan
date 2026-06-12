@@ -2,6 +2,9 @@
 import { BUSINESS_CONFIG } from "@/config/business";
 import UpRightArrow from "../icons/up-right-arrow.astro";
 import ContactForm from "../section-components/contact-form.astro";
+import { getCovers } from "@/services/cover.service";
+
+const covers = await getCovers();
 
 const socialMediaLinks = [
   { title: "instagram", url: BUSINESS_CONFIG.social.instagram },
@@ -39,7 +42,7 @@ const contactMedia = [
       <div class="w-full h-full bg-black/25 absolute inset-0 z-10"></div>
       <img
         class="w-full h-full object-cover absolute inset-0"
-        src="/default/contact-bg.webp"
+        src={covers.contact}
         alt=""
       />
     </div>

@@ -5,9 +5,11 @@ import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import ProductsSection from "@/components/sections/products-section";
 import { getAllProducts } from "@/services/product.service";
 import { getProductFilterGroups } from "@/services/filter.service";
+import { getCovers } from "@/services/cover.service";
 
 const products = await getAllProducts();
 const filterGroups = getProductFilterGroups(products);
+const covers = await getCovers();
 ---
 
 <BaseLayout
@@ -18,7 +20,7 @@ const filterGroups = getProductFilterGroups(products);
     ignoreTitleTemplate: true,
   }}
 >
-  <GlobalHeroSection img="/default/shop-bg.webp" title="TIENDA" />
+  <GlobalHeroSection img={covers.shop} title="TIENDA" />
   <ProductsSection
     products={products}
     filterGroups={filterGroups}
