@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import type { IProductCard } from "@/types/pages-cms";
 import type { FilterGroup } from "@/services/filter.service";
 import ProductCard from "../section-components/productCard";
@@ -21,6 +21,25 @@ export const ProductsSection = ({
     });
     return initial;
   });
+
+  // Handle initial filters from URL query parameters
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const categoryParam = params.get("category");
+
+    if (categoryParam) {
+      // Find the formatted label that matches the param (case insensitive)
+      const group = filterGroups.find((g) => g.title === "Categorias");
+      if (group) {
+        const matchedItem = group.items.find(
+          (item) => item.toLowerCase() === categoryParam.toLowerCase()
+        );
+        if (matchedItem) {
+          handleFilterChange("Categorias", matchedItem);
+        }
+      }
+    }
+  }, []);
 
   const handleFilterChange = (title: string, value: string) => {
     setSelectedFilters((prev) => ({
@@ -53,6 +72,10 @@ export const ProductsSection = ({
         const valToMatch = selectedValue.toLowerCase();
 
         if (title === "Categorias") {
+          return product.category?.toLowerCase() === valToMatch;
+        }
+
+        if (title === "Etiquetas") {
           return product.tag?.toLowerCase() === valToMatch;
         }
 
