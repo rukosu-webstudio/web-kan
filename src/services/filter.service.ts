@@ -47,7 +47,7 @@ export const getProductFilterGroups = (products: IProductCard[]): FilterGroup[] 
   return [
     {
       title: "Categorias",
-      items: getUniqueFilters(activeProducts.map((p) => p.tag)),
+      items: getUniqueFilters(activeProducts.map((p) => p.category)),
     },
     {
       title: "Tallas",

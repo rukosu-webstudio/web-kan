@@ -163,9 +163,14 @@ content:
         type: number
         required: true
       - name: tag
-        label: Etiqueta o categoría
+        label: Etiqueta (Badge)
         type: string
-        description: "Ej. women, destacado, running, gym, algodón, blanco"
+        description: "Ej. Running, Gym, Algodón, Nuevo"
+      - name: category
+        label: Categoría
+        type: string
+        description: "Ej. Men, Women, Unisex, Accesorios"
+        required: true
       - name: color
         label: Color del producto
         type: string

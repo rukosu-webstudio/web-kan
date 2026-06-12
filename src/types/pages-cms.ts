@@ -7,6 +7,7 @@ export interface IProductCard {
   size?: string[];
   slug: string;
   tag?: string;
+  category?: string;
   color?: string;
   featured?: boolean;
   active?: boolean;
@@ -19,6 +20,7 @@ export interface IProduct {
   size: string[];
 
   tag?: string;
+  category?: string;
   color?: string;
 
   featured?: boolean;
