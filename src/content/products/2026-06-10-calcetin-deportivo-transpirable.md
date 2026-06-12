@@ -3,7 +3,7 @@
   "slug": "calcetin-deportivo-transpirable",
   "price": 250,
   "tag": "Algodon",
-  "category": "Men",
+  "category": "Calcetin",
   "color": "Negro",
   "size": [
     "m",
