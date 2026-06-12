@@ -1,6 +1,6 @@
 ---
-import * as history from "../../content/history.md";
-const content = history.compiledContent();
+import { getHistoryContent } from "@/services/history.service";
+const content = await getHistoryContent();
 ---
 
 <section class="w-full flex justify-center relative">
@@ -18,4 +18,3 @@ const content = history.compiledContent();
     </div>
   </div>
 </section>
-

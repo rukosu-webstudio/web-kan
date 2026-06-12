@@ -4,7 +4,6 @@ import BaseLayout from "@/layouts/base-layout.astro";
 import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import ContactSection from "@/components/sections/contact-section.astro";
 import HistoryContentSection from "@/components/sections/history-content-section.astro";
-import { frontmatter } from "../content/history.md";
 ---
 
 <BaseLayout
@@ -14,7 +13,7 @@ import { frontmatter } from "../content/history.md";
     ignoreTitleTemplate: true,
   }}
 >
-  <GlobalHeroSection img={frontmatter.heroImage} title={frontmatter.title} />
+  <GlobalHeroSection img="/default/history-bg.webp" title="sobre nosotros" />
   <HistoryContentSection />
   <ContactSection />
 </BaseLayout>

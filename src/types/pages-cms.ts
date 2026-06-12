@@ -27,4 +27,8 @@ export interface IProduct {
 
   img?: string;
   gallery?: string[];
-}
+  }
+
+  export interface IHistory {
+  content: string;
+  }
