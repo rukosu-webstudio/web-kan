@@ -13,17 +13,19 @@ export const getAllProducts = async (): Promise<IProductCard[]> => {
       eager: true,
     });
 
-    const products = Object.values(files).map((content) => {
-      const parsed = JSON.parse(content as string) as IProduct;
+    const products = Object.values(files)
+      .map((content) => {
+        const parsed = JSON.parse(content as string) as IProduct;
 
-      // Clean /public prefix from image paths for Astro/Vite compatibility
-      return {
-        ...parsed,
-        img: parsed.img?.replace(/^(\/)?public/, ""),
-        imgHover: parsed.imgHover?.replace(/^(\/)?public/, ""),
-        gallery: parsed.gallery?.map((img) => img.replace(/^(\/)?public/, "")),
-      } as IProductCard;
-    });
+        // Clean /public prefix from image paths for Astro/Vite compatibility
+        return {
+          ...parsed,
+          img: parsed.img?.replace(/^(\/)?public/, ""),
+          imgHover: parsed.imgHover?.replace(/^(\/)?public/, ""),
+          gallery: parsed.gallery?.map((img) => img.replace(/^(\/)?public/, "")),
+        } as IProductCard;
+      })
+      .filter((product) => product.active !== false);
 
     return products;
   } catch (error) {
@@ -45,7 +47,7 @@ export const getProductBySlug = async (slug: string): Promise<IProduct | null> =
 
     const productFile = Object.values(files).find((content) => {
       const parsed = JSON.parse(content as string) as IProduct;
-      return parsed.slug === slug;
+      return parsed.slug === slug && parsed.active !== false;
     });
 
     if (!productFile) return null;

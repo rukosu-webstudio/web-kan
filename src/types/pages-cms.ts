@@ -8,6 +8,8 @@ export interface IProductCard {
   slug: string;
   tag?: string;
   color?: string;
+  featured?: boolean;
+  active?: boolean;
 }
 
 export interface IProduct {
@@ -18,6 +20,9 @@ export interface IProduct {
 
   tag?: string;
   color?: string;
+
+  featured?: boolean;
+  active?: boolean;
 
   description?: string;
   moreDetails?: {

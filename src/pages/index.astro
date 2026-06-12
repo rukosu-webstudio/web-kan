@@ -6,10 +6,13 @@ import HeroSection from "@/components/sections/hero-section.astro";
 import TwoCollumnsSection from "@/components/sections/two-collumns-section.astro";
 import { ROUTE } from "@/config/routes";
 import BaseLayout from "@/layouts/base-layout.astro";
-import products from "@/data/products.json";
+import { getAllProducts } from "@/services/product.service";
 
-const women = [products[0], products[1], products[2], products[3]];
-const men = [products[2], products[3], products[4], products[5]];
+const allProducts = await getAllProducts();
+
+const featuredProducts = allProducts.filter((p) => p.featured === true);
+const women = allProducts.filter((p) => p.tag?.toLowerCase().includes("women")).slice(0, 4);
+const men = allProducts.filter((p) => p.tag?.toLowerCase().includes("men")).slice(0, 4);
 ---
 
 <BaseLayout
@@ -20,7 +23,7 @@ const men = [products[2], products[3], products[4], products[5]];
   }}
 >
   <HeroSection />
-  <FeaturedProductsSection products={products} />
+  <FeaturedProductsSection products={featuredProducts} />
   <TwoCollumnsSection
     products={women}
     title="WOMEN"

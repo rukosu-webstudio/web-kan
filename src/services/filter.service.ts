@@ -42,18 +42,20 @@ export interface FilterGroup {
  * Generates all filter groups for the product list.
  */
 export const getProductFilterGroups = (products: IProductCard[]): FilterGroup[] => {
+  const activeProducts = products.filter((p) => p.active !== false);
+
   return [
     {
       title: "Categorias",
-      items: getUniqueFilters(products.map((p) => p.tag)),
+      items: getUniqueFilters(activeProducts.map((p) => p.tag)),
     },
     {
       title: "Tallas",
-      items: getUniqueFilters(products.map((p) => p.size)),
+      items: getUniqueFilters(activeProducts.map((p) => p.size)),
     },
     {
       title: "Colores",
-      items: getUniqueFilters(products.map((p) => p.color)),
+      items: getUniqueFilters(activeProducts.map((p) => p.color)),
     },
   ].filter(group => group.items.length > 1); // Only show filters that have more than just "Todo"
 };
