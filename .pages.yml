@@ -232,3 +232,45 @@ content:
         label: Contenido
         description: "Para ingresar una imagen: @public/history/tu-imagen.png"
         type: rich-text
+  - name: covers
+    label: Caratulas
+    path: src/content/covers.json
+    type: file
+    icon: building
+    fields:
+      - name: home
+        label: Inicio
+        description: "Si no se agrega imagen se agregara una por defecto"
+        type: image
+        options:
+          path: public/covers/
+          input: public/covers/
+          output: public/covers/
+          extensions: [jpg, jpeg, png]
+      - name: history
+        label: Historia
+        description: "Si no se agrega imagen se agregara una por defecto"
+        type: image
+        options:
+          path: public/covers/
+          input: public/covers/
+          output: public/covers/
+          extensions: [jpg, jpeg, png]
+      - name: shop
+        label: Shop
+        description: "Si no se agrega imagen se agregara una por defecto"
+        type: image
+        options:
+          path: public/covers/
+          input: public/covers/
+          output: public/covers/
+          extensions: [jpg, jpeg, png]
+      - name: contact
+        label: Contacto
+        description: "Si no se agrega imagen se agregara una por defecto"
+        type: image
+        options:
+          path: public/covers/
+          input: public/covers/
+          output: public/covers/
+          extensions: [jpg, jpeg, png]
