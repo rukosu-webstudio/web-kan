@@ -3,7 +3,7 @@
   "slug": "camiseta-deportiva-transpirable",
   "price": 250,
   "tag": "running",
-  "category": "Women",
+  "category": "camiseta",
   "color": "Azul oscuro",
   "size": [
     "S",
