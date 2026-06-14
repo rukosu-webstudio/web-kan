@@ -30,6 +30,7 @@ export type Business = {
     twitter?: string;
   };
   openGraph?: string;
+  logoEmail?: string;
   settings?: {
     emailSender: string;
     bccEmail?: string[];

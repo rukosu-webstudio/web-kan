@@ -96,8 +96,8 @@ export const server = {
                 website: BUSINESS_CONFIG.site,
               },
               logo: {
-                src: "",
-                width: 0,
+                src: (BUSINESS_CONFIG as any).logoEmail || "",
+                width: 150,
               },
               data: DATA_STRUCTURE,
             })

@@ -14,6 +14,9 @@ const parsedPhoneNumber = parsePhoneNumberFromString(phoneNumber, {
 export const BUSINESS_CONFIG = {
   ...DATA_BUSINESS,
   openGraph: DATA_BUSINESS.openGraph?.replace(/^(\/)?public\//, ""),
+  logoEmail: DATA_BUSINESS.logoEmail
+    ? `${DATA_BUSINESS.site.replace(/\/$/, "")}/${DATA_BUSINESS.logoEmail.replace(/^(\/)?public\//, "")}`
+    : null,
   phone: {
     formatted: parsedPhoneNumber?.formatInternational(),
     ext: DATA_BUSINESS.contact.tel.ext,

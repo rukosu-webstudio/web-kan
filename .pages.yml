@@ -45,6 +45,16 @@ content:
           input: public/
           output: public/
           extensions: [jpg, jpeg, png]
+      - name: logoEmail
+        label: Logo para Email
+        description: Imagen que se mostrará en los correos electrónicos.
+        required: false
+        type: image
+        options:
+          path: public/images/
+          input: public/images/
+          output: public/images/
+          extensions: [jpg, jpeg, png]
       - name: contact
         label: Contact
         type: object
