@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "swiper/css/bundle";
+@import "toastify-js/src/toastify.css";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -204,4 +205,9 @@
 }
 .markdawn-content img {
   @apply my-10 mx-auto max-h-[280px] w-auto block;
+}
+
+/* Ensure Toastify is visible */
+.toastify {
+  z-index: 9999 !important;
 }

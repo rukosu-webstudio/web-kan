@@ -109,5 +109,26 @@ const socialMediaLinks = [
         KAN © {new Date().getFullYear()} - All rights reserved
       </p>
     </div>
+    <!-- Debug Toast Button - Click the very bottom left corner to test -->
+    <button id="debug-toast" class="fixed bottom-0 left-0 size-4 bg-red-500 opacity-0 pointer-events-auto z-[9999] cursor-pointer"></button>
   </div>
 </footer>
+
+<script>
+  import Toastify from "toastify-js";
+  const debugBtn = document.getElementById('debug-toast');
+  if (debugBtn) {
+    debugBtn.addEventListener('click', () => {
+      console.log("Triggering debug toast...");
+      Toastify({
+        text: "Prueba de notificación 🚀",
+        duration: 5000,
+        gravity: "top",
+        position: "right",
+        style: {
+          background: "#3b82f6",
+        }
+      }).showToast();
+    });
+  }
+</script>
