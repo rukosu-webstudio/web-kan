@@ -9,11 +9,16 @@ const showToast = (message: string, type: "success" | "error") => {
     text: message,
     duration: 5000,
     close: true,
-    gravity: "top",
-    position: "right",
+    gravity: "bottom",
+    position: "center",
     stopOnFocus: true,
     style: {
-      background: type === "success" ? "#10b981" : "#ef4444",
+      background: "#000000",
+      color: "#ffffff",
+      borderRadius: "0px",
+      fontSize: "14px",
+      fontFamily: "var(--font-mozilla), sans-serif",
+      textTransform: "uppercase",
     },
   }).showToast();
 };
@@ -34,7 +39,7 @@ if (form) {
     submit.textContent = "Enviar";
 
     if (data?.status) {
-      showToast("¡Formulario enviado correctamente! 😊", "success");
+      showToast("Formulario enviado correctamente", "success");
       form.reset();
       return;
     }
@@ -43,10 +48,10 @@ if (form) {
       for (const [field, messages] of Object.entries(error.fields)) {
         console.error(`${field}: ${(messages as string[]).join(", ")}`);
       }
-      showToast("Errores de validación, revisa los campos. ❌", "error");
+      showToast("Errores de validación, revisa los campos", "error");
     } else {
       console.error("Error desconocido:", error);
-      showToast("Error al enviar el formulario. Inténtalo de nuevo. ❌", "error");
+      showToast("Error al enviar el formulario. Inténtalo de nuevo", "error");
     }
   });
 }

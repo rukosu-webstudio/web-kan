@@ -129,7 +129,7 @@ content:
           - name: twitter
             label: Twitter
             type: string
-      - name: configuracion
+      - name: settings
         label: Configuración
         type: object
         fields:
