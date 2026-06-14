@@ -27,8 +27,9 @@
     "tiktok": "https://www.tiktok.com/"
   },
   "settings": {
-    "emailSender": "noreply@correo.com",
-    "bccEmail": ["monitoreo@correo.com"],
+    "bccEmail": [
+      "monitoreo@kanathletic.com"
+    ],
     "resendToCompany": false
   }
 }

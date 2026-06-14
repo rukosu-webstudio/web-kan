@@ -20,9 +20,9 @@ interface IEmailData {
 const BCC_EMAIL = Array.isArray(BUSINESS_CONFIG.settings?.bccEmail)
   ? BUSINESS_CONFIG.settings?.bccEmail
   : [];
-const EMAIL_SENDER = BUSINESS_CONFIG.settings?.emailSender;
+const EMAIL_SENDER = import.meta.env.EMAIL_SENDER || BUSINESS_CONFIG.settings?.emailSender;
 const resend = new Resend(
-  import.meta.env.RESEND_API_KEY || "re_xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  import.meta.env.RESEND_API_TOKEN || import.meta.env.RESEND_API_KEY || "re_xxxxxxxxxxxxxxxxxxxxxxxxxxx"
 );
 
 export const server = {
