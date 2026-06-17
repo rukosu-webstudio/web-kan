@@ -45,4 +45,6 @@ export interface IProduct {
     history?: string;
     shop?: string;
     contact?: string;
+    women?: string;
+    men?: string;
   }

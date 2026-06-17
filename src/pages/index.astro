@@ -6,9 +6,11 @@ import HeroSection from "@/components/sections/hero-section.astro";
 import TwoCollumnsSection from "@/components/sections/two-collumns-section.astro";
 import { ROUTE } from "@/config/routes";
 import BaseLayout from "@/layouts/base-layout.astro";
+import { getCovers } from "@/services/cover.service";
 import { getAllProducts } from "@/services/product.service";
 
 const allProducts = await getAllProducts();
+const covers = await getCovers();
 
 const featuredProducts = allProducts.filter((p) => p.featured === true);
 const women = allProducts.filter((p) => p.category?.toLowerCase() === "women").slice(0, 4);
@@ -28,7 +30,7 @@ const men = allProducts.filter((p) => p.category?.toLowerCase() === "men").slice
     products={women}
     title="WOMEN"
     desc="EL ESTÁNDAR KAN AHORA SE EXTIENDE A LAS mujeres"
-    cover="/default/women-banner.png"
+    cover={covers.women}
     url={`${ROUTE.SHOP.path}?category=women`}
     slug="women"
   />
@@ -37,7 +39,7 @@ const men = allProducts.filter((p) => p.category?.toLowerCase() === "men").slice
     products={men}
     title="MEN"
     desc="EL ESTÁNDAR KAN AHORA SE EXTIENDE A LOS HOMBRES"
-    cover="/default/men-banner.png"
+    cover={covers.men}
     url={`${ROUTE.SHOP.path}?category=men`}
     slug="men"
   />

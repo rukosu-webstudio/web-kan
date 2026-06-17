@@ -5,6 +5,8 @@ const DEFAULTS = {
   history: "/default/history-bg.webp",
   shop: "/default/shop-bg.webp",
   contact: "/default/contact-bg.webp",
+  women: "/default/women-banner.png",
+  men: "/default/men-banner.png",
 };
 
 /**
@@ -34,6 +36,8 @@ export const getCovers = async (): Promise<Required<ICovers>> => {
       history: cleanPath(covers.history) || DEFAULTS.history,
       shop: cleanPath(covers.shop) || DEFAULTS.shop,
       contact: cleanPath(covers.contact) || DEFAULTS.contact,
+      women: cleanPath(covers.women) || DEFAULTS.women,
+      men: cleanPath(covers.men) || DEFAULTS.men,
     };
   } catch (error) {
     console.error("Error loading covers:", error);

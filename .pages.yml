@@ -289,3 +289,21 @@ content:
           input: public/covers/
           output: public/covers/
           extensions: [jpg, jpeg, png]
+      - name: women
+        label: Women
+        description: "Si no se agrega imagen se agregara una por defecto"
+        type: image
+        options:
+          path: public/covers/
+          input: public/covers/
+          output: public/covers/
+          extensions: [jpg, jpeg, png]
+      - name: men
+        label: Men
+        description: "Si no se agrega imagen se agregara una por defecto"
+        type: image
+        options:
+          path: public/covers/
+          input: public/covers/
+          output: public/covers/
+          extensions: [jpg, jpeg, png]
