@@ -1,10 +1,13 @@
 {
-  "name": "KAN Athletic - Ropta y accesorios deportivos",
-  "description": "La constancia supera la motivación. Descubre ropa deportiva técnica y minimalista para hombres y mujeres. Diseñada para deportistas disciplinados.",
+  "name": "KAN",
+  "description": "Ropa deportiva enfocada en el rendimiento, creamos prendas técnicas y minimalistas para quienes hacen del entrenamiento un estilo de vida y entienden que cada sesión es una oportunidad para mejorar.",
   "site": "https://www.kanathletic.com/",
-  "openGraph": "public/og.png",
-  "logoEmail": "public/images/email-logo.png",
-  "lang": "es",
+  "robots": {
+    "index": false,
+    "follow": false
+  },
+  "openGraph": "/public/Diseño sin título (6).jpg",
+  "logoEmail": "/public/images/email-logo.png",
   "contact": {
     "tel": {
       "ext": 502,
@@ -28,6 +31,7 @@
     "tiktok": "https://www.tiktok.com/"
   },
   "settings": {
+    "emailSender": "iphone23master@gmail.com",
     "bccEmail": [
       "monitoreo@kanathletic.com"
     ],
