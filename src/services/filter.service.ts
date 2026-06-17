@@ -22,7 +22,8 @@ export const getUniqueFilters = (values: (string | string[] | undefined)[]): str
     if (Array.isArray(value)) {
       value.forEach((v) => uniqueSet.add(v.trim().toLowerCase()));
     } else {
-      uniqueSet.add(value.trim().toLowerCase());
+      // Split by comma in case the string contains multiple values
+      value.split(",").forEach((v) => uniqueSet.add(v.trim().toLowerCase()));
     }
   });
 

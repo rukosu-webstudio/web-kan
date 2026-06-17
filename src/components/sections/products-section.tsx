@@ -72,7 +72,7 @@ export const ProductsSection = ({
         const valToMatch = selectedValue.toLowerCase();
 
         if (title === "Categorias") {
-          return product.category?.toLowerCase() === valToMatch;
+          return product.category?.some((c) => c.toLowerCase() === valToMatch);
         }
 
         if (title === "Etiquetas") {

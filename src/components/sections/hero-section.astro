@@ -9,11 +9,7 @@ const covers = await getCovers();
   <div class="w-full h-full absolute top-0">
     <div class="w-full h-full relative">
       <div class="w-full h-full bg-black">
-        <img
-          class="h-full xl:w-full object-cover"
-          src={covers.home}
-          alt=""
-        />
+        <img class="h-full xl:w-full object-cover" src={covers.home} alt="" />
       </div>
       <div class="w-full h-full absolute top-0 bg-black/60"></div>
     </div>
@@ -33,7 +29,7 @@ const covers = await getCovers();
       >
         LA CONSTANCIA SUPERA LA MOTIVACIÓN
       </h1>
-      <PrimaryButton label="ver colección" />
+      <PrimaryButton href="/#collections" label="ver colección" />
     </div>
   </div>
 </section>

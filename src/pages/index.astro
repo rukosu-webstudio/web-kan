@@ -13,8 +13,12 @@ const allProducts = await getAllProducts();
 const covers = await getCovers();
 
 const featuredProducts = allProducts.filter((p) => p.featured === true);
-const women = allProducts.filter((p) => p.category?.toLowerCase() === "women").slice(0, 4);
-const men = allProducts.filter((p) => p.category?.toLowerCase() === "men").slice(0, 4);
+const women = allProducts
+  .filter((p) => p.category?.some((c) => c.toLowerCase() === "women"))
+  .slice(0, 4);
+const men = allProducts
+  .filter((p) => p.category?.some((c) => c.toLowerCase() === "men"))
+  .slice(0, 4);
 ---
 
 <BaseLayout

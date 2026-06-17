@@ -20,6 +20,9 @@ export const getAllProducts = async (): Promise<IProductCard[]> => {
         // Clean /public prefix from image paths for Astro/Vite compatibility
         return {
           ...parsed,
+          category: parsed.category
+            ? parsed.category.split(",").map((c) => c.trim())
+            : [],
           img: parsed.img?.replace(/^(\/)?public/, ""),
           imgHover: parsed.imgHover?.replace(/^(\/)?public/, ""),
           gallery: parsed.gallery?.map((img) => img.replace(/^(\/)?public/, "")),
