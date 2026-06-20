@@ -3,7 +3,6 @@ import {
   Column,
   Container,
   Head,
-  Hr,
   Html,
   Img,
   Link,
@@ -13,7 +12,6 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
-import { twMerge } from "tailwind-merge";
 
 export interface IFormContactData {
   colSpan?: "full" | "normal";
@@ -40,8 +38,6 @@ export interface IEmailTemplate {
   subtitle?: string | null;
   title?: string;
 }
-
-const resetText = { margin: 0 };
 
 const translations = {
   es: {
@@ -71,6 +67,9 @@ const translations = {
     copyright: "All rights reserved.",
   },
 };
+
+const PUBLIC_PATH_REGEX = /^(\/)?public/;
+
 export const EmailContact = ({
   preview,
   title,
@@ -82,102 +81,113 @@ export const EmailContact = ({
 }: IEmailTemplate) => {
   const t = translations[lang];
 
+  // Resolves paths like "/public/images/logo.png" to absolute URLs for email clients
+  const getAbsoluteUrl = (path: string, siteUrl: string) => {
+    if (!path) {
+      return "";
+    }
+    if (path.startsWith("http")) {
+      return path;
+    }
+    const cleanPath = path.replace(PUBLIC_PATH_REGEX, "");
+    const base = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
+    const relative = cleanPath.startsWith("/") ? cleanPath : `/${cleanPath}`;
+    return `${base}${relative}`;
+  };
+
+  const logoSrc = getAbsoluteUrl(logo.src, business.website);
+
   return (
     <Html>
       <Head />
       <Preview>{preview}</Preview>
       <Tailwind>
         <Body
-          className="bg-white"
+          className="bg-[#f6f6f6] py-10"
           style={{
             fontFamily:
-              '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+              '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif',
           }}
         >
-          <Container className="mx-auto my-[40px] w-[465px] rounded border border-[#eaeaea] border-solid p-[20px]">
-            {/* HEADER */}
-
-            {/* LOGO */}
-            <Section className="mt-[32px] max-w-[600px]">
-              <Link className="no-underline" href={business.website}>
-                <Img
-                  alt={logo?.alt ?? business.name}
-                  className={twMerge(
-                    "mx-auto my-0 h-auto",
-                    logo?.className ?? ""
-                  )}
-                  src={logo.src}
-                  // width={logo.height}
-                  // height={logo.width}
-                  style={{
-                    maxWidth: `${logo?.width ?? 112}px`,
-                    width: `${logo?.width ?? 112}px`,
-                  }}
-                />
-              </Link>
+          <Container className="mx-auto w-[480px] rounded-none border border-[#e0e0e0] bg-white">
+            {/* Header: Brand Banner */}
+            <Section className="w-full border-[#ff8d28] border-b-[3px] bg-black py-8 text-center">
+              {logoSrc && (
+                <Link className="mx-auto inline-block" href={business.website}>
+                  <Img
+                    alt={logo?.alt ?? business.name}
+                    className="mx-auto block h-auto"
+                    src={logoSrc}
+                    style={{
+                      maxWidth: `${logo?.width ?? 130}px`,
+                      width: `${logo?.width ?? 130}px`,
+                    }}
+                  />
+                </Link>
+              )}
             </Section>
 
-            <Section className="max-w-[600px]">
-              <Text className="mx-0 my-[20px] p-0 text-center font-bold text-[24px] text-black">
+            {/* Email Title & Subtitle */}
+            <Section className="px-8 pt-8 pb-4">
+              <Text className="m-0 text-left font-bold text-[20px] text-black uppercase tracking-wider">
                 {title}
               </Text>
-              {subtitle !== null && (
-                <Text className="text-[14px] text-black leading-[24px]">
+              {subtitle && (
+                <Text className="mt-2 text-[#666666] text-[14px] leading-[22px]">
                   {subtitle}
                 </Text>
               )}
             </Section>
 
-            {/* BODY */}
-            <Section className="max-w-[600px]">
-              {data.map((input) => {
-                if (!(input?.showEmpty || input?.value)) {
-                  return null;
-                }
+            {/* Form Fields Card */}
+            <Section className="px-8 pb-6">
+              <Section className="rounded-none border border-[#e0e0e0] bg-[#fdfdfd] p-[20px]">
+                {data.map((input) => {
+                  if (!(input?.showEmpty || input?.value)) {
+                    return null;
+                  }
 
-                if (!input?.colSpan) {
-                  return (
-                    <Row key={input.name}>
-                      <Column className="w-[50%] py-2 pr-6 align-top font-bold text-[14px] text-black leading-[18px]">
-                        {input.name}:
-                      </Column>
-                      <Column className="w-[50%] py-2 align-top text-[14px] text-black leading-[18px]">
-                        {input.value ?? ""}
-                      </Column>
-                    </Row>
-                  );
-                }
+                  if (input.colSpan === "full") {
+                    return (
+                      <Section className="mb-[16px] last:mb-0" key={input.name}>
+                        <Text className="m-0 font-semibold text-[#888888] text-[11px] uppercase tracking-wider">
+                          {input.name}
+                        </Text>
+                        <Text className="mt-[4px] font-medium text-[14px] text-black leading-relaxed">
+                          {input.value}
+                        </Text>
+                      </Section>
+                    );
+                  }
 
-                if (input.colSpan === "full") {
                   return (
-                    <>
+                    <Section
+                      className="border-[#eaeaea] border-b py-[10px] first:pt-0 last:border-b-0 last:pb-0"
+                      key={input.name}
+                    >
                       <Row>
-                        <Column className="w-[50%] py-2 pr-6 align-top font-bold text-[14px] text-black leading-[18px]">
+                        <Column className="w-[40%] align-middle font-semibold text-[#888888] text-[11px] uppercase tracking-wider">
                           {input.name}:
                         </Column>
-                      </Row>
-                      <Row>
-                        <Column className="w-[50%] py-2 align-top text-[14px] text-black leading-[18px]">
-                          {input.value}
+                        <Column className="w-[60%] text-right align-middle font-medium text-[14px] text-black">
+                          {input.value ?? ""}
                         </Column>
                       </Row>
-                    </>
+                    </Section>
                   );
-                }
-
-                return null;
-              })}
+                })}
+              </Section>
             </Section>
 
-            {/* FOOTER BUSINESS */}
-            <Section className="max-w-[600px]">
-              <Text className="text-[14px] text-black leading-[24px]">
+            {/* Next Steps Info */}
+            <Section className="px-8 pb-8">
+              <Text className="m-0 text-[#444444] text-[14px] leading-relaxed">
                 {t.consultant}
               </Text>
-              <Text className="text-[14px] text-black leading-[18px]">
-                {t.moreInfo} <br />
+              <Text className="mt-3 text-[#888888] text-[13px] leading-relaxed">
+                {t.moreInfo}{" "}
                 <Link
-                  className="text-blue-600 no-underline"
+                  className="font-semibold text-[#ff8d28] no-underline hover:underline"
                   href={`mailto:${business.contactEmail}`}
                 >
                   {business.contactEmail}
@@ -185,81 +195,45 @@ export const EmailContact = ({
               </Text>
             </Section>
 
-            <Hr className="mx-0 my-[16px] w-full border border-[#eaeaea] border-solid" />
-
-            {/* FOOTER */}
-            <Section className="mx-auto max-w-[560px] py-1 pb-[22px]">
-              <Row>
-                <Text
-                  className="py-4 text-center text-[#AFAFAF] text-sm"
-                  style={resetText}
-                >
-                  {t.poweredBy}
-                </Text>
-              </Row>
-              <Row>
-                <Column className="mb-4 pt-1 pb-4 text-center">
-                  <Link className="no-underline" href="">
-                    <Img
-                      alt="alt name"
-                      className="mx-auto h-auto w-[120px] max-w-[120px]"
-                      height={494}
-                      src=""
-                      width={1256}
-                    />
-                  </Link>
-                </Column>
-              </Row>
-              <Row className="mx-auto w-fit">
-                <Column className="py-4 pr-4 text-center">
+            {/* Footer */}
+            <Section className="w-full border-[#222222] border-t bg-[#111111] p-8 text-center">
+              {/* Social Links */}
+              <Row className="mx-auto mb-4 w-fit">
+                <Column className="px-2">
                   <Link
-                    className="text-center text-gray-400 text-sm underline"
-                    href=""
+                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline hover:text-[#ff8d28]"
+                    href={business.website}
                   >
                     {t.socialLinks.instagram}
                   </Link>
                 </Column>
-                <Column className="py-4 pr-4 text-center">
+                <Column className="px-2 text-[#444444] text-[11px]">|</Column>
+                <Column className="px-2">
                   <Link
-                    className="text-center text-gray-400 text-sm underline"
-                    href=""
+                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline hover:text-[#ff8d28]"
+                    href={business.website}
                   >
                     {t.socialLinks.whatsapp}
                   </Link>
                 </Column>
-                <Column className="py-4 pr-4 text-center">
+                <Column className="px-2 text-[#444444] text-[11px]">|</Column>
+                <Column className="px-2">
                   <Link
-                    className="text-center text-gray-400 text-sm underline"
-                    href=""
+                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline hover:text-[#ff8d28]"
+                    href={business.website}
                   >
                     {t.socialLinks.facebook}
                   </Link>
                 </Column>
-                <Column className="py-4 text-center">
-                  <Link
-                    className="text-center text-gray-400 text-sm underline"
-                    href=""
-                  >
-                    {t.socialLinks.helpCenter}
-                  </Link>
-                </Column>
               </Row>
-              <Row>
-                <Text
-                  className="mx-auto max-w-[65ch] py-1 text-center text-[#AFAFAF] text-sm leading-snug"
-                  style={resetText}
-                >
-                  {t.contactUs}
-                </Text>
-              </Row>
-              <Row>
-                <Text
-                  className="py-1 text-center text-[#AFAFAF] text-sm"
-                  style={resetText}
-                >
-                  © {new Date().getFullYear()} KAN. {t.copyright}
-                </Text>
-              </Row>
+
+              <Text className="m-0 text-[#666666] text-[11px] leading-relaxed">
+                {t.contactUs}
+              </Text>
+              <Text className="mt-2 text-[#666666] text-[11px] leading-relaxed">
+                © {new Date().getFullYear()} {business.name.toUpperCase()}.{" "}
+                {t.copyright}
+              </Text>
             </Section>
           </Container>
         </Body>
