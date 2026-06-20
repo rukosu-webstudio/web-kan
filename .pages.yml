@@ -1,14 +1,4 @@
-media:
-  - name: public
-    label: Public
-    input: public
-    output: /public
-  - name: gallery
-    label: Galería
-    input: public/gallery
-    output: /public/gallery
-    categories: [image, video]
-    extensions: [jpg, jpeg, png, webp, gif, mp4, webm, ogg]
+media: public
 content:
   - name: business
     label: Business Config
@@ -325,9 +315,13 @@ content:
     fields:
       - name: images
         label: Imágenes y Videos
-        type: file
+        type: image
         list: true
-        media: gallery
+        options:
+          path: public/gallery/
+          input: public/gallery/
+          output: public/gallery/
+          extensions: [jpg, jpeg, png, webp, gif]
   - name: hero
     label: Banner Principal (Hero)
     path: src/content/hero.json

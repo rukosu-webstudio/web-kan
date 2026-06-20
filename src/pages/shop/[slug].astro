@@ -171,13 +171,13 @@ const gallery = product.gallery || [];
       const url = window.location.href;
       const message = `¡Hola! Me interesa este producto:
 
-              *${name}*
-              *Precio:* ${price}
-              *Talla:* ${selectedSize}
-              *Categoría:* ${category}
+                *${name}*
+                *Precio:* ${price}
+                *Talla:* ${selectedSize}
+                *Categoría:* ${category}
 
-              ¿Me podrían dar más información? ¡Muchas gracias! 
-              ${url}`;
+                ¿Me podrían dar más información? ¡Muchas gracias! 
+                ${url}`;
 
       const encodedMessage = encodeURIComponent(message);
       buyNowButton.setAttribute(

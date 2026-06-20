@@ -14,16 +14,38 @@ const slides =
   images.length > 0
     ? images
     : [
-        "/gallery/13605188_1080_1920_30fps.mp4",
-        "/gallery/12393172_1920_1080_30fps.mp4",
         "/gallery/Elite running.jpeg",
         "/gallery/Image-1.jpeg",
         "/gallery/imagen-2.jpeg",
         "/gallery/imagen-3.jpeg",
       ];
 
+const YOUTUBE_SPLIT_REGEX = /[?#]/;
+const YOUTUBE_QUERY_REGEX = /[&#]/;
+
 const isVideo = (url: string) =>
   url.endsWith(".mp4") || url.endsWith(".webm") || url.endsWith(".ogg");
+
+const isYoutube = (url: string) =>
+  url.includes("youtube.com") || url.includes("youtu.be");
+
+const getYoutubeEmbedUrl = (url: string, autoplay: boolean) => {
+  if (!url) {
+    return "";
+  }
+  let videoId = "";
+  if (url.includes("youtu.be/")) {
+    videoId = url.split("youtu.be/")[1]?.split(YOUTUBE_SPLIT_REGEX)[0] || "";
+  } else if (url.includes("youtube.com/embed/")) {
+    videoId =
+      url.split("youtube.com/embed/")[1]?.split(YOUTUBE_SPLIT_REGEX)[0] || "";
+  } else if (url.includes("v=")) {
+    videoId = url.split("v=")[1]?.split(YOUTUBE_QUERY_REGEX)[0] || "";
+  }
+  return videoId
+    ? `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&mute=${autoplay ? 1 : 0}&loop=1&playlist=${videoId}`
+    : "";
+};
 ---
 
 <section
@@ -41,7 +63,17 @@ const isVideo = (url: string) =>
         // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop on HTML tags
         <div class="swiper-slide">
           <div class="slide-container">
-            {isVideo(slide) ? (
+            {isYoutube(slide) ? (
+              <div class="relative flex h-full w-full items-center justify-center bg-black">
+                <iframe
+                  src={getYoutubeEmbedUrl(slide, index === 0)}
+                  class="h-full w-full object-contain"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                />
+              </div>
+            ) : isVideo(slide) ? (
               <div class="relative flex h-full w-full items-center justify-center bg-black">
                 <video
                   src={slide}
