@@ -314,14 +314,9 @@ content:
     icon: image
     fields:
       - name: images
-        label: Imágenes y Videos
-        type: image
+        label: Imágenes y Videos (Ruta de imagen o Link de YouTube)
+        type: string
         list: true
-        options:
-          path: public/gallery/
-          input: public/gallery/
-          output: public/gallery/
-          extensions: [jpg, jpeg, png, webp, gif]
   - name: hero
     label: Banner Principal (Hero)
     path: src/content/hero.json
