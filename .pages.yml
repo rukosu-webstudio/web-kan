@@ -345,10 +345,10 @@ content:
         label: Etiqueta del Anuncio
         description: "Ej. PROMO, NUEVO, PRÓXIMAMENTE"
         type: string
-      - name: subtitle
-        label: Texto del Anuncio
-        description: "El mensaje del anuncio (ej. Pronto sacaremos algo nuevo)"
-        type: text
+      - name: content
+        label: Cuerpo del Anuncio
+        description: "El mensaje detallado del anuncio (soporta negritas, enlaces, etc.)"
+        type: rich-text
       - name: title
         label: Lema Principal (Slogan)
         type: string

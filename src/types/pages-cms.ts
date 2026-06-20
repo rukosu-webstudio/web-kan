@@ -62,7 +62,7 @@ export interface IGallery {
 
 export interface IHero {
   badge?: string;
+  content?: string;
   isPromo: boolean;
-  subtitle?: string;
   title: string;
 }

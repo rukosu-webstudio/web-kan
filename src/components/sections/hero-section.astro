@@ -26,16 +26,16 @@ const hero = await getHero();
       >
     </div>
     <div class="w-full flex flex-col gap-8 pb-20">
-      {hero.isPromo && hero.subtitle && (
+      {hero.isPromo && hero.content && (
         <div class="promo-banner w-full max-w-[480px] p-4 border border-white/10 backdrop-blur-xl bg-black/40 shadow-lg flex flex-col gap-2 relative">
           {hero.badge && (
             <span class="promo-badge self-start px-2 py-0.5 text-[10px] font-semibold uppercase bg-website-orange text-black tracking-wider animate-pulse-subtle">
               {hero.badge}
             </span>
           )}
-          <p class="text-white text-sm md:text-base font-inter font-light leading-relaxed">
-            {hero.subtitle}
-          </p>
+          <div class="promo-content text-white text-sm md:text-base font-inter font-light leading-relaxed">
+            <Fragment set:html={hero.content} />
+          </div>
         </div>
       )}
 
@@ -57,6 +57,19 @@ const hero = await getHero();
   }
   .promo-banner:hover {
     border-color: rgba(255, 141, 40, 0.4);
+  }
+  .promo-content :global(p) {
+    margin-bottom: 0.5rem;
+  }
+  .promo-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .promo-content :global(a) {
+    color: var(--color-website-orange);
+    text-decoration: underline;
+  }
+  .promo-content :global(strong) {
+    font-weight: 600;
   }
   .animate-pulse-subtle {
     animation: pulse-subtle 3s infinite ease-in-out;

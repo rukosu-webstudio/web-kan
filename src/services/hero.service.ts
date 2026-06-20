@@ -1,16 +1,16 @@
+import { marked } from "marked";
 import type { IHero } from "@/types/pages-cms";
 
 const DEFAULTS: IHero = {
   isPromo: false,
   badge: "PROMO",
   title: "LA CONSTANCIA SUPERA LA MOTIVACIÓN",
-  subtitle: "",
+  content: "",
 };
 
 /**
  * Retrieves the hero configuration from src/content/hero.json.
  */
-// biome-ignore lint/suspicious/useAwait: getHero returns a Promise to maintain call site compatibility
 export const getHero = async (): Promise<IHero> => {
   try {
     const files = import.meta.glob("../content/hero.json", {
@@ -24,7 +24,13 @@ export const getHero = async (): Promise<IHero> => {
       return DEFAULTS;
     }
 
-    return JSON.parse(contentString) as IHero;
+    const hero = JSON.parse(contentString) as IHero;
+    const parsedContent = hero.content ? await marked.parse(hero.content) : "";
+
+    return {
+      ...hero,
+      content: parsedContent,
+    };
   } catch (error) {
     console.error("Error loading hero config:", error);
     return DEFAULTS;
