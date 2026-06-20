@@ -1,6 +1,7 @@
 ---
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 interface Props {
   images?: string[];
@@ -121,6 +122,8 @@ const getYoutubeEmbedUrl = (url: string, autoplay: boolean) => {
       ))}
     </div>
     <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev" aria-label="Previous Slide"></div>
+    <div class="swiper-button-next" aria-label="Next Slide"></div>
   </div>
 </section>
 
@@ -198,11 +201,48 @@ const getYoutubeEmbedUrl = (url: string, autoplay: boolean) => {
     border-radius: 4px !important;
     opacity: 1 !important;
   }
+
+  :global(.gallerySwiper .swiper-button-next),
+  :global(.gallerySwiper .swiper-button-prev) {
+    width: 44px !important;
+    height: 44px !important;
+    color: #000 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid #000 !important;
+    transition: all 0.3s ease !important;
+  }
+
+  :global(.gallerySwiper .swiper-button-next::after),
+  :global(.gallerySwiper .swiper-button-prev::after) {
+    font-size: 18px !important;
+    font-weight: bold !important;
+  }
+
+  :global(.gallerySwiper .swiper-button-next:hover),
+  :global(.gallerySwiper .swiper-button-prev:hover) {
+    color: #fff !important;
+    background: #000 !important;
+  }
+
+  :global(.gallerySwiper .swiper-button-prev) {
+    left: 10px !important;
+  }
+
+  :global(.gallerySwiper .swiper-button-next) {
+    right: 10px !important;
+  }
+
+  @media (max-width: 640px) {
+    :global(.gallerySwiper .swiper-button-next),
+    :global(.gallerySwiper .swiper-button-prev) {
+      display: none !important;
+    }
+  }
 </style>
 
 <script>
   import Swiper from "swiper";
-  import { Pagination } from "swiper/modules";
+  import { Navigation, Pagination } from "swiper/modules";
 
   let gallerySwiper: Swiper | null = null;
 
@@ -279,12 +319,16 @@ const getYoutubeEmbedUrl = (url: string, autoplay: boolean) => {
     }
 
     gallerySwiper = new Swiper(".gallerySwiper", {
-      modules: [Pagination],
+      modules: [Pagination, Navigation],
       slidesPerView: 1,
       spaceBetween: 16,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
       },
       breakpoints: {
         425: {
