@@ -206,10 +206,11 @@ const getYoutubeEmbedUrl = (url: string, autoplay: boolean) => {
   :global(.gallerySwiper .swiper-button-prev) {
     width: 44px !important;
     height: 44px !important;
-    color: #000 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
+    color: #ffff !important;
+    background: rgba(0, 0, 0, 0.95) !important;
     border: 1px solid #000 !important;
     transition: all 0.3s ease !important;
+    padding: 8px !important;
   }
 
   :global(.gallerySwiper .swiper-button-next::after),
@@ -220,8 +221,8 @@ const getYoutubeEmbedUrl = (url: string, autoplay: boolean) => {
 
   :global(.gallerySwiper .swiper-button-next:hover),
   :global(.gallerySwiper .swiper-button-prev:hover) {
-    color: #fff !important;
-    background: #000 !important;
+    color: #000 !important;
+    background: #fff !important;
   }
 
   :global(.gallerySwiper .swiper-button-prev) {
@@ -230,13 +231,6 @@ const getYoutubeEmbedUrl = (url: string, autoplay: boolean) => {
 
   :global(.gallerySwiper .swiper-button-next) {
     right: 10px !important;
-  }
-
-  @media (max-width: 640px) {
-    :global(.gallerySwiper .swiper-button-next),
-    :global(.gallerySwiper .swiper-button-prev) {
-      display: none !important;
-    }
   }
 </style>
 
