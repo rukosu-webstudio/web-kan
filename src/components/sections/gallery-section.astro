@@ -4,15 +4,10 @@ import "swiper/css/pagination";
 
 interface Props {
   images?: string[];
-  subtitle?: string;
   title?: string;
 }
 
-const {
-  title = "Nuestra Galería",
-  subtitle = "Momentos destacados de nuestro espacio, creaciones y comunidad",
-  images = [],
-} = Astro.props;
+const { title = "Nuestra Galería", images = [] } = Astro.props;
 
 // Si no hay imágenes de momento, creamos placeholders
 const slides =
@@ -133,17 +128,20 @@ const slides =
   }
 
   :global(.gallerySwiper .swiper-pagination-bullet) {
-    width: 8px !important;
-    height: 8px !important;
-    background: rgba(255, 255, 255, 0.2) !important;
-    opacity: 1 !important;
+    width: 10px !important;
+    height: 10px !important;
+    background: transparent !important;
+    border: 2px solid #000 !important;
+    opacity: 0.6 !important;
     transition: all 0.3s ease !important;
   }
 
   :global(.gallerySwiper .swiper-pagination-bullet-active) {
     width: 24px !important;
-    background: #ff8d28 !important; /* Theme active color */
+    background: #000 !important;
+    border-color: #000 !important;
     border-radius: 4px !important;
+    opacity: 1 !important;
   }
 </style>
 
