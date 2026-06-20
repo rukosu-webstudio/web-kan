@@ -2,6 +2,7 @@
 import CollectionsSection from "@/components/sections/collections-section.astro";
 import ContactSection from "@/components/sections/contact-section.astro";
 import FeaturedProductsSection from "@/components/sections/featured-products-section.astro";
+import GallerySection from "@/components/sections/gallery-section.astro";
 import HeroSection from "@/components/sections/hero-section.astro";
 import TwoCollumnsSection from "@/components/sections/two-collumns-section.astro";
 import { ROUTE } from "@/config/routes";
@@ -47,6 +48,6 @@ const men = allProducts
     url={`${ROUTE.SHOP.path}?category=men`}
     slug="men"
   />
-  <CollectionsSection />
+  <GallerySection />
   <ContactSection />
 </BaseLayout>
