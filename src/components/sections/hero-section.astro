@@ -33,14 +33,17 @@ const hero = await getHero();
               {hero.badge}
             </span>
           )}
-          <div class="promo-content text-white text-sm md:text-base font-inter font-light leading-relaxed">
-            <Fragment set:html={hero.content} />
+          <div class="w-full max-w-full">
+            <div
+              class="markdawn-content w-full prose prose-neutral prose-invert max-w-none font-inter text-white text-sm md:text-base font-light leading-relaxed"
+              set:html={hero.content}
+            />
           </div>
         </div>
       )}
 
       <h1
-        class="w-full max-w-[480px] text-white text-3xl md:text-[40px] font-mozilla font-extralight md:text-base/10"
+        class="w-full max-w-[480px] text-white text-3xl md:text-[40px] font-mozilla font-extralight md:text-base/10 uppercase"
       >
         {hero.title}
       </h1>
@@ -58,17 +61,17 @@ const hero = await getHero();
   .promo-banner:hover {
     border-color: rgba(255, 141, 40, 0.4);
   }
-  .promo-content :global(p) {
+  .markdawn-content :global(p) {
     margin-bottom: 0.5rem;
   }
-  .promo-content :global(p:last-child) {
+  .markdawn-content :global(p:last-child) {
     margin-bottom: 0;
   }
-  .promo-content :global(a) {
+  .markdawn-content :global(a) {
     color: var(--color-website-orange);
     text-decoration: underline;
   }
-  .promo-content :global(strong) {
+  .markdawn-content :global(strong) {
     font-weight: 600;
   }
   .animate-pulse-subtle {
