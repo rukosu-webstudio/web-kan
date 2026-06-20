@@ -322,4 +322,35 @@ content:
           input: public/gallery/
           output: public/gallery/
           extensions: [jpg, jpeg, png, webp, gif, mp4, webm, ogg]
+  - name: hero
+    label: Banner Principal (Hero)
+    path: src/content/hero.json
+    type: file
+    icon: star
+    fields:
+      - name: isPromo
+        label: Activar modo promoción / publicidad
+        description: "Si está activo, mostrará el banner con diseño destacado (tarjeta). Si está inactivo, mostrará el lema limpio."
+        type: boolean
+        default: false
+      - name: badge
+        label: Etiqueta (Badge)
+        description: "Ej. PROMO, NUEVO, -20%"
+        type: string
+      - name: title
+        label: Título / Frase Principal
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtítulo / Descripción corta
+        type: text
+      - name: buttonLabel
+        label: Texto del Botón
+        type: string
+        required: true
+      - name: buttonUrl
+        label: Enlace del Botón (URL)
+        type: string
+        required: true
+
 

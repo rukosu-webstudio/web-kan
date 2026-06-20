@@ -54,3 +54,12 @@ export interface ICovers {
 export interface IGallery {
   images: string[];
 }
+
+export interface IHero {
+  badge?: string;
+  buttonLabel: string;
+  buttonUrl: string;
+  isPromo: boolean;
+  subtitle?: string;
+  title: string;
+}
