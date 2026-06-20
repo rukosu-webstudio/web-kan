@@ -1,8 +1,8 @@
 {
-  "isPromo": false,
+  "isPromo": true,
   "badge": "PROMO",
   "title": "LA CONSTANCIA SUPERA LA MOTIVACIÓN",
-  "subtitle": "",
+  "subtitle": "Nuestra galería",
   "buttonLabel": "Nuestra galería",
   "buttonUrl": "/#gallery"
 }
