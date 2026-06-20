@@ -1,24 +1,22 @@
 {
   "images": [
     {
-      "image": "/public/gallery/Elite running.jpeg",
-      "videoUrl": ""
+      "image": "/public/gallery/Elite running.jpeg"
     },
     {
-      "image": "/public/gallery/Image-1.jpeg",
-      "videoUrl": ""
+      "videoUrl": "https://www.youtube.com/watch?v=MRzeLDkWT1c"
     },
     {
-      "image": "/public/gallery/imagen-2.jpeg",
-      "videoUrl": ""
+      "image": "/public/gallery/Image-1.jpeg"
     },
     {
-      "image": "/public/gallery/imagen-3.jpeg",
-      "videoUrl": ""
+      "image": "/public/gallery/imagen-2.jpeg"
     },
     {
-      "image": "/public/gallery/women.jpg",
-      "videoUrl": ""
+      "image": "/public/gallery/imagen-3.jpeg"
+    },
+    {
+      "image": "/public/gallery/women.jpg"
     }
   ]
 }
