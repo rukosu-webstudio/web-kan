@@ -51,8 +51,13 @@ export interface ICovers {
   women?: string;
 }
 
+export interface IGalleryItem {
+  image?: string;
+  videoUrl?: string;
+}
+
 export interface IGallery {
-  images: string[];
+  images: IGalleryItem[];
 }
 
 export interface IHero {

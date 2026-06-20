@@ -26,12 +26,13 @@ export const getGallery = async (): Promise<string[]> => {
     }
 
     return gallery.images
-      .map((path) => {
+      .map((item) => {
+        const path = item.videoUrl || item.image;
         if (!path) {
           return "";
         }
         let cleaned = path.replace(PUBLIC_PATH_REGEX, "");
-        if (!cleaned.startsWith("/")) {
+        if (!(cleaned.startsWith("/") || cleaned.startsWith("http"))) {
           cleaned = `/${cleaned}`;
         }
         return cleaned;

@@ -314,9 +314,22 @@ content:
     icon: image
     fields:
       - name: images
-        label: Imágenes y Videos (Ruta de imagen o Link de YouTube)
-        type: string
+        label: Elementos de la Galería
+        type: object
         list: true
+        fields:
+          - name: image
+            label: Imagen Local (Baja prioridad)
+            type: image
+            options:
+              path: public/gallery/
+              input: public/gallery/
+              output: public/gallery/
+              extensions: [jpg, jpeg, png, webp, gif]
+          - name: videoUrl
+            label: Video de YouTube (Alta prioridad)
+            description: "Si se agrega este link, se mostrará el video en lugar de la imagen."
+            type: string
   - name: hero
     label: Banner Principal (Hero)
     path: src/content/hero.json
