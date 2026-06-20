@@ -307,3 +307,19 @@ content:
           input: public/covers/
           output: public/covers/
           extensions: [jpg, jpeg, png]
+  - name: gallery
+    label: Galería
+    path: src/content/gallery.json
+    type: file
+    icon: image
+    fields:
+      - name: images
+        label: Imágenes y Videos
+        type: image
+        list: true
+        options:
+          path: public/gallery/
+          input: public/gallery/
+          output: public/gallery/
+          extensions: [jpg, jpeg, png, webp, gif, mp4, webm, ogg]
+

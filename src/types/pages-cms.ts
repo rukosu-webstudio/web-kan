@@ -50,3 +50,7 @@ export interface ICovers {
   shop?: string;
   women?: string;
 }
+
+export interface IGallery {
+  images: string[];
+}

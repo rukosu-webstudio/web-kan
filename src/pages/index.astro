@@ -8,10 +8,12 @@ import TwoCollumnsSection from "@/components/sections/two-collumns-section.astro
 import { ROUTE } from "@/config/routes";
 import BaseLayout from "@/layouts/base-layout.astro";
 import { getCovers } from "@/services/cover.service";
+import { getGallery } from "@/services/gallery.service";
 import { getAllProducts } from "@/services/product.service";
 
 const allProducts = await getAllProducts();
 const covers = await getCovers();
+const gallery = await getGallery();
 
 const featuredProducts = allProducts.filter((p) => p.featured === true);
 const women = allProducts
@@ -48,6 +50,6 @@ const men = allProducts
     url={`${ROUTE.SHOP.path}?category=men`}
     slug="men"
   />
-  <GallerySection />
+  <GallerySection images={gallery} />
   <ContactSection />
 </BaseLayout>
