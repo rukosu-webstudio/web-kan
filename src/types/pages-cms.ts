@@ -57,8 +57,6 @@ export interface IGallery {
 
 export interface IHero {
   badge?: string;
-  buttonLabel: string;
-  buttonUrl: string;
   isPromo: boolean;
   subtitle?: string;
   title: string;

@@ -5,8 +5,6 @@ const DEFAULTS: IHero = {
   badge: "PROMO",
   title: "LA CONSTANCIA SUPERA LA MOTIVACIÓN",
   subtitle: "",
-  buttonLabel: "Nuestra galería",
-  buttonUrl: "/#gallery",
 };
 
 /**

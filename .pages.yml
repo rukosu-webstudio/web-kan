@@ -315,7 +315,7 @@ content:
     fields:
       - name: images
         label: Imágenes y Videos
-        type: image
+        type: file
         list: true
         options:
           path: public/gallery/
@@ -343,14 +343,6 @@ content:
         type: text
       - name: title
         label: Lema Principal (Slogan)
-        type: string
-        required: true
-      - name: buttonLabel
-        label: Texto del Botón de la Galería
-        type: string
-        required: true
-      - name: buttonUrl
-        label: Enlace del Botón de la Galería (URL)
         type: string
         required: true
 
