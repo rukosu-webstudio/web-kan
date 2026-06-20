@@ -97,11 +97,14 @@ export const EmailContact = ({
 
   const logoSrc = getAbsoluteUrl(logo.src, business.website);
 
+  // Filter dynamic fields to only map visible ones
+  const visibleData = data.filter((input) => input?.showEmpty || input?.value);
+
   return (
     <Html>
-      <Head />
-      <Preview>{preview}</Preview>
       <Tailwind>
+        <Head />
+        <Preview>{preview}</Preview>
         <Body
           className="bg-[#f6f6f6] py-10"
           style={{
@@ -142,14 +145,16 @@ export const EmailContact = ({
             {/* Form Fields Card */}
             <Section className="px-8 pb-6">
               <Section className="rounded-none border border-[#e0e0e0] bg-[#fdfdfd] p-[20px]">
-                {data.map((input) => {
-                  if (!(input?.showEmpty || input?.value)) {
-                    return null;
-                  }
+                {visibleData.map((input, index) => {
+                  const isFirst = index === 0;
+                  const isLast = index === visibleData.length - 1;
 
                   if (input.colSpan === "full") {
                     return (
-                      <Section className="mb-[16px] last:mb-0" key={input.name}>
+                      <Section
+                        className={isLast ? "mb-0" : "mb-[16px]"}
+                        key={input.name}
+                      >
                         <Text className="m-0 font-semibold text-[#888888] text-[11px] uppercase tracking-wider">
                           {input.name}
                         </Text>
@@ -162,14 +167,14 @@ export const EmailContact = ({
 
                   return (
                     <Section
-                      className="border-[#eaeaea] border-b py-[10px] first:pt-0 last:border-b-0 last:pb-0"
+                      className={`border-[#eaeaea] py-[10px] ${isFirst ? "pt-0" : ""} ${isLast ? "border-b-0 pb-0" : "border-b"}`}
                       key={input.name}
                     >
                       <Row>
                         <Column className="w-[40%] align-middle font-semibold text-[#888888] text-[11px] uppercase tracking-wider">
                           {input.name}:
                         </Column>
-                        <Column className="w-[60%] text-right align-middle font-medium text-[14px] text-black">
+                        <Column className="w-[60%] text-right align-middle font-medium text-[#333333] text-[14px]">
                           {input.value ?? ""}
                         </Column>
                       </Row>
@@ -187,7 +192,7 @@ export const EmailContact = ({
               <Text className="mt-3 text-[#888888] text-[13px] leading-relaxed">
                 {t.moreInfo}{" "}
                 <Link
-                  className="font-semibold text-[#ff8d28] no-underline hover:underline"
+                  className="font-semibold text-[#ff8d28] underline"
                   href={`mailto:${business.contactEmail}`}
                 >
                   {business.contactEmail}
@@ -201,7 +206,7 @@ export const EmailContact = ({
               <Row className="mx-auto mb-4 w-fit">
                 <Column className="px-2">
                   <Link
-                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline hover:text-[#ff8d28]"
+                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
                     href={business.website}
                   >
                     {t.socialLinks.instagram}
@@ -210,7 +215,7 @@ export const EmailContact = ({
                 <Column className="px-2 text-[#444444] text-[11px]">|</Column>
                 <Column className="px-2">
                   <Link
-                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline hover:text-[#ff8d28]"
+                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
                     href={business.website}
                   >
                     {t.socialLinks.whatsapp}
@@ -219,7 +224,7 @@ export const EmailContact = ({
                 <Column className="px-2 text-[#444444] text-[11px]">|</Column>
                 <Column className="px-2">
                   <Link
-                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline hover:text-[#ff8d28]"
+                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
                     href={business.website}
                   >
                     {t.socialLinks.facebook}
