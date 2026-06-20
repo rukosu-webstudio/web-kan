@@ -1,10 +1,13 @@
 import { marked } from "marked";
 import type { IProduct, IProductCard } from "@/types/pages-cms";
 
+const PUBLIC_PATH_REGEX = /^(\/)?public/;
+
 /**
  * Retrieves all products from the src/content/products directory.
  * Maps them to IProductCard format for list views.
  */
+// biome-ignore lint/suspicious/useAwait: getAllProducts returns a Promise to maintain call site compatibility
 export const getAllProducts = async (): Promise<IProductCard[]> => {
   try {
     const files = import.meta.glob("../content/products/*.md", {
@@ -23,9 +26,11 @@ export const getAllProducts = async (): Promise<IProductCard[]> => {
           category: parsed.category
             ? parsed.category.split(",").map((c) => c.trim())
             : [],
-          img: parsed.img?.replace(/^(\/)?public/, ""),
-          imgHover: parsed.imgHover?.replace(/^(\/)?public/, ""),
-          gallery: parsed.gallery?.map((img) => img.replace(/^(\/)?public/, "")),
+          img: parsed.img?.replace(PUBLIC_PATH_REGEX, ""),
+          imgHover: parsed.imgHover?.replace(PUBLIC_PATH_REGEX, ""),
+          gallery: parsed.gallery?.map((img) =>
+            img.replace(PUBLIC_PATH_REGEX, "")
+          ),
         } as IProductCard;
       })
       .filter((product) => product.active !== false);
@@ -40,7 +45,9 @@ export const getAllProducts = async (): Promise<IProductCard[]> => {
 /**
  * Retrieves a single product by its slug.
  */
-export const getProductBySlug = async (slug: string): Promise<IProduct | null> => {
+export const getProductBySlug = async (
+  slug: string
+): Promise<IProduct | null> => {
   try {
     const files = import.meta.glob("../content/products/*.md", {
       query: "?raw",
@@ -53,7 +60,9 @@ export const getProductBySlug = async (slug: string): Promise<IProduct | null> =
       return parsed.slug === slug && parsed.active !== false;
     });
 
-    if (!productFile) return null;
+    if (!productFile) {
+      return null;
+    }
 
     const product = JSON.parse(productFile as string) as IProduct;
 
@@ -62,10 +71,10 @@ export const getProductBySlug = async (slug: string): Promise<IProduct | null> =
     }
 
     // Clean image paths
-    product.img = product.img?.replace(/^(\/)?public/, "");
-    product.imgHover = product.imgHover?.replace(/^(\/)?public/, "");
+    product.img = product.img?.replace(PUBLIC_PATH_REGEX, "");
+    product.imgHover = product.imgHover?.replace(PUBLIC_PATH_REGEX, "");
     product.gallery = product.gallery?.map((img) =>
-      img.replace(/^(\/)?public/, ""),
+      img.replace(PUBLIC_PATH_REGEX, "")
     );
 
     return product;
@@ -77,11 +86,14 @@ export const getProductBySlug = async (slug: string): Promise<IProduct | null> =
 
 export const getProductPrueba = async (): Promise<IProduct | null> => {
   try {
-    const products = import.meta.glob("../content/products/2026-06-10-calcetin-deportivo-transpirable.md", {
-      query: "?raw",
-      import: "default",
-      eager: true,
-    });
+    const products = import.meta.glob(
+      "../content/products/2026-06-10-calcetin-deportivo-transpirable.md",
+      {
+        query: "?raw",
+        import: "default",
+        eager: true,
+      }
+    );
 
     const content = Object.values(products)[0] as string;
 

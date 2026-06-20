@@ -1,50 +1,52 @@
 export interface IProductCard {
+  active?: boolean;
+  category?: string[];
+  color?: string;
+  featured?: boolean;
+  gallery?: string[];
   img?: string;
   imgHover?: string;
-  gallery?: string[];
   name: string;
   price: number;
   size?: string[];
   slug: string;
   tag?: string;
-  category?: string[];
-  color?: string;
-  featured?: boolean;
-  active?: boolean;
 }
 
 export interface IProduct {
-  name: string;
-  slug: string;
-  price: number;
-  size: string[];
-
-  tag?: string;
+  active?: boolean;
   category: string;
   color?: string;
 
-  featured?: boolean;
-  active?: boolean;
-
   description?: string;
+
+  featured?: boolean;
+
+  gallery?: string[];
+  img?: string;
+  imgHover?: string;
+
   moreDetails?: {
     title: string;
     description: string;
   }[];
+  name: string;
+  price: number;
+  size: string[];
+  slug: string;
 
-  img?: string;
-  gallery?: string[];
-  }
+  tag?: string;
+}
 
-  export interface IHistory {
-    content: string;
-  }
+export interface IHistory {
+  content: string;
+}
 
-  export interface ICovers {
-    home?: string;
-    history?: string;
-    shop?: string;
-    contact?: string;
-    women?: string;
-    men?: string;
-  }
+export interface ICovers {
+  contact?: string;
+  history?: string;
+  home?: string;
+  men?: string;
+  shop?: string;
+  women?: string;
+}

@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "@/layouts/base-layout.astro";
-//@ts-ignore
-import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import ContactSection from "@/components/sections/contact-section.astro";
+//@ts-expect-error
+import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import HistoryContentSection from "@/components/sections/history-content-section.astro";
+import BaseLayout from "@/layouts/base-layout.astro";
 import { getCovers } from "@/services/cover.service";
 
 const covers = await getCovers();

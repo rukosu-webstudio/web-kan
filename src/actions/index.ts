@@ -20,13 +20,15 @@ interface IEmailData {
 const BCC_EMAIL = Array.isArray(BUSINESS_CONFIG.settings?.bccEmail)
   ? BUSINESS_CONFIG.settings?.bccEmail
   : [];
-const EMAIL_SENDER = import.meta.env.EMAIL_SENDER || BUSINESS_CONFIG.settings?.emailSender;
-const RESEND_KEY = import.meta.env.RESEND_API_TOKEN || import.meta.env.RESEND_API_KEY;
+const EMAIL_SENDER =
+  import.meta.env.EMAIL_SENDER || BUSINESS_CONFIG.settings?.emailSender;
+const RESEND_KEY =
+  import.meta.env.RESEND_API_TOKEN || import.meta.env.RESEND_API_KEY;
 
 console.log("Email Config Check:", {
   hasResendKey: !!RESEND_KEY,
   sender: EMAIL_SENDER,
-  mode: import.meta.env.MODE
+  mode: import.meta.env.MODE,
 });
 
 const resend = new Resend(RESEND_KEY || "re_xxxxxxxxxxxxxxxxxxxxxxxxxxx");
@@ -72,7 +74,9 @@ export const server = {
         const { name, message, email, phone } = contact;
 
         if (!EMAIL_SENDER) {
-          console.error("CRITICAL: EMAIL_SENDER is not defined in .env or business.json");
+          console.error(
+            "CRITICAL: EMAIL_SENDER is not defined in .env or business.json"
+          );
           throw new ActionError({
             code: "INTERNAL_SERVER_ERROR",
             message: "Configuración de remitente faltante",
@@ -96,7 +100,9 @@ export const server = {
             ? [...BCC_EMAIL, BUSINESS_CONFIG.contact.email.trim()]
             : [...BCC_EMAIL];
 
-        console.log(`Sending email from: ${EMAIL_SENDER} to: ${contact.email.trim()}`);
+        console.log(
+          `Sending email from: ${EMAIL_SENDER} to: ${contact.email.trim()}`
+        );
 
         const resResend = await resend.emails.send({
           from: `${BUSINESS_CONFIG.name} <${EMAIL_SENDER}>`,
@@ -113,7 +119,8 @@ export const server = {
                 website: BUSINESS_CONFIG.site,
               },
               logo: {
-                src: (BUSINESS_CONFIG as any).logoEmail || "",
+                src:
+                  (BUSINESS_CONFIG as { logoEmail?: string }).logoEmail || "",
                 width: 150,
               },
               data: DATA_STRUCTURE,
@@ -129,15 +136,19 @@ export const server = {
           });
           throw new ActionError({
             code: "BAD_REQUEST",
-            message: resResend.error.message || "Error al enviar el correo electrónico",
+            message:
+              resResend.error.message ||
+              "Error al enviar el correo electrónico",
           });
         }
 
         return { status: true, message: "Correo enviado exitosamente" };
       } catch (error) {
         console.error("Action Contact Error:", error);
-        if (error instanceof ActionError) throw error;
-        
+        if (error instanceof ActionError) {
+          throw error;
+        }
+
         captureException(error, { level: "error", extra: { contact } });
         throw new ActionError({
           code: "BAD_REQUEST",

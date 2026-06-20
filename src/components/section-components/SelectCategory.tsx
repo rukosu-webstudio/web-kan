@@ -1,3 +1,4 @@
+// biome-ignore lint/style/useFilenamingConvention: Component filenames are PascalCase
 import {
   Select,
   SelectContent,
@@ -17,25 +18,21 @@ export const SelectCategory = ({
   items: string[];
   value?: string;
   onValueChange?: (value: string) => void;
-}) => {
-  return (
-    <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="w-full rounded-none border-black px-5 font-mozilla uppercase text-base bg-white cursor-pointer">
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent className="">
-        <SelectGroup>
-          {items.map((item, index) => {
-            return (
-              <SelectItem key={index} value={item}>
-                {item}
-              </SelectItem>
-            );
-          })}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  );
-};
+}) => (
+  <Select onValueChange={onValueChange} value={value}>
+    <SelectTrigger className="w-full cursor-pointer rounded-none border-black bg-white px-5 font-mozilla text-base uppercase">
+      <SelectValue placeholder={placeholder} />
+    </SelectTrigger>
+    <SelectContent className="">
+      <SelectGroup>
+        {items.map((item) => (
+          <SelectItem key={item} value={item}>
+            {item}
+          </SelectItem>
+        ))}
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+);
 
 export default SelectCategory;

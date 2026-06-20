@@ -1,6 +1,6 @@
-import { useMemo, useState, useEffect } from "react";
-import type { IProductCard } from "@/types/pages-cms";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { FilterGroup } from "@/services/filter.service";
+import type { IProductCard } from "@/types/pages-cms";
 import ProductCard from "../section-components/productCard";
 import SelectCategory from "../section-components/SelectCategory";
 
@@ -16,11 +16,28 @@ export const ProductsSection = ({
     Record<string, string>
   >(() => {
     const initial: Record<string, string> = {};
-    filterGroups.forEach((group) => {
+    for (const group of filterGroups) {
       initial[group.title] = "Todo";
-    });
+    }
     return initial;
   });
+
+  const handleFilterChange = useCallback((title: string, value: string) => {
+    setSelectedFilters((prev) => ({
+      ...prev,
+      [title]: value,
+    }));
+  }, []);
+
+  const clearFilters = () => {
+    setSelectedFilters((prev) => {
+      const cleared: Record<string, string> = {};
+      for (const key of Object.keys(prev)) {
+        cleared[key] = "Todo";
+      }
+      return cleared;
+    });
+  };
 
   // Handle initial filters from URL query parameters
   useEffect(() => {
@@ -39,79 +56,68 @@ export const ProductsSection = ({
         }
       }
     }
-  }, []);
-
-  const handleFilterChange = (title: string, value: string) => {
-    setSelectedFilters((prev) => ({
-      ...prev,
-      [title]: value,
-    }));
-  };
-
-  const clearFilters = () => {
-    setSelectedFilters((prev) => {
-      const cleared: Record<string, string> = {};
-      Object.keys(prev).forEach((key) => {
-        cleared[key] = "Todo";
-      });
-      return cleared;
-    });
-  };
+  }, [handleFilterChange, filterGroups]);
 
   // Check if any filter is active
   const hasActiveFilters = Object.values(selectedFilters).some(
-    (val) => val !== "Todo",
+    (val) => val !== "Todo"
   );
 
   // Filtering Logic (AND)
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      return Object.entries(selectedFilters).every(([title, selectedValue]) => {
-        if (selectedValue === "Todo") return true;
+  const filteredProducts = useMemo(
+    () =>
+      products.filter((product) =>
+        Object.entries(selectedFilters).every(([title, selectedValue]) => {
+          if (selectedValue === "Todo") {
+            return true;
+          }
 
-        const valToMatch = selectedValue.toLowerCase();
+          const valToMatch = selectedValue.toLowerCase();
 
-        if (title === "Categorias") {
-          return product.category?.some((c) => c.toLowerCase() === valToMatch);
-        }
+          if (title === "Categorias") {
+            return product.category?.some(
+              (c) => c.toLowerCase() === valToMatch
+            );
+          }
 
-        if (title === "Etiquetas") {
-          return product.tag?.toLowerCase() === valToMatch;
-        }
+          if (title === "Etiquetas") {
+            return product.tag?.toLowerCase() === valToMatch;
+          }
 
-        if (title === "Tallas") {
-          return product.size?.some((s) => s.toLowerCase() === valToMatch);
-        }
+          if (title === "Tallas") {
+            return product.size?.some((s) => s.toLowerCase() === valToMatch);
+          }
 
-        if (title === "Colores") {
-          return product.color?.toLowerCase() === valToMatch;
-        }
+          if (title === "Colores") {
+            return product.color?.toLowerCase() === valToMatch;
+          }
 
-        return true;
-      });
-    });
-  }, [products, selectedFilters]);
+          return true;
+        })
+      ),
+    [products, selectedFilters]
+  );
 
   return (
-    <section className="w-full py-14 lg:py-20 flex justify-center">
-      <div className="w-full max-wrapper ">
-        <div className="w-full grid md:grid-cols-[30%_1fr] lg:grid-cols-[20%_1fr] items-stretch gap-8 sm:gap-5 ">
+    <section className="flex w-full justify-center py-14 lg:py-20">
+      <div className="max-wrapper w-full">
+        <div className="grid w-full items-stretch gap-8 sm:gap-5 md:grid-cols-[30%_1fr] lg:grid-cols-[20%_1fr]">
           {/* FILTROS */}
-          <div className="w-full h-full">
-            <div className="w-full sticky top-28 flex flex-col gap-4 md:gap-6 lg:gap-10">
+          <div className="h-full w-full">
+            <div className="sticky top-28 flex w-full flex-col gap-4 md:gap-6 lg:gap-10">
               <div className="flex flex-col gap-8">
-                {filterGroups.map((group, index) => (
-                  <div key={index} className="w-full flex flex-col gap-1">
-                    <p className="w-full text-xl uppercase font-medium">
+                {filterGroups.map((group) => (
+                  <div className="flex w-full flex-col gap-1" key={group.title}>
+                    <p className="w-full font-medium text-xl uppercase">
                       {group.title}
                     </p>
                     <SelectCategory
-                      placeholder={group.title}
                       items={group.items}
-                      value={selectedFilters[group.title]}
                       onValueChange={(val) =>
                         handleFilterChange(group.title, val)
                       }
+                      placeholder={group.title}
+                      value={selectedFilters[group.title]}
                     />
                   </div>
                 ))}
@@ -119,8 +125,9 @@ export const ProductsSection = ({
 
               {hasActiveFilters && (
                 <button
+                  className="link-animated w-fit font-mozilla text-sm text-website-orange uppercase"
                   onClick={clearFilters}
-                  className="w-fit text-website-orange uppercase font-mozilla text-sm link-animated"
+                  type="button"
                 >
                   Borrar filtros
                 </button>
@@ -129,36 +136,37 @@ export const ProductsSection = ({
           </div>
 
           {/* PRODUCTOS */}
-          <div className="w-full flex flex-col gap-10 ">
-            <div className="w-full flex justify-between items-end border-b border-black/10 pb-4">
-              <p className="text-sm font-light uppercase tracking-wider">
+          <div className="flex w-full flex-col gap-10">
+            <div className="flex w-full items-end justify-between border-black/10 border-b pb-4">
+              <p className="font-light text-sm uppercase tracking-wider">
                 {filteredProducts.length} Productos encontrados
               </p>
             </div>
 
             {filteredProducts.length > 0 ? (
-              <div className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 xl:gap-10">
+              <div className="grid w-full grid-cols-2 gap-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-4 xl:gap-10">
                 {filteredProducts.map((product) => (
                   <ProductCard
-                    key={product.slug}
-                    img={product.img}
                     gallery={product.gallery}
+                    img={product.img}
+                    key={product.slug}
                     name={product.name}
                     price={product.price}
-                    tag={product.tag}
                     size={product.size}
                     slug={product.slug}
+                    tag={product.tag}
                   />
                 ))}
               </div>
             ) : (
-              <div className="w-full py-20 flex flex-col items-center justify-center gap-4 text-center border border-dashed border-black/10">
-                <p className="text-xl font-light uppercase">
+              <div className="flex w-full flex-col items-center justify-center gap-4 border border-black/10 border-dashed py-20 text-center">
+                <p className="font-light text-xl uppercase">
                   No se encontraron productos
                 </p>
                 <button
+                  className="link-animated text-sm text-website-orange uppercase"
                   onClick={clearFilters}
-                  className="text-website-orange uppercase text-sm link-animated"
+                  type="button"
                 >
                   Ver todos los productos
                 </button>

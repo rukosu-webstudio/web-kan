@@ -14,7 +14,9 @@ export const getHistoryContent = async (): Promise<string> => {
     });
 
     const contentString = Object.values(files)[0] as string;
-    if (!contentString) return "";
+    if (!contentString) {
+      return "";
+    }
 
     const history = JSON.parse(contentString) as IHistory;
     let content = history.content;

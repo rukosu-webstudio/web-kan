@@ -32,9 +32,7 @@
   },
   "settings": {
     "emailSender": "iphone23master@gmail.com",
-    "bccEmail": [
-      "monitoreo@kanathletic.com"
-    ],
+    "bccEmail": ["monitoreo@kanathletic.com"],
     "resendToCompany": false
   }
 }

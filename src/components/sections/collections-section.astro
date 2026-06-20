@@ -26,15 +26,14 @@ const collections = [
     <div
       class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 xl:gap-10"
     >
-      {collections.map((collection) => {
-          return (
-            <CollectionCard
-              title={collection.title}
-              cover={collection.cover}
-              url={collection.url}
-            />
-          );
-        })}
+      {collections.map((collection) => (
+        // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
+        <CollectionCard
+          title={collection.title}
+          cover={collection.cover}
+          url={collection.url}
+        />
+      ))}
     </div>
   </div>
 </section>

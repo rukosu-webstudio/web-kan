@@ -12,6 +12,7 @@ const allLinks = [...NAV_COLLECTIONS, ROUTE.SHOP, ...NAV_ROUTES];
   <button
     id="mobile-menu-close"
     class="absolute top-10 right-6 text-white w-10 h-10"
+    type="button"
   >
     <Close class="w-full h-full" />
   </button>
@@ -26,6 +27,7 @@ const allLinks = [...NAV_COLLECTIONS, ROUTE.SHOP, ...NAV_ROUTES];
       class="flex flex-col items-center gap-6 text-white uppercase text-2xl font-light nav-link-animated"
     >
       {allLinks.map((route) => (
+          // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
           <a
             href={route.path}
             class={`nav-link-mobile ${route.path === ROUTE.SHOP.path ? "text-website-orange" : ""}`}
@@ -60,7 +62,7 @@ const allLinks = [...NAV_COLLECTIONS, ROUTE.SHOP, ...NAV_ROUTES];
   closeButton?.addEventListener("click", closeMenu);
 
   // Close menu when a link is clicked (especially for anchor links)
-  menuLinks.forEach((link) => {
+  for (const link of menuLinks) {
     link.addEventListener("click", closeMenu);
-  });
+  }
 </script>

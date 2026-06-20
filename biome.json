@@ -26,7 +26,8 @@
           "style": {
             "noNestedTernary": "off",
             "useConsistentObjectDefinitions": "off",
-            "useTemplate": "off"
+            "useTemplate": "off",
+            "useFilenamingConvention": "off"
           },
           "a11y": {
             "noSvgWithoutTitle": "off",

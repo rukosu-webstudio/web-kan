@@ -1,3 +1,4 @@
+// biome-ignore lint/style/useFilenamingConvention: Component filenames are PascalCase
 import { ROUTE } from "@/config/routes";
 import { formatPrice } from "@/lib/utils";
 import type { IProductCard } from "@/types/pages-cms";
@@ -15,41 +16,45 @@ export const ProductCard = ({
 
   return (
     <a
+      className="group flex h-full w-full flex-col gap-2.5"
       href={`${ROUTE.SHOP.path}/${slug}`}
-      className="w-full h-full flex flex-col gap-2.5 group"
     >
-      <div className="w-full aspect-4/4">
-        <div className="w-full h-full relative">
+      <div className="aspect-4/4 w-full">
+        <div className="relative h-full w-full">
           <img
-            className="w-full h-full object-cover absolute inset-0"
-            src={img}
             alt={name}
+            className="absolute inset-0 h-full w-full object-cover"
+            height={400}
+            src={img}
+            width={400}
           />
           {hoverImage && (
             <img
-              className="w-full h-full object-cover absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              src={hoverImage}
               alt={`${name} hover`}
+              className="absolute inset-0 z-10 h-full w-full object-cover opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+              height={400}
+              src={hoverImage}
+              width={400}
             />
           )}
         </div>
       </div>
-      <div className="w-full h-full flex flex-col justify-between gap-2.5">
-        <div className="w-full flex max-sm:flex-col justify-end sm:justify-between max-md:text-sm">
-          <p className="w-full font-light line-clamp-3 uppercase sm:mr-2">
+      <div className="flex h-full w-full flex-col justify-between gap-2.5">
+        <div className="flex w-full justify-end max-sm:flex-col max-md:text-sm sm:justify-between">
+          <p className="line-clamp-3 w-full font-light uppercase sm:mr-2">
             {name}
           </p>
-          <p className="min-w-fit text-website-orange font-mozilla font-medium text-end">
+          <p className="min-w-fit text-end font-medium font-mozilla text-website-orange">
             {formatPrice(price)}
           </p>
         </div>
-        <div className="w-full font-mozilla font-medium uppercase text-xs md:text-sm relative">
+        <div className="relative w-full font-medium font-mozilla text-xs uppercase md:text-sm">
           <p className="w-full">{tag}</p>
-          <div className="w-full h-full bg-white flex justify-center gap-3 absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            {size.map((item: string) => (
+          <div className="absolute inset-0 flex h-full w-full justify-center gap-3 bg-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            {size?.map((item: string) => (
               <div
+                className="flex aspect-square justify-center border-black border-b"
                 key={item}
-                className="flex justify-center aspect-square border-b border-black"
               >
                 <p className="">{item}</p>
               </div>

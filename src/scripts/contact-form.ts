@@ -4,7 +4,7 @@ import Toastify from "toastify-js";
 const form = document.getElementById("contact-form") as HTMLFormElement;
 const submit = document.getElementById("submit") as HTMLButtonElement;
 
-const showToast = (message: string, type: "success" | "error") => {
+const showToast = (message: string, _type: "success" | "error") => {
   Toastify({
     text: message,
     duration: 5000,

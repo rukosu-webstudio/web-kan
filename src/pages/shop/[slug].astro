@@ -1,11 +1,11 @@
 ---
 import WhatsappIcon from "@/components/icons/whatsapp-icon.astro";
-import ProductHeaderInfo from "@/components/section-components/product-header-info.astro";
 import ProductGallery from "@/components/section-components/product-gallery.astro";
-import BaseLayout from "@/layouts/base-layout.astro";
-import { getProductBySlug } from "@/services/product.service";
+import ProductHeaderInfo from "@/components/section-components/product-header-info.astro";
 import { BUSINESS_CONFIG } from "@/config/business";
+import BaseLayout from "@/layouts/base-layout.astro";
 import { formatPrice } from "@/lib/utils";
+import { getProductBySlug } from "@/services/product.service";
 
 const { slug } = Astro.params;
 
@@ -63,34 +63,31 @@ const gallery = product.gallery || [];
                 tag={product.tag}
                 price={product.price}
               />
-              {
-                product.color && (
+              {product.color && (
                   <div class="w-full flex flex-col gap-1 uppercase">
                     <p class="text-sm font-light">COLOR:</p>
                     <p class="font-bold">{product.color}</p>
                   </div>
-                )
-              }
+                )}
               <div class="w-full flex flex-col gap-1 uppercase">
                 <p class="text-sm font-light">TALLAS:</p>
                 <div
                   class="w-full flex justify-center items-center gap-2.5 font-mozilla font-light"
                 >
-                  {
-                    product.size?.map((s) => (
+                  {product.size?.map((s) => (
+                      // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
                       <button
                         class="size-button w-full px-4 border text-center hover:border-black transition-all duration-200 cursor-pointer active:opacity-50"
                         data-size={s}
+                        type="button"
                       >
                         {s}
                       </button>
-                    ))
-                  }
+                    ))}
                 </div>
               </div>
 
-              {
-                product.description && (
+              {product.description && (
                   <div class="w-full flex flex-col gap-1 uppercase">
                     <p class="text-sm font-light">Descripción:</p>
                     <div class="w-full max-w-full">
@@ -100,8 +97,7 @@ const gallery = product.gallery || [];
                       />
                     </div>
                   </div>
-                )
-              }
+                )}
 
               <div class="w-full flex flex-col justify-end pt-10">
                 <a
@@ -123,14 +119,15 @@ const gallery = product.gallery || [];
           </div>
         </div>
       </div>
-      {
-        product.moreDetails?.length && product.moreDetails?.length > 0 && (
+      {product.moreDetails?.length && product.moreDetails?.length > 0 && (
           <div class="w-full flex flex-col gap-10 justify-center items-center">
             <div class="size-20 aspect-square">
               <img
                 class="h-full object-cover"
                 src="/images/b-snake.png"
                 alt=""
+                width={80}
+                height={80}
               />
             </div>
             <p class="w-full text-center text-2xl font-mozilla font-light uppercase">
@@ -139,6 +136,7 @@ const gallery = product.gallery || [];
             <div class="w-full flex">
               <div class="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 justify-center items-stretch gap-6">
                 {product.moreDetails?.map((item) => (
+                  // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
                   <div class="w-full h-full flex flex-col gap-4 lg:gap-5 p-5 border-l-2 border-black">
                     <p class="w-full text-3xl font-light">{item.title}</p>
                     <p class="w-full text-lg font-light">{item.description}</p>
@@ -147,8 +145,7 @@ const gallery = product.gallery || [];
               </div>
             </div>
           </div>
-        )
-      }
+        )}
     </div>
   </section>
 </BaseLayout>
@@ -157,11 +154,13 @@ const gallery = product.gallery || [];
   function setupBuyNow() {
     const sizeButtons = document.querySelectorAll(".size-button");
     const buyNowButton = document.getElementById(
-      "buy-now-button",
+      "buy-now-button"
     ) as HTMLAnchorElement;
     let selectedSize = "sin seleccionar";
 
-    if (!buyNowButton) return;
+    if (!buyNowButton) {
+      return;
+    }
 
     const name = buyNowButton.getAttribute("data-name");
     const price = buyNowButton.getAttribute("data-price");
@@ -172,27 +171,27 @@ const gallery = product.gallery || [];
       const url = window.location.href;
       const message = `¡Hola! Me interesa este producto:
 
-*${name}*
-*Precio:* ${price}
-*Talla:* ${selectedSize}
-*Categoría:* ${category}
+      *${name}*
+      *Precio:* ${price}
+      *Talla:* ${selectedSize}
+      *Categoría:* ${category}
 
-¿Me podrían dar más información? ¡Muchas gracias! 
-${url}`;
+      ¿Me podrían dar más información? ¡Muchas gracias! 
+      ${url}`;
 
       const encodedMessage = encodeURIComponent(message);
       buyNowButton.setAttribute(
         "href",
-        `https://wa.me/${whatsapp}?text=${encodedMessage}`,
+        `https://wa.me/${whatsapp}?text=${encodedMessage}`
       );
     }
 
-    sizeButtons.forEach((button) => {
+    for (const button of sizeButtons) {
       button.addEventListener("click", () => {
         // Remove active class from all
-        sizeButtons.forEach((btn) =>
-          btn.classList.remove("border-black", "bg-black", "text-white"),
-        );
+        for (const btn of sizeButtons) {
+          btn.classList.remove("border-black", "bg-black", "text-white");
+        }
 
         // Add active class to clicked
         button.classList.add("border-black", "bg-black", "text-white");
@@ -200,7 +199,7 @@ ${url}`;
         selectedSize = button.getAttribute("data-size") || "sin seleccionar";
         updateBuyNowLink();
       });
-    });
+    }
 
     // Initial call
     updateBuyNowLink();

@@ -22,7 +22,7 @@ export function formatPrice(price: number | string): string {
   const numericPrice =
     typeof price === "string" ? Number.parseFloat(price) : price;
 
-  if (isNaN(numericPrice)) {
+  if (Number.isNaN(numericPrice)) {
     return "0.00 GTQ";
   }
 

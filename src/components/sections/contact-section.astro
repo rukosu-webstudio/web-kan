@@ -1,8 +1,8 @@
 ---
 import { BUSINESS_CONFIG } from "@/config/business";
+import { getCovers } from "@/services/cover.service";
 import UpRightArrow from "../icons/up-right-arrow.astro";
 import ContactForm from "../section-components/contact-form.astro";
-import { getCovers } from "@/services/cover.service";
 
 const covers = await getCovers();
 
@@ -44,7 +44,7 @@ const contactMedia = [
         class="w-full h-full object-cover absolute inset-0"
         src={covers.contact}
         alt=""
-      />
+      >
     </div>
     <div
       class="w-full py-10 px-2.5 grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-12"
@@ -54,35 +54,29 @@ const contactMedia = [
         <div
           class="w-full flex flex-col text-website-orange font-mozilla lg:text-lg uppercase nav-link-animated gap-2"
         >
-          {
-            socialMediaLinks.map((item) => {
-              return (
-                <a
-                  href={item.url}
-                  class="w-fit flex items-center gap-2.5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p>{item.title}</p>
-                  <p>
-                    <UpRightArrow class="size-6 text-website-orange" />
-                  </p>
-                </a>
-              );
-            })
-          }
+          {socialMediaLinks.map((item) => (
+            // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop on HTML tags
+            <a
+              href={item.url}
+              class="w-fit flex items-center gap-2.5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p>{item.title}</p>
+              <p>
+                <UpRightArrow class="size-6 text-website-orange" />
+              </p>
+            </a>
+          ))}
         </div>
         <div class="w-full flex flex-col lg:text-lg nav-link-animated gap-2">
-          {
-            contactMedia.map((item) => {
-              return (
-                <a href={item.url} class="w-fit flex items-center gap-1">
-                  <p class="font-mozilla">{item.title}:</p>
-                  <div class="font-extralight">{item.label}</div>
-                </a>
-              );
-            })
-          }
+          {contactMedia.map((item) => (
+            // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop on HTML tags
+            <a href={item.url} class="w-fit flex items-center gap-1">
+              <p class="font-mozilla">{item.title}:</p>
+              <div class="font-extralight">{item.label}</div>
+            </a>
+          ))}
         </div>
       </div>
       <div class="w-full h-full flex flex-col justify-between gap-6 lg:gap-8">

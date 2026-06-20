@@ -1,11 +1,11 @@
 ---
-import BaseLayout from "@/layouts/base-layout.astro";
-//@ts-ignore
+//@ts-expect-error
 import GlobalHeroSection from "@/components/sections/global-hero-section.astro";
 import ProductsSection from "@/components/sections/products-section";
-import { getAllProducts } from "@/services/product.service";
-import { getProductFilterGroups } from "@/services/filter.service";
+import BaseLayout from "@/layouts/base-layout.astro";
 import { getCovers } from "@/services/cover.service";
+import { getProductFilterGroups } from "@/services/filter.service";
+import { getAllProducts } from "@/services/product.service";
 
 const products = await getAllProducts();
 const filterGroups = getProductFilterGroups(products);

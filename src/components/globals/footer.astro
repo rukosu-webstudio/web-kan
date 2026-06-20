@@ -36,7 +36,7 @@ const socialMediaLinks = [
             class="h-full object-contain"
             src="/images/footer-logo.png"
             alt="KAN Athletic"
-          />
+          >
         </div>
         <div
           class="mt-8 flex flex-col gap-2 max-lg:text-center text-white/60 font-light text-sm max-w-sm"
@@ -50,22 +50,22 @@ const socialMediaLinks = [
         <div
           class="w-fit flex flex-wrap max-sm:flex-col max-sm:items-center justify-end gap-x-16 gap-y-10 text-white uppercase"
         >
-          {
-            footerRoutes.map((item) => (
+          {footerRoutes.map((item) => (
+              // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
               <div class="flex flex-col gap-y-4 lg:items-end max-sm:items-center">
                 <p class="lg:text-end font-montserrat font-semibold text-2xl">
                   {item.title}
                 </p>
                 <div class=" flex flex-col gap-2 lg:items-end max-sm:items-center nav-link-animated text-sm">
                   {item.routes.map((route) => (
+                    // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
                     <a class=" lg:text-end font-light" href={route.path}>
                       {route.title}
                     </a>
                   ))}
                 </div>
               </div>
-            ))
-          }
+            ))}
           <div class="flex flex-col gap-y-4 lg:items-end max-sm:items-center">
             <p class="lg:text-end font-montserrat font-semibold text-2xl">
               Contacto
@@ -85,8 +85,8 @@ const socialMediaLinks = [
               >
             </div>
             <div class="flex gap-4 mt-2">
-              {
-                socialMediaLinks.map((item) => (
+              {socialMediaLinks.map((item) => (
+                  // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
                   <a
                     href={item.url}
                     target="_blank"
@@ -95,8 +95,7 @@ const socialMediaLinks = [
                   >
                     <item.icon class="size-5" />
                   </a>
-                ))
-              }
+                ))}
             </div>
           </div>
         </div>

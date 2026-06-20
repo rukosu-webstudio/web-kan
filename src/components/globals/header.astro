@@ -5,7 +5,8 @@ import MobileMenu from "./mobile-menu.astro";
 
 const { pathname } = Astro.url;
 const isShopDetail =
-  (pathname.startsWith(ROUTE.SHOP.path) && pathname !== ROUTE.SHOP.path) || pathname.startsWith(ROUTE.ERROR.path);
+  (pathname.startsWith(ROUTE.SHOP.path) && pathname !== ROUTE.SHOP.path) ||
+  pathname.startsWith(ROUTE.ERROR.path);
 ---
 
 <header
@@ -29,13 +30,12 @@ const isShopDetail =
       <div
         class="flex-1 basis-0 flex items-center gap-6 xl:gap-12 max-md:hidden nav-link-animated"
       >
-        {
-          NAV_COLLECTIONS.map((route) => (
+        {NAV_COLLECTIONS.map((route) => (
+            // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
             <a class="" href={route.path}>
               {route.title}
             </a>
-          ))
-        }
+          ))}
       </div>
 
       <div class="flex-1 basis-0 flex items-center justify-start md:hidden">
@@ -46,6 +46,7 @@ const isShopDetail =
       <a
         href={ROUTE.HOME.path}
         class="flex-none flex justify-center items-center relative h-12 lg:h-16 button-hover"
+        aria-label="Inicio"
       >
         <img
           id="logo-kan"
@@ -55,7 +56,7 @@ const isShopDetail =
           ]}
           src="/images/w-kan.png"
           alt=""
-        />
+        >
         <img
           id="logo-main"
           class:list={[
@@ -64,10 +65,10 @@ const isShopDetail =
           ]}
           src="/images/w-snake.png"
           alt=""
-        />
+        >
       </a>
       <div class="flex-1 basis-0 flex items-center justify-end md:hidden">
-        <button id="mobile-menu-open"><Menu /> </button>
+        <button id="mobile-menu-open" type="button"><Menu /> </button>
       </div>
 
       <div
@@ -76,13 +77,12 @@ const isShopDetail =
         <a class="text-website-orange" href={ROUTE.SHOP.path}>
           {ROUTE.SHOP.title}
         </a>
-        {
-          NAV_ROUTES.map((route) => (
+        {NAV_ROUTES.map((route) => (
+            // biome-ignore lint/correctness/useJsxKeyInIterable: Astro does not use key prop
             <a class="" href={route.path}>
               {route.title}
             </a>
-          ))
-        }
+          ))}
       </div>
     </div>
   </nav>

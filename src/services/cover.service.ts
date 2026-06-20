@@ -1,5 +1,7 @@
 import type { ICovers } from "@/types/pages-cms";
 
+const PUBLIC_PATH_REGEX = /^(\/)?public/;
+
 const DEFAULTS = {
   home: "/default/hero.webp",
   history: "/default/history-bg.webp",
@@ -13,6 +15,7 @@ const DEFAULTS = {
  * Retrieves the cover images from src/content/covers.json.
  * Falls back to default images if not defined.
  */
+// biome-ignore lint/suspicious/useAwait: getCovers returns a Promise to maintain call site compatibility
 export const getCovers = async (): Promise<Required<ICovers>> => {
   try {
     const files = import.meta.glob("../content/covers.json", {
@@ -22,13 +25,17 @@ export const getCovers = async (): Promise<Required<ICovers>> => {
     });
 
     const contentString = Object.values(files)[0] as string;
-    if (!contentString) return DEFAULTS;
+    if (!contentString) {
+      return DEFAULTS;
+    }
 
     const covers = JSON.parse(contentString) as ICovers;
 
     const cleanPath = (path?: string) => {
-      if (!path) return null;
-      return path.replace(/^(\/)?public/, "");
+      if (!path) {
+        return null;
+      }
+      return path.replace(PUBLIC_PATH_REGEX, "");
     };
 
     return {

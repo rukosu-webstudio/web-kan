@@ -1,48 +1,58 @@
 import type { IProductCard } from "@/types/pages-cms";
 
 /**
- * Normalizes a string by trimming and converting to lowercase, 
+ * Normalizes a string by trimming and converting to lowercase,
  * then capitalizes the first letter for consistent display.
  */
 export const formatFilterLabel = (label: string): string => {
   const normalized = label.trim().toLowerCase();
-  if (!normalized) return "";
+  if (!normalized) {
+    return "";
+  }
   return normalized.charAt(0).toUpperCase() + normalized.slice(1);
 };
 
 /**
  * Extracts unique, formatted values from a collection of strings or arrays of strings.
  */
-export const getUniqueFilters = (values: (string | string[] | undefined)[]): string[] => {
+export const getUniqueFilters = (
+  values: (string | string[] | undefined)[]
+): string[] => {
   const uniqueSet = new Set<string>();
-  
-  values.forEach((value) => {
-    if (!value) return;
-    
+
+  for (const value of values) {
+    if (!value) {
+      continue;
+    }
+
     if (Array.isArray(value)) {
-      value.forEach((v) => uniqueSet.add(v.trim().toLowerCase()));
+      for (const v of value) {
+        uniqueSet.add(v.trim().toLowerCase());
+      }
     } else {
       // Split by comma in case the string contains multiple values
-      value.split(",").forEach((v) => uniqueSet.add(v.trim().toLowerCase()));
+      for (const v of value.split(",")) {
+        uniqueSet.add(v.trim().toLowerCase());
+      }
     }
-  });
+  }
 
-  const sortedValues = Array.from(uniqueSet)
-    .sort()
-    .map(formatFilterLabel);
+  const sortedValues = Array.from(uniqueSet).sort().map(formatFilterLabel);
 
   return ["Todo", ...sortedValues];
 };
 
 export interface FilterGroup {
-  title: string;
   items: string[];
+  title: string;
 }
 
 /**
  * Generates all filter groups for the product list.
  */
-export const getProductFilterGroups = (products: IProductCard[]): FilterGroup[] => {
+export const getProductFilterGroups = (
+  products: IProductCard[]
+): FilterGroup[] => {
   const activeProducts = products.filter((p) => p.active !== false);
 
   return [
@@ -62,5 +72,5 @@ export const getProductFilterGroups = (products: IProductCard[]): FilterGroup[] 
       title: "Colores",
       items: getUniqueFilters(activeProducts.map((p) => p.color)),
     },
-  ].filter(group => group.items.length > 1); // Only show filters that have more than just "Todo"
+  ].filter((group) => group.items.length > 1); // Only show filters that have more than just "Todo"
 };
