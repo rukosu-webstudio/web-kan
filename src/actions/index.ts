@@ -117,6 +117,14 @@ export const server = {
                 contactEmail: BUSINESS_CONFIG.contact.email.trim(),
                 name: BUSINESS_CONFIG.name,
                 website: BUSINESS_CONFIG.site,
+                social: {
+                  facebook: BUSINESS_CONFIG.social?.facebook,
+                  instagram: BUSINESS_CONFIG.social?.instagram,
+                  tiktok: BUSINESS_CONFIG.social?.tiktok,
+                  whatsapp: BUSINESS_CONFIG.contact?.whatsapp
+                    ? `https://wa.me/${BUSINESS_CONFIG.contact.whatsapp.ext}${BUSINESS_CONFIG.contact.whatsapp.number}`
+                    : undefined,
+                },
               },
               logo: {
                 src:

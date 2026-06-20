@@ -25,6 +25,12 @@ export interface IEmailTemplate {
     name: string;
     website: string;
     contactEmail: string;
+    social?: {
+      facebook?: string;
+      instagram?: string;
+      tiktok?: string;
+      whatsapp?: string;
+    };
   };
   data: IFormContactData[];
   lang?: "es" | "en";
@@ -113,8 +119,8 @@ export const EmailContact = ({
           }}
         >
           <Container className="mx-auto w-[480px] rounded-none border border-[#e0e0e0] bg-white">
-            {/* Header: Brand Banner */}
-            <Section className="w-full border-[#ff8d28] border-b-[3px] bg-black py-8 text-center">
+            {/* Header: White Brand Banner with Black Border */}
+            <Section className="w-full border-black border-b bg-white py-8 text-center">
               {logoSrc && (
                 <Link className="mx-auto inline-block" href={business.website}>
                   <Img
@@ -204,32 +210,42 @@ export const EmailContact = ({
             <Section className="w-full border-[#222222] border-t bg-[#111111] p-8 text-center">
               {/* Social Links */}
               <Row className="mx-auto mb-4 w-fit">
-                <Column className="px-2">
-                  <Link
-                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
-                    href={business.website}
-                  >
-                    {t.socialLinks.instagram}
-                  </Link>
-                </Column>
-                <Column className="px-2 text-[#444444] text-[11px]">|</Column>
-                <Column className="px-2">
-                  <Link
-                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
-                    href={business.website}
-                  >
-                    {t.socialLinks.whatsapp}
-                  </Link>
-                </Column>
-                <Column className="px-2 text-[#444444] text-[11px]">|</Column>
-                <Column className="px-2">
-                  <Link
-                    className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
-                    href={business.website}
-                  >
-                    {t.socialLinks.facebook}
-                  </Link>
-                </Column>
+                {business.social?.instagram && (
+                  <Column className="px-2">
+                    <Link
+                      className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
+                      href={business.social.instagram}
+                    >
+                      {t.socialLinks.instagram}
+                    </Link>
+                  </Column>
+                )}
+                {business.social?.instagram && business.social?.whatsapp && (
+                  <Column className="px-2 text-[#444444] text-[11px]">|</Column>
+                )}
+                {business.social?.whatsapp && (
+                  <Column className="px-2">
+                    <Link
+                      className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
+                      href={business.social.whatsapp}
+                    >
+                      {t.socialLinks.whatsapp}
+                    </Link>
+                  </Column>
+                )}
+                {business.social?.whatsapp && business.social?.facebook && (
+                  <Column className="px-2 text-[#444444] text-[11px]">|</Column>
+                )}
+                {business.social?.facebook && (
+                  <Column className="px-2">
+                    <Link
+                      className="text-[#888888] text-[11px] uppercase tracking-widest no-underline"
+                      href={business.social.facebook}
+                    >
+                      {t.socialLinks.facebook}
+                    </Link>
+                  </Column>
+                )}
               </Row>
 
               <Text className="m-0 text-[#666666] text-[11px] leading-relaxed">
