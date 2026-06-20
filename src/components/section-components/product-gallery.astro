@@ -25,11 +25,11 @@ const allImages = [cover, ...gallery].map((url) => ({
 
   .swiper-slide {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
     text-align: center;
     background: #fff;
-    aspect-ratio: 1 / 1;
   }
 
   .swiper-slide-img {
@@ -46,10 +46,10 @@ const allImages = [cover, ...gallery].map((url) => ({
   }
 
   .mySwiper {
+    box-sizing: border-box;
     width: 100%;
     max-width: 600px;
     height: auto;
-    box-sizing: border-box;
     padding: 10px 0;
   }
 
@@ -67,9 +67,9 @@ const allImages = [cover, ...gallery].map((url) => ({
     width: 25%;
     max-width: 120px;
     aspect-ratio: 1 / 1;
-    opacity: 0.7;
     overflow: hidden;
     border: 2px solid transparent;
+    opacity: 0.7;
   }
 
   @media (min-width: 768px) {
@@ -79,20 +79,20 @@ const allImages = [cover, ...gallery].map((url) => ({
   }
 
   .mySwiper .swiper-slide-thumb-active {
-    opacity: 1;
     border-color: #ff8d28;
+    opacity: 1;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: #0000006b;
-    padding: 10px;
-    color: #fff !important;
+    justify-content: center;
     width: 44px !important;
     height: 44px !important;
+    padding: 10px;
+    color: #fff !important;
+    background-color: #0000006b;
     border-radius: 50%;
   }
 
@@ -114,40 +114,40 @@ const allImages = [cover, ...gallery].map((url) => ({
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-drag: none;
-    user-drag: none;
   }
 </style>
 
 <section
   class="w-full max-w-full flex flex-col md:flex-row gap-4 overflow-hidden items-center md:items-start"
 >
-  {/* Miniaturas Swiper (A la izquierda en MD) */}
+  <!-- Miniaturas Swiper (A la izquierda en MD) -->
   <div class="md:w-[120px] w-full min-w-0 order-2 md:order-1">
     <div thumbsSlider="" class="swiper mySwiper relative w-full">
       <div class="swiper-wrapper cursor-grab">
-        {
-          allImages.map((img) => (
+        {allImages.map((img) => (
+            // biome-ignore lint/correctness/useJsxKeyInIterable: Astro doesn't use key prop on HTML tags
             <div class="swiper-slide cursor-pointer bg-white border border-transparent">
               <img
                 loading="lazy"
                 class="swiper-slide-img select-none"
                 src={img.url}
                 alt={img.alt}
+                width={120}
+                height={120}
               />
             </div>
-          ))
-        }
+          ))}
       </div>
     </div>
   </div>
 
-  {/* Contenedor Principal (A la derecha en MD) */}
+  <!-- Contenedor Principal (A la derecha en MD) -->
   <div
     class="swiper mySwiper2 relative overflow-hidden bg-white border border-transparent min-w-0 order-1 md:order-2"
   >
     <div class="swiper-wrapper">
-      {
-        allImages.map((img) => (
+      {allImages.map((img) => (
+          // biome-ignore lint/correctness/useJsxKeyInIterable: Astro doesn't use key prop on HTML tags
           <div class="swiper-slide">
             <a
               href={img.url}
@@ -158,39 +158,38 @@ const allImages = [cover, ...gallery].map((url) => ({
                 class="swiper-slide-cover select-none"
                 src={img.url}
                 alt={img.alt}
+                width={550}
+                height={550}
               />
             </a>
           </div>
-        ))
-      }
+        ))}
     </div>
 
     <div
       class="swiper-button-next absolute top-1/2 right-4 transform -translate-y-1/2 btnHover"
-    >
-    </div>
+    ></div>
     <div
       class="swiper-button-prev absolute top-1/2 left-4 transform -translate-y-1/2 btnHover"
-    >
-    </div>
+    ></div>
   </div>
 </section>
 
 <script>
   import Swiper from "swiper";
-  import { Navigation, Pagination, Thumbs, FreeMode } from "swiper/modules";
+  import { FreeMode, Navigation, Pagination, Thumbs } from "swiper/modules";
 
-  //@ts-ignore
-  let mainSwiper = null;
-  //@ts-ignore
-  let thumbSwiper = null;
+  let mainSwiper: Swiper | null = null;
+  let thumbSwiper: Swiper | null = null;
 
   const setupSwiper = () => {
     // Limpieza de instancias previas
-    //@ts-ignore
-    if (mainSwiper) mainSwiper.destroy(true, true);
-    //@ts-ignore
-    if (thumbSwiper) thumbSwiper.destroy(true, true);
+    if (mainSwiper) {
+      mainSwiper.destroy(true, true);
+    }
+    if (thumbSwiper) {
+      thumbSwiper.destroy(true, true);
+    }
 
     const isDesktop = window.innerWidth >= 768;
 
@@ -222,7 +221,6 @@ const allImages = [cover, ...gallery].map((url) => ({
   // Re-inicializar en cambios de tamaño para asegurar la dirección correcta
   window.addEventListener("resize", () => {
     const isDesktop = window.innerWidth >= 768;
-    //@ts-ignore
     const currentDirection = thumbSwiper?.params.direction;
 
     if (
@@ -240,18 +238,20 @@ const allImages = [cover, ...gallery].map((url) => ({
   import GLightbox from "glightbox";
 
   const setupLightbox = () => {
-    const lightbox = GLightbox({
+    GLightbox({
       selector: ".glightbox",
       touchNavigation: true,
       loop: true,
       zoomable: true,
     });
     const buttons = document.querySelectorAll(
-      ".swiper-button-next, .swiper-button-prev",
+      ".swiper-button-next, .swiper-button-prev"
     );
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", (e) => e.stopPropagation());
-    });
+    for (const btn of buttons) {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    }
   };
 
   setupLightbox();
