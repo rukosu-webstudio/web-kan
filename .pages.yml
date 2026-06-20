@@ -329,27 +329,28 @@ content:
     icon: star
     fields:
       - name: isPromo
-        label: Activar modo promoción / publicidad
-        description: "Si está activo, mostrará el banner con diseño destacado (tarjeta). Si está inactivo, mostrará el lema limpio."
+        label: Activar Anuncio / Publicidad
+        description: "Si está activo, mostrará un pequeño banner de anuncio sobre el lema principal."
         type: boolean
         default: false
       - name: badge
-        label: Etiqueta (Badge)
-        description: "Ej. PROMO, NUEVO, -20%"
+        label: Etiqueta del Anuncio
+        description: "Ej. PROMO, NUEVO, PRÓXIMAMENTE"
         type: string
+      - name: subtitle
+        label: Texto del Anuncio
+        description: "El mensaje del anuncio (ej. Pronto sacaremos algo nuevo)"
+        type: text
       - name: title
-        label: Título / Frase Principal
+        label: Lema Principal (Slogan)
         type: string
         required: true
-      - name: subtitle
-        label: Subtítulo / Descripción corta
-        type: text
       - name: buttonLabel
-        label: Texto del Botón
+        label: Texto del Botón de la Galería
         type: string
         required: true
       - name: buttonUrl
-        label: Enlace del Botón (URL)
+        label: Enlace del Botón de la Galería (URL)
         type: string
         required: true
 

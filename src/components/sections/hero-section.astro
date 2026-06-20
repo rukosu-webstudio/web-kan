@@ -26,52 +26,37 @@ const hero = await getHero();
       >
     </div>
     <div class="w-full flex flex-col gap-8 pb-20">
-      {hero.isPromo ? (
-        <div class="promo-card w-full max-w-[520px] p-6 md:p-8 rounded-2xl flex flex-col gap-4 md:gap-5 border border-white/10 backdrop-blur-xl bg-black/40 shadow-2xl relative overflow-hidden">
+      {hero.isPromo && hero.subtitle && (
+        <div class="promo-banner w-full max-w-[480px] p-4 border border-white/10 backdrop-blur-xl bg-black/40 shadow-lg flex flex-col gap-2 relative">
           {hero.badge && (
-            <span class="promo-badge self-start px-3 py-1 rounded-full text-xs font-semibold uppercase bg-website-orange text-black tracking-wider shadow-sm animate-pulse-subtle">
+            <span class="promo-badge self-start px-2 py-0.5 text-[10px] font-semibold uppercase bg-website-orange text-black tracking-wider animate-pulse-subtle">
               {hero.badge}
             </span>
           )}
-          <div class="flex flex-col gap-2">
-            <h1 class="text-white text-3xl md:text-4xl font-mozilla font-extralight leading-snug tracking-wide uppercase">
-              {hero.title}
-            </h1>
-            {hero.subtitle && (
-              <p class="text-[#DADADA] text-sm md:text-base font-inter font-light leading-relaxed">
-                {hero.subtitle}
-              </p>
-            )}
-          </div>
-          <div class="pt-2">
-            <PrimaryButton href={hero.buttonUrl} label={hero.buttonLabel} />
-          </div>
+          <p class="text-white text-sm md:text-base font-inter font-light leading-relaxed">
+            {hero.subtitle}
+          </p>
         </div>
-      ) : (
-        <>
-          <h1
-            class="w-full max-w-[480px] text-white text-3xl md:text-[40px] font-mozilla font-extralight md:text-base/10"
-          >
-            {hero.title}
-          </h1>
-          <PrimaryButton href={hero.buttonUrl} label={hero.buttonLabel} />
-        </>
       )}
+
+      <h1
+        class="w-full max-w-[480px] text-white text-3xl md:text-[40px] font-mozilla font-extralight md:text-base/10"
+      >
+        {hero.title}
+      </h1>
+      <PrimaryButton href={hero.buttonUrl} label={hero.buttonLabel} />
     </div>
   </div>
 </section>
 
 <style>
-  .promo-card {
+  .promo-banner {
     border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
-    transition:
-      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-      border-color 0.3s ease;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.3s ease;
   }
-  .promo-card:hover {
+  .promo-banner:hover {
     border-color: rgba(255, 141, 40, 0.4);
-    transform: translateY(-4px);
   }
   .animate-pulse-subtle {
     animation: pulse-subtle 3s infinite ease-in-out;
