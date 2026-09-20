@@ -1,6 +1,6 @@
 {
   "name": "KAN",
-  "description": "Ropa deportiva enfocada en el rendimiento, creamos prendas técnicas y minimalistas para quienes hacen del entrenamiento un estilo de vida y entienden que cada sesión es una oportunidad para mejorar.",
+  "description": "Indumentaria deportiva desarrollada para el entrenamiento y un estilo de vida activo. Diseñamos prendas técnicas, funcionales y minimalistas, cuidando cada detalle desde el material hasta la construcción.",
   "site": "https://www.kanathletic.com/",
   "robots": {
     "index": false,
@@ -32,7 +32,9 @@
   },
   "settings": {
     "emailSender": "iphone23master@gmail.com",
-    "bccEmail": ["monitoreo@kanathletic.com"],
+    "bccEmail": [
+      "monitoreo@kanathletic.com"
+    ],
     "resendToCompany": false
   }
 }
